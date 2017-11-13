@@ -2,7 +2,7 @@
 from .meta import Base
 
 
-class GHModel(Base):
+class TwitModel(object):
     """Github user model."""
 
     def to_dict_results(self):
@@ -17,48 +17,48 @@ class GHModel(Base):
 
     def to_dict_all(self):
         """Take all model attributes and render them as a dictionary."""
-        return {
-            # "profile_sidebar_fill_color": "DDEEF6",
-            # "profile_background_tile": true,
-            # "profile_sidebar_border_color": "C0DEED",
-            "name": self.name,
-            "created_at": self.created_at,
-            "profile_image_url": self.profile_image_url,
-            "location": self.location,
-            # "follow_request_sent": false,
-            # "id_str": "6253282",
-            # "is_translator": false,
-            # "profile_link_color": "0084B4",
-            "entities": self.entities,
-            # "default_profile": false,
-            # "contributors_enabled": false,
-            "favourites_count": self.favourites_count,
-            "url": self.url,
-            "profile_banner_url": self.profile_banner_url,
-            "utc_offset": self.utc_offset,
-            "profile_image_url_https": self.profile_image_url_https,
-            "id": self.id,
-            "listed_count": self.listed_count,
-            # "profile_use_background_image": true,
-            "lang": self.lang,
-            # "profile_text_color": "333333",
-            "followers_count": self.followers_count,
-            "protected": self.protected,
-            "verified": self.verified,
-            "description": self.description,
-            "geo_enabled": self.geo_enabled,
-            "time_zone": self.time_zone,
-            "notifications": self.notifications,
-            # "profile_background_image_url_https": "https://twimg0-a.akamaihd.net/profile_background_images/656927849/miyt9dpjz77sc0w3d4vj.png",
-            # "profile_background_color": "C0DEED",
-            "status": self.status,
-            "friends_count": self.friends_count,
-            # "profile_background_image_url": "http://a0.twimg.com/profile_background_images/656927849/miyt9dpjz77sc0w3d4vj.png",
-            # "default_profile_image": false,
-            "statuses_count": self.statuses_count,
-            "screen_name": self.screen_name,
-            "following": self.following
-        }
+        return {}
+        #     # "profile_sidebar_fill_color": "DDEEF6",
+        #     # "profile_background_tile": true,
+        #     # "profile_sidebar_border_color": "C0DEED",
+        #     "name": self.name,
+        #     "created_at": self.created_at,
+        #     "profile_image_url": self.profile_image_url,
+        #     "location": self.location,
+        #     # "follow_request_sent": false,
+        #     # "id_str": "6253282",
+        #     # "is_translator": false,
+        #     # "profile_link_color": "0084B4",
+        #     "entities": self.entities,
+        #     # "default_profile": false,
+        #     # "contributors_enabled": false,
+        #     "favourites_count": self.favourites_count,
+        #     "url": self.url,
+        #     "profile_banner_url": self.profile_banner_url,
+        #     "utc_offset": self.utc_offset,
+        #     "profile_image_url_https": self.profile_image_url_https,
+        #     "id": self.id,
+        #     "listed_count": self.listed_count,
+        #     # "profile_use_background_image": true,
+        #     "lang": self.lang,
+        #     # "profile_text_color": "333333",
+        #     "followers_count": self.followers_count,
+        #     "protected": self.protected,
+        #     "verified": self.verified,
+        #     "description": self.description,
+        #     "geo_enabled": self.geo_enabled,
+        #     "time_zone": self.time_zone,
+        #     "notifications": self.notifications,
+        #     # "profile_background_image_url_https": "https://twimg0-a.akamaihd.net/profile_background_images/656927849/miyt9dpjz77sc0w3d4vj.png",
+        #     # "profile_background_color": "C0DEED",
+        #     "status": self.status,
+        #     "friends_count": self.friends_count,
+        #     # "profile_background_image_url": "http://a0.twimg.com/profile_background_images/656927849/miyt9dpjz77sc0w3d4vj.png",
+        #     # "default_profile_image": false,
+        #     "statuses_count": self.statuses_count,
+        #     "screen_name": self.screen_name,
+        #     "following": self.following
+        # }
             # "profile_sidebar_fill_color": "DDEEF6",
             # "profile_background_tile": true,
             # "profile_sidebar_border_color": "C0DEED",
@@ -223,7 +223,7 @@ class GHModel(Base):
         #                 56,
         #                 78
         #               ],
-        #               "display_url": "tweetdeck.posterous.com/flight-at-twee…"
+        #               "display_url": "tweetdeck.posterous.com/flight-at-twee"
         #             }
         #           ],
         #           "hashtags": [
@@ -257,7 +257,7 @@ class GHModel(Base):
         #               71,
         #               93
         #             ],
-        #             "display_url": "tweetdeck.posterous.com/flight-at-twee…"
+        #             "display_url": "tweetdeck.posterous.com/flight-at-twee"
         #           }
         #         ],
         #         "hashtags": [
