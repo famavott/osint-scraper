@@ -2,7 +2,7 @@
 from .meta import Base
 
 
-class GHModel(Base):
+class GHModel(object):
     """Github user model."""
 
     def to_dict_results(self):
