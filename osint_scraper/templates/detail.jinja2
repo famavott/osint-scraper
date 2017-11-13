@@ -2,7 +2,13 @@
 
 {% block content %}
 <div class="content">
-  <h1><span class="font-semi-bold">Pyramid</span> <span class="smaller">Alchemy project</span></h1>
-  <p class="lead">Welcome to <span class="font-normal">osint-scraper</span>, a&nbsp;Pyramid application generated&nbsp;by<br><span class="font-normal">Cookiecutter</span>.</p>
+    <div id="bio">
+        
+    </div>
+    {% if result %}
+        <h1>{{ result.name }} detail view</h1>
+        {% for item in result%}
+        {% endfor %}
+    {% endif %}
 </div>
 {% endblock content %}

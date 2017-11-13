@@ -2,7 +2,15 @@
 
 {% block content %}
 <div class="content">
-  <h1><span class="font-semi-bold">Pyramid</span> <span class="smaller">Alchemy project</span></h1>
-  <p class="lead">Welcome to <span class="font-normal">osint-scraper</span>, a&nbsp;Pyramid application generated&nbsp;by<br><span class="font-normal">Cookiecutter</span>.</p>
+    <h1>Search results</h1>
+    {% for result in results %}
+        <div>
+        <a href=""><h2>{{ result.site }}</h2></a>
+        <span>{{ result.one }}</span>
+        <span>{{ result.two }}</span>
+        <span>{{ result.three }}</span>
+        <span>{{ result.four }}</span>
+        </div>
+    {% endfor %} 
 </div>
 {% endblock content %}
