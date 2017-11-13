@@ -1,8 +1,35 @@
-{% extends "layout.jinja2" %}
-
-{% block content %}
-<div class="content">
-  <h1><span class="font-semi-bold">Pyramid</span> <span class="smaller">Alchemy project</span></h1>
-  <p class="lead">Welcome to <span class="font-normal">osint-scraper</span>, a&nbsp;Pyramid application generated&nbsp;by<br><span class="font-normal">Cookiecutter</span>.</p>
-</div>
-{% endblock content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>OSInt scraper</title>
+    <link href="{{request.static_url('osint_scraper:static/reset.css')}}" rel="stylesheet">
+    <link href="{{request.static_url('osint_scraper:static/style.css')}}" rel="stylesheet">
+  </head>
+  <body>
+    <header id="header" class="">
+        
+    </header><!-- /header -->
+    <div>
+        <content>
+            
+        </content>
+        <form action="POST">
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="email">
+                    </td>
+                    <td>
+                        <input type="text" placeholder="social media handle">        
+                    </td>
+                </tr>
+                <tr><td><input type="submit" value="Search"></td><td></td></tr>
+            </table>
+        </form>
+    </div>
+    <footer>
+        
+    </footer>
+  </body>
+</html>
