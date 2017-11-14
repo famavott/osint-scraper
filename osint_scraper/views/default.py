@@ -1,7 +1,7 @@
 """OSInt scraper views."""
 
 from pyramid.view import view_config
-from githubpy import GitHub
+from github import GitHub
 from ..models import GHModel
 
 
