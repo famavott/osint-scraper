@@ -27,7 +27,6 @@ lxml==4.1.1
 Mako==1.0.7
 MarkupSafe==1.0
 oauthlib==2.0.6
--e git+https://github.com/famavott/osint-scraper.git@402c70c60b25ff52abb7959d24c86361c659dd27#egg=osint_scraper
 parso==0.1.0
 PasteDeploy==1.5.2
 pathtools==0.1.2
