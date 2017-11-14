@@ -14,7 +14,7 @@
         <content>
 
         </content>
-        <form action="GET">
+        <form action="results">
             <table>
                 <tr>
                     <td>
@@ -24,7 +24,7 @@
                         <input type="text" name="handle" placeholder="social media handle">
                     </td>
                 </tr>
-                <tr><td><input type="submit" name="search" value="Search"></td><td></td></tr>
+                <tr><td><a href="{{ request.route_url('results') }}"><input type="submit" name="search" value="Search"></a></td><td></td></tr>
             </table>
         </form>
     </div>
