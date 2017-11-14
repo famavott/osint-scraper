@@ -3,6 +3,8 @@ from github import GitHub
 
 from pyramid.view import view_config
 
+from ..scripts.pwned import pwned_recon
+
 from ..scripts.twitter import twitter_recon
 
 
@@ -21,6 +23,9 @@ def results_view(request):
         twit = twitter_recon(request.params['handle'])
     except:
         twit = None
+    
+    pwned = pwned_recon(request.params['email'])
+
     # res = GHModel(
     #     id=ghuser.id,
     #     login=ghuser.login,
@@ -30,7 +35,9 @@ def results_view(request):
     #     )
     # import pdb; pdb.set_trace()
     return {'ghuser': ghuser,
-            'twit': twit}
+            'twit': twit,
+            'pwned': pwned
+            }
 
 
 @view_config(route_name='detail', renderer='../templates/detail.jinja2')
