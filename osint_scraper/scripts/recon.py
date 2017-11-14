@@ -7,6 +7,8 @@ from github import GitHub
 
 import pypwned
 
+import requests
+
 import tweepy
 
 
@@ -39,16 +41,11 @@ def github_recon(user_name):
     ghuser = gh.users(user_name).get()
     return ghuser
 
-    # friends_count
-    # followers_count
-    # location
-    # screen_name
-    # id
-    # description
-    # geo_enabled
-    # statuses_count
-    # profile_image_url
-    # profile_image_url_https
-    # lang
-    # created_at
-    # url
+
+def facebook_recon(email):
+    """Find facebook account if linked via email."""
+    try:
+        r = requests.get('https://www.facebook.com/search/people?q={}'.format(email))
+        return r.url
+    except:
+        r = None
