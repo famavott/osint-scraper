@@ -15,9 +15,16 @@ def home_view(request):
 def results_view(request):
     """Result view."""
     gh = GitHub()
-    ghuser = gh.users(request).get()
-    res = GHModel(ghuser)
-    return {'user': res}
+    ghuser = gh.users(request.params['handle']).get()
+    # res = GHModel(
+    #     id=ghuser.id,
+    #     login=ghuser.login,
+    #     avatar_url=ghuser.avatar_url,
+    #     location=ghuser.location,
+    #     bio=ghuser.bio,
+    #     )
+    # import pdb; pdb.set_trace()
+    return {'user': ghuser}
 
 
 @view_config(route_name='detail', renderer='../templates/detail.jinja2')

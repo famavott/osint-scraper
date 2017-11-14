@@ -3,6 +3,8 @@
 {% block content %}
 <div class="content">
     <h1>Search results</h1>
+    <h3>{{ user.login }}</h3>
+    <p>{{ user.bio }}</p>
     {% for result in results %}
         <div>
         <a href=""><h2>{{ result.site }}</h2></a>
@@ -11,6 +13,6 @@
         <span>{{ result.three }}</span>
         <span>{{ result.four }}</span>
         </div>
-    {% endfor %} 
+    {% endfor %}
 </div>
 {% endblock content %}
