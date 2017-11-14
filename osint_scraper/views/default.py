@@ -3,7 +3,7 @@ from github import GitHub
 
 from pyramid.view import view_config
 
-from twitter import twitter_recon
+from ..scripts.twitter import twitter_recon
 
 
 @view_config(route_name='home', renderer='../templates/home.jinja2')
@@ -17,7 +17,10 @@ def results_view(request):
     """Result view."""
     gh = GitHub()
     ghuser = gh.users(request.params['handle']).get()
-    twit = twitter_recon(request.params['handle'])
+    try:
+        twit = twitter_recon(request.params['handle'])
+    except:
+        twit = None
     # res = GHModel(
     #     id=ghuser.id,
     #     login=ghuser.login,
