@@ -3,9 +3,13 @@ from __future__ import print_function
 
 import os
 
+from bs4 import BeautifulSoup
+
 from github import GitHub
 
 import pypwned
+
+import requests
 
 import tweepy
 
@@ -36,8 +40,22 @@ def pwned_recon(email):
 def github_recon(user_name):
     """Github scraper."""
     gh = GitHub()
-    ghuser = gh.users(user_name).get()
+    try:
+        ghuser = gh.users(user_name).get()
+    except:
+        return None
     return ghuser
+
+
+def photobucket_recon(user_name):
+    """Check for pb account with user_name."""
+    r = requests.get('http://s594.photobucket.com/user/{}/profile/'
+                     .format(user_name))
+    if r.status_code == 200:
+        soup = BeautifulSoup(r.content, "lxml")
+        return soup.find('input', 'linkcopy').attrs['value']
+    else:
+        return None
 
     # friends_count
     # followers_count
