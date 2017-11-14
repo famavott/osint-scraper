@@ -1,23 +1,23 @@
 """File to retreive information from Twitter API using tweepy."""
 from __future__ import print_function
 
+import os
+
 import tweepy
 
 
 def twitter_recon(username):
     """Use tweepy to access user data if name found."""
-    auth = tweepy.OAuthHandler('Fo6Cb2s8N8VrQpUgNlK5sAq8E', 'WdswCbCKB3Sxf6DSiqdfbKSSHUL13cBfaMwspRnVbEdpYx06XL')
-    auth.set_access_token('930148182306185216-1pWbHMuEmA4p8f5qAmIqLAo9xMihppT', 'OxvbfBshhjv6ZL5lwvttJHDGEAlCAaBWbLjpTBU5Yb2yI')
+    twitter_con_key = os.environ.get('TWITTER_CON_KEY')
+    twitter_con_secret = os.environ.get('TWITTER_CON_SECRET')
+    twitter_token = os.environ.get('TWITTER_TOKEN')
+    twitter_token_secret = os.environ.get('TWITTER_TOKEN_SECRET')
+    auth = tweepy.OAuthHandler(twitter_con_key, twitter_con_secret)
+    auth.set_access_token(twitter_token, twitter_token_secret)
 
     api = tweepy.API(auth)
     user = api.get_user(username)
     return user
-
-
-
-
-
-
 
 
     # friends_count
