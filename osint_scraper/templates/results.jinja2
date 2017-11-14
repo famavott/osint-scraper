@@ -9,14 +9,10 @@
       <p>{{ ghuser.bio }}</p>
       <img src="{{ ghuser.avatar_url }}" height="50px" width="50px">
 
-    {% for result in results %}
-        <div>
-        <a href=""><h2>{{ result.site }}</h2></a>
-        <span>{{ result.one }}</span>
-        <span>{{ result.two }}</span>
-        <span>{{ result.three }}</span>
-        <span>{{ result.four }}</span>
-        </div>
-    {% endfor %}
+      <h3>Twitter:</h3>
+      <p>{{ twit.screen_name }}<p>
+      <p>{{ twit.location }}</p>
+      <p>{{ twit.description }}</p>
+      <img src="{{ twit.profile_img_url }}" height="50px" width="50px">
 </div>
 {% endblock content %}
