@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>OSInt scraper</title>
+    <link href="{{request.static_url('osint_scraper:static/reset.css')}}" rel="stylesheet">
+    <link href="{{request.static_url('osint_scraper:static/style.css')}}" rel="stylesheet">
+  </head>
+  <body>
+    <header id="header" class="">
+
+    </header><!-- /header -->
+    <div>
+        <content>
+
+        </content>
+        <form action="results">
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" name="email" placeholder="email">
+                    </td>
+                    <td>
+                        <input type="text" name="handle" placeholder="social media handle">
+                    </td>
+                </tr>
+                <tr><td><a href="{{ request.route_url('results') }}"><input type="submit" name="search" value="Search"></a></td><td></td></tr>
+            </table>
+        </form>
+    </div>
+    <footer>
+
+    </footer>
+  </body>
+</html>

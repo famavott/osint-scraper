@@ -21,8 +21,11 @@ Add additional notes about how to deploy this on a live system
 ## Authors
 
 **Kavdi Hodgson**
+
 **Gabriel Meringolo**
+
 **Chris Closser**
+
 **Matt Favoino**
 
 ## License
