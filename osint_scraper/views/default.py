@@ -24,7 +24,7 @@ def results_view(request):
     #     bio=ghuser.bio,
     #     )
     # import pdb; pdb.set_trace()
-    return {'user': ghuser}
+    return {'ghuser': ghuser}
 
 
 @view_config(route_name='detail', renderer='../templates/detail.jinja2')

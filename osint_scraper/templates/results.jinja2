@@ -3,8 +3,12 @@
 {% block content %}
 <div class="content">
     <h1>Search results</h1>
-    <h3>{{ user.login }}</h3>
-    <p>{{ user.bio }}</p>
+      <h3>GitHub:</h3>
+      <p>{{ ghuser.login }}<p>
+      <p>{{ ghuser.location }}</p>
+      <p>{{ ghuser.bio }}</p>
+      <img src="{{ ghuser.avatar_url }}" height="50px" width="50px">
+
     {% for result in results %}
         <div>
         <a href=""><h2>{{ result.site }}</h2></a>
