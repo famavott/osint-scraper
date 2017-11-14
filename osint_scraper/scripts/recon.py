@@ -1,7 +1,11 @@
-"""File to retreive information from Twitter API using tweepy."""
+"""Data gathering module."""
 from __future__ import print_function
 
 import os
+
+from github import GitHub
+
+import pypwned
 
 import tweepy
 
@@ -16,9 +20,24 @@ def twitter_recon(username):
     auth.set_access_token(twitter_token, twitter_token_secret)
 
     api = tweepy.API(auth)
-    user = api.get_user(username)
+    try:
+        user = api.get_user(username)
+    except:
+        return None
     return user._json
 
+
+def pwned_recon(email):
+    """Check HIBP if email has been compromised."""
+    results = pypwned.getAllBreachesForAccount(email=email)
+    return results
+
+
+def github_recon(user_name):
+    """Github scraper."""
+    gh = GitHub()
+    ghuser = gh.users(user_name).get()
+    return ghuser
 
     # friends_count
     # followers_count
