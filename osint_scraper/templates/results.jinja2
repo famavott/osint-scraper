@@ -18,7 +18,7 @@
         <p>{{ twit.description }}</p>
         <img src="{{ twit.profile_image_url }}" height="50px" width="50px">
         {% endif %}
-        
+
         {% if pwned %}
         <h3>Have you been pwned:</h3>
             {% for pwn in pwned%}
@@ -26,6 +26,10 @@
             {% endfor %}
         {% endif %}
 
-      
+        {% if facebook %}
+        <h3>Facebook account linked to email:</h3>
+        <a href="{{ facebook }}"/>Link</a>
+        {% endif %}
+
 </div>
 {% endblock content %}
