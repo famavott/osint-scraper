@@ -18,18 +18,3 @@ def twitter_recon(username):
     api = tweepy.API(auth)
     user = api.get_user(username)
     return user._json
-
-
-    # friends_count
-    # followers_count
-    # location
-    # screen_name
-    # id
-    # description
-    # geo_enabled
-    # statuses_count
-    # profile_image_url
-    # profile_image_url_https
-    # lang
-    # created_at
-    # url
