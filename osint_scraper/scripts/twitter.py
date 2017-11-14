@@ -17,7 +17,7 @@ def twitter_recon(username):
 
     api = tweepy.API(auth)
     user = api.get_user(username)
-    return user
+    return user._json
 
 
     # friends_count
