@@ -47,6 +47,15 @@ def github_recon(user_name):
     return ghuser
 
 
+def facebook_recon(email):
+    """Find facebook account if linked via email."""
+    try:
+        r = requests.get('https://www.facebook.com/search/people?q={}'.format(email))
+        return r.url
+    except:
+        r = None
+
+
 def photobucket_recon(user_name):
     """Check for pb account with user_name."""
     r = requests.get('http://s594.photobucket.com/user/{}/profile/'
@@ -70,3 +79,4 @@ def photobucket_recon(user_name):
     # lang
     # created_at
     # url
+
