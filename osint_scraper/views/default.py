@@ -3,7 +3,13 @@
 
 from pyramid.view import view_config
 
-from ..scripts.recon import facebook_recon, github_recon, pwned_recon, twitter_recon
+from ..scripts.recon import (
+    facebook_recon,
+    github_recon,
+    pwned_recon,
+    twitter_recon,
+    youtube_recon
+    )
 
 
 @view_config(route_name='home', renderer='../templates/home.jinja2')
@@ -20,8 +26,9 @@ def results_view(request):
     if user_name:
         ghuser = github_recon(user_name)
         twit = twitter_recon(user_name)
+        yout = youtube_recon(user_name)
     else:
-        ghuser = twit = None
+        ghuser = twit = yout = None
 
     if email:
         pwned = pwned_recon(email)
@@ -32,7 +39,8 @@ def results_view(request):
     return {'ghuser': ghuser,
             'twit': twit,
             'pwned': pwned,
-            'facebook': facebook
+            'facebook': facebook,
+            'yout': yout
             }
 
 
