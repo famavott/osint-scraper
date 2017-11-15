@@ -5,8 +5,6 @@ import json
 
 import os
 
-from urllib.request import urlopen
-
 from bs4 import BeautifulSoup
 
 from github import GitHub
@@ -95,7 +93,7 @@ def youtube_recon(user_name):
                                                         youtube_key)
 
     try:
-        rawres = urlopen(url)
+        rawres = requests.get(url)
         res = rawres.read()
         response = json.loads(res)
         return response
