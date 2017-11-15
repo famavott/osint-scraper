@@ -3,24 +3,33 @@
 {% block content %}
 <div class="content">
     <h1>Search results</h1>
+        {% if ghuser %}
         <h3>GitHub:</h3>
         <p>{{ ghuser.login }}<p>
         <p>{{ ghuser.location }}</p>
         <p>{{ ghuser.bio }}</p>
         <img src="{{ ghuser.avatar_url }}" height="50px" width="50px">
+        {% endif %}
 
+        {% if twit %}
         <h3>Twitter:</h3>
         <p>{{ twit.screen_name }}<p>
         <p>{{ twit.location }}</p>
         <p>{{ twit.description }}</p>
         <img src="{{ twit.profile_image_url }}" height="50px" width="50px">
+        {% endif %}
 
-
+        {% if pwned %}
         <h3>Have you been pwned:</h3>
             {% for pwn in pwned%}
                 <p>{{ pwn }}<p>
             {% endfor %}
+        {% endif %}
 
-      
+        {% if facebook %}
+        <h3>Facebook account linked to email:</h3>
+        <a href="{{ facebook }}"/>Link</a>
+        {% endif %}
+
 </div>
 {% endblock content %}
