@@ -22,7 +22,7 @@ def recon_handler(user_name=None, email=None):
         steam = steam_recon(user_name)
         lleak = liveleak_recon(user_name)
     else:
-        ghuser = twit = yout = imgur = wiki = lleak = None
+        ghuser = twit = yout = imgur = wiki = lleak = steam = None
     if email:
         pwned = pwned_recon(email)
         facebook = facebook_recon(email)
