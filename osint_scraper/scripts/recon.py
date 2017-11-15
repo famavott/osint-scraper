@@ -198,6 +198,16 @@ def steam_recon(user_name):
         return {'site': 'Steam',
                 'empty': 'No Steam account with that user name.'
                 }
+    if 'This profile is private.' in r.text:
+        soup = BeautifulSoup(r.content, 'lxml')
+        ava = soup.find('div', class_="playerAvatarAutoSizeInner")
+        avatar = ava.find('img').attrs['src']
+        real_name = soup.find('span', class_='actual_persona_name').contents[0]
+        return {'site': 'Steam',
+                'avatar': avatar,
+                'real_name': real_name,
+                'bio': 'Private account'
+                }
     else:
         soup = BeautifulSoup(r.content, 'lxml')
         ava = soup.find('div', class_="playerAvatarAutoSizeInner")
