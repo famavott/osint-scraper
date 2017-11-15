@@ -41,4 +41,22 @@ def main(global_config, **settings):
 @pytest.fixture
 def name_example(scope="session"):
     """."""
-    return recon_handler(user_name='famavott')
+    return recon_handler(user_name='wmaserati76')
+
+
+@pytest.fixture
+def email_example(scope="session"):
+    """."""
+    return recon_handler(email='wmaserati76@gmail.com')
+
+
+@pytest.fixture
+def non_name_example(scope="session"):
+    """."""
+    return recon_handler(user_name='m')
+
+
+@pytest.fixture
+def non_email_example(scope="session"):
+    """."""
+    return recon_handler(email='xnxxn@xnx.com')

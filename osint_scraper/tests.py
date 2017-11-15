@@ -1,8 +1,9 @@
 """OSInt tests."""
 
-
 from pyramid import testing
+
 from pyramid.response import Response
+
 from osint_scraper.scripts.recon_handler import recon_handler
 
 
@@ -35,3 +36,16 @@ def test_recon_handler_with_username(name_example):
     assert isinstance(name_example, dict)
 
 
+def test_recon_handler_with_email(email_example):
+    """."""
+    assert isinstance(email_example, dict)
+
+
+def test_recon_handler_with_non_username(non_name_example):
+    """."""
+    assert isinstance(non_name_example, dict)
+
+
+def test_recon_handler_with_non_email(non_email_example):
+    """."""
+    assert isinstance(non_email_example, dict)
