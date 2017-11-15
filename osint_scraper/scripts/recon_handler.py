@@ -3,6 +3,7 @@ from .recon import (facebook_recon,
                     github_recon,
                     hacked_email_recon,
                     imgur_recon,
+                    liveleak_recon,
                     pwned_recon,
                     steam_recon,
                     twitter_recon,
@@ -19,8 +20,9 @@ def recon_handler(user_name=None, email=None):
         imgur = imgur_recon(user_name)
         wiki = wikipedia_recon(user_name)
         steam = steam_recon(user_name)
+        lleak = liveleak_recon(user_name)
     else:
-        ghuser = twit = yout = imgur = wiki = None
+        ghuser = twit = yout = imgur = wiki = lleak = None
     if email:
         pwned = pwned_recon(email)
         facebook = facebook_recon(email)
@@ -35,5 +37,6 @@ def recon_handler(user_name=None, email=None):
             'imgur': imgur,
             'hacked_emails': hacked_emails,
             'wiki': wiki,
-            'steam': steam
+            'steam': steam,
+            'lleak': lleak
             }

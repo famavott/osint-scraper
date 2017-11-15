@@ -222,3 +222,24 @@ def steam_recon(user_name):
                 'location': location,
                 'bio': bio
                 }
+
+
+def liveleak_recon(user_name):
+    """Check for liveleak account with user_name."""
+    url = 'https://www.liveleak.com/c/{}'.format(user_name)
+    r = requests.get(url)
+    if 'Channel cannot be found!' in r.text:
+        return {'site': 'LiveLeak',
+                'empty': 'No LiveLeak account with that user name.'
+                }
+    else:
+        soup = BeautifulSoup(r.content, 'lxml')
+        loc = soup.find('h1').next_sibling.next_sibling.next_sibling
+        location = loc.next_sibling.find('span').contents[0]
+        memb = soup.find('h1').next_sibling.next_sibling.next_sibling.\
+            next_sibling.next_sibling.next_sibling.find('span').contents[0]
+        return {'site': 'LiveLeak',
+                'location': location,
+                'memb_since': memb,
+                'url': url
+                }
