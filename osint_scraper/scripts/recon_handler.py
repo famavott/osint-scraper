@@ -1,9 +1,12 @@
 """Handle the recon functions."""
 from .recon import (facebook_recon,
+                    flickr_recon,
                     github_recon,
                     hacked_email_recon,
+                    hacker_recon,
                     imgur_recon,
                     liveleak_recon,
+                    photobucket_recon,
                     pwned_recon,
                     steam_recon,
                     twitter_recon,
@@ -21,8 +24,11 @@ def recon_handler(user_name=None, email=None):
         wiki = wikipedia_recon(user_name)
         steam = steam_recon(user_name)
         lleak = liveleak_recon(user_name)
+        p_bucket = photobucket_recon(user_name)
+        flickr = flickr_recon(user_name)
+        hacker = hacker_recon(user_name)
     else:
-        ghuser = twit = yout = imgur = wiki = lleak = steam = None
+        ghuser = twit = yout = imgur = wiki = lleak = steam = p_bucket = flickr = hacker = None
     if email:
         pwned = pwned_recon(email)
         facebook = facebook_recon(email)
@@ -38,5 +44,8 @@ def recon_handler(user_name=None, email=None):
             'hacked_emails': hacked_emails,
             'wiki': wiki,
             'steam': steam,
-            'lleak': lleak
+            'lleak': lleak,
+            'p_bucket': p_bucket,
+            'flickr': flickr,
+            'hacker': hacker
             }
