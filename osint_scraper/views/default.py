@@ -1,9 +1,8 @@
 """OSInt scraper views."""
 
-
 from pyramid.view import view_config
 
-from ..scripts.recon import facebook_recon, github_recon, pwned_recon, twitter_recon
+from ..scripts.recon_handler import recon_handler
 
 
 @view_config(route_name='home', renderer='../templates/home.jinja2')
@@ -17,23 +16,7 @@ def results_view(request):
     """Result view."""
     user_name = request.params['handle']
     email = request.params['email']
-    if user_name:
-        ghuser = github_recon(user_name)
-        twit = twitter_recon(user_name)
-    else:
-        ghuser = twit = None
-
-    if email:
-        pwned = pwned_recon(email)
-        facebook = facebook_recon(email)
-    else:
-        pwned = None
-        facebook = None
-    return {'ghuser': ghuser,
-            'twit': twit,
-            'pwned': pwned,
-            'facebook': facebook
-            }
+    return recon_handler(user_name, email)
 
 
 @view_config(route_name='detail', renderer='../templates/detail.jinja2')
