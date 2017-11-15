@@ -14,6 +14,9 @@ def home_view(request):
 @view_config(route_name='results', renderer='../templates/results.jinja2')
 def results_view(request):
     """Result view."""
+    # import pdb; pdb.set_trace()
+    if not request:
+        return {}
     user_name = request.params['handle']
     email = request.params['email']
     return recon_handler(user_name, email)
