@@ -1,6 +1,7 @@
 """Handle the recon functions."""
 from .recon import (facebook_recon,
                     github_recon,
+                    hacked_email_recon,
                     imgur_recon,
                     pwned_recon,
                     twitter_recon,
@@ -19,6 +20,7 @@ def recon_handler(user_name=None, email=None):
     if email:
         pwned = pwned_recon(email)
         facebook = facebook_recon(email)
+        hacked_emails = hacked_email_recon(email)
     else:
         pwned = facebook = None
     return {'ghuser': ghuser,
@@ -26,5 +28,6 @@ def recon_handler(user_name=None, email=None):
             'yout': yout,
             'pwned': pwned,
             'facebook': facebook,
-            'imgur': imgur
+            'imgur': imgur,
+            'hacked_emails': hacked_emails
             }

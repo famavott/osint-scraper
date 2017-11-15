@@ -159,3 +159,17 @@ def imgur_recon(user_name):
                 }
     else:
         return None
+
+
+def hacked_email_recon(email):
+    """Check if email matches possible hacked emails from various breaches."""
+    url = 'https://hacked-emails.com/api?q={}'.format(email)
+    r = requests.get(url)
+    if r.status_code == 200:
+        to_dict = dict(r.json())
+        return {
+            'hack_dict': to_dict,
+            'site': 'Hacked Emails'
+        }
+    else:
+        return None
