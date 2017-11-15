@@ -1,8 +1,6 @@
 """Data gathering module."""
 from __future__ import print_function
 
-import json
-
 import os
 
 from bs4 import BeautifulSoup
@@ -34,7 +32,7 @@ def twitter_recon(username):
         return {'site': 'Twitter',
                 'empty': 'No Twitter account with that username.'}
     return {'site': 'Twitter',
-            'data': user._json
+            'results': user._json
             }
 
 
@@ -87,40 +85,24 @@ def photobucket_recon(user_name):
         return {'site': 'Photobucket',
                 'empty': 'No Photobucket account with that name.'}
 
-    # friends_count
-    # followers_count
-    # location
-    # screen_name
-    # id
-    # description
-    # geo_enabled
-    # statuses_count
-    # profile_image_url
-    # profile_image_url_https
-    # lang
-    # created_at
-    # url
-
 
 def youtube_recon(user_name):
     """Use tweepy to access user data if name found."""
-    youtube_key = os.environ.get('YOUTUBE_KEY')
-    baseurl = 'https://www.googleapis.com/youtube/v3/'
-    url = '{0}search?part=snippet&q={1}&key={2}'.format(baseurl,
-                                                        user_name,
-                                                        youtube_key)
-
-    try:
-        rawres = requests.get(url)
-        res = rawres.read()
-        response = json.loads(res)
-        return {'site': 'YouTube',
-                'results': response
-                }
-    except:
+    url = 'https://www.youtube.com/user/{}'.format(user_name)
+    r = requests.get(url)
+    if b'This channel does not exist.' in r.content:
         return {'site': 'YouTube',
                 'empty': 'No YouTube account with that username.'
                 }
+    soup = BeautifulSoup(r.content, 'lxml')
+    ava = soup.find('img', class_='channel-header-profile-image')
+    avatar = ava.attrs['src']
+    title = soup.find('span', id='channel-title').contents
+    return {'site': 'YouTube',
+            'avatar': avatar,
+            'title': title,
+            'url': url
+            }
 
 
 def flickr_recon(user_name):
@@ -173,12 +155,15 @@ def imgur_recon(user_name):
     r = requests.get(url)
     if r.status_code == 200:
         soup = BeautifulSoup(r.content, 'html.parser')
-        bio = soup.find('div', id='account-bio').contents[0]
+        try:
+            bio = soup.find('div', id='account-bio').contents[0]
+        except:
+            bio = None
         a_date = soup.find('div', class_='textbox bold')
         acct_date = a_date.contents[2].split('\n')[1].strip()
         return {'acct_date': acct_date,
                 'bio': bio,
-                'link': 'https://imgur.com/user/{}'.format(user_name),
+                'url': url,
                 'site': 'Imgur'
                 }
     else:
@@ -234,6 +219,7 @@ def steam_recon(user_name):
         return {'site': 'Steam',
                 'avatar': avatar,
                 'real_name': real_name,
+                'location': 'Private account',
                 'bio': 'Private account'
                 }
     else:
@@ -291,6 +277,7 @@ def reddit_recon(user_name):
 
 class GoogleSpider(scrapy.Spider):
     """Scraper for google serach."""
+
     name = "googel_spider"
 
     def __init__(self, first, last):

@@ -3,33 +3,134 @@
 {% block content %}
 <div class="content">
     <h1>Search results</h1>
-        {% if ghuser %}
-        <h3>GitHub:</h3>
-        <p>{{ ghuser.login }}<p>
-        <p>{{ ghuser.location }}</p>
-        <p>{{ ghuser.bio }}</p>
-        <img src="{{ ghuser.avatar_url }}" height="50px" width="50px">
+
+        {% if facebook %}
+        <div id='info_block'>
+        <h3>{{ facebook.site }}:</h3>
+        {% if facebook.empty %}
+            <p>{{ facebook.empty }}</p>
+        {% endif %}
+        {% if facebook.url %}
+            <p>{{ facebook.url }}</p>
+        {% endif %}
+        </div>
         {% endif %}
 
+
+
         {% if twit %}
-        <h3>Twitter:</h3>
-        <p>{{ twit.screen_name }}<p>
-        <p>{{ twit.location }}</p>
-        <p>{{ twit.description }}</p>
-        <img src="{{ twit.profile_image_url }}" height="50px" width="50px">
+        <div id='info_block'>
+        <h3>{{ twit.site }}:</h3>
+        {% if twit.empty %}
+            <p>{{ twit.empty }}</p>
+        {% endif %}
+        {% if twit.results %}
+            <img src="{{ twit.results.profile_image_url }}" height="50px" width="50px">
+            <p>{{ twit.results.screen_name }}</p>
+            <p>{{ twit.results.name }}</p>
+            <p>{{ twit.results.location }}</p>
+            <p>{{ twit.results.lang }}</p>
+            <p>{{ twit.results.description }}</p>
+            <p>{{ twit.results.created_at }}</p>
+            <p>{{ twit.results.followers_count }}</p>
+            <p>{{ twit.results.friend_count }}</p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if yout %}
+            <div id='info_block'>
+            <h3>{{ yout.site }}:</h3>
+            {% if yout.empty %}
+                <p>{{ yout.empty }}</p>
+            {% endif %}
+            {% if yout.avatar %}
+                <img src="{{ yout.avatar }}" height="50px" width="50px">
+                <p>{{ yout.title }}</p>
+                <p>{{ yout.url }}</p>
+            {% endif %}
+            </div>
+        {% endif %}
+
+
+        {% if lleak %}
+        <div id='info_block'>
+        <h3>{{ lleak.site }}:</h3>
+        {% if lleak.empty %}
+            <p>{{ lleak.empty }}</p>
+        {% endif %}
+        {% if lleak.location %}
+            <p>{{ lleak.location }}</p>
+            <p>{{ lleak.memb_since }}</p>
+            <p>{{ lleak.url }}</p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if ghuser %}
+        <div id='info_block'>
+        <h3>{{ ghuser.site }}:</h3>
+        {% if ghuser.empty %}
+            <p>{{ ghuser.empty }}</p>
+        {% endif %}
+        {% if ghuser.results %}
+            <img src="{{ ghuser.results.avatar_url }}" height="50px" width="50px">
+            <p>{{ ghuser.results.login }}</p>
+            <p>{{ ghuser.results.name }}</p>
+            <p>{{ ghuser.results.email }}</p>
+            <p>{{ ghuser.results.company }}</p>
+            <p>{{ ghuser.results.hirable }}</p>
+            <p>{{ ghuser.results.location }}</p>
+            <p>{{ ghuser.results.bio }}</p>
+            <p>{{ ghuser.results.blog }}</p>
+            <p>{{ ghuser.results.repos_url }}</p>
+            <p>{{ ghuser.results.html_url }}</p>
+        {% endif %}
+        </div>
+        {% endif %}
+        
+
+        {% if steam %}
+        <div id='info_block'>
+        <h3>{{ steam.site }}:</h3>
+        {% if steam.empty %}
+            <p>{{ steam.empty }}</p>
+        {% endif %}
+        {% if steam.location %}
+            <p>{{ steam.avatar }}</p>
+            <p>{{ steam.real_name }}</p>
+            <p>{{ steam.bio }}</p>
+            <p>{{ steam.location }}</p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if imgur %}
+        <div id='info_block'>
+        <h3>{{ imgur.site }}:</h3>
+        {% if imgur.empty %}
+            <p>{{ imgur.empty }}</p>
+        {% endif %}
+        {% if imgur.url %}
+            <p>{{ imgur.bio }}</p>
+            <p>{{ imgur.url }}</p>
+            <p>{{ imgur.acct_date }}</p>
+        {% endif %}
+        </div>
         {% endif %}
 
         {% if pwned %}
+        <div id='info_block'>
         <h3>Have you been pwned:</h3>
             {% for pwn in pwned%}
-                <p>{{ pwn }}<p>
+                <p>{{ pwn }}</p>
             {% endfor %}
+        </div>
         {% endif %}
 
-        {% if facebook %}
-        <h3>Facebook account linked to email:</h3>
-        <a href="{{ facebook }}"/>Link</a>
-        {% endif %}
 
 </div>
 {% endblock content %}
