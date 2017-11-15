@@ -128,18 +128,23 @@ def flickr_recon(user_name):
     url = 'https://www.flickr.com/people/{}/'.format(user_name)
     r = requests.get(url)
     if r.status_code == 200:
-        soup = BeautifulSoup(r.content, "lxml")
-        title = soup.find('h1').contents[0].strip()
-        av_div = soup.find('div', class_='avatar').attrs['style']
-        avatar = 'https:' + av_div.split(' ')[1][4:-2]
-        location = soup.find('p', class_='cp-location').contents[0]
-        return {'avatar': avatar,
-                'title': title,
-                'user_name': user_name,
-                'url': url,
-                'location': location,
-                'site': 'Flickr'
-                }
+        try:
+            soup = BeautifulSoup(r.content, "lxml")
+            title = soup.find('h1').contents[0].strip()
+            av_div = soup.find('div', class_='avatar').attrs['style']
+            avatar = 'https:' + av_div.split(' ')[1][4:-2]
+            location = soup.find('p', class_='cp-location').contents[0]
+            return {'avatar': avatar,
+                    'title': title,
+                    'user_name': user_name,
+                    'url': url,
+                    'location': location,
+                    'site': 'Flickr'
+                    }
+        except:
+            return {'site': 'Flickr',
+                    'empty': 'No Flickr account with that username.'
+                    }
     else:
         return {'site': 'Flickr',
                 'empty': 'No Flickr account with that username.'
@@ -172,15 +177,20 @@ def imgur_recon(user_name):
     url = 'https://imgur.com/user/{}'.format(user_name)
     r = requests.get(url)
     if r.status_code == 200:
-        soup = BeautifulSoup(r.content, 'html.parser')
-        bio = soup.find('div', id='account-bio').contents[0]
-        a_date = soup.find('div', class_='textbox bold')
-        acct_date = a_date.contents[2].split('\n')[1].strip()
-        return {'acct_date': acct_date,
-                'bio': bio,
-                'link': 'https://imgur.com/user/{}'.format(user_name),
-                'site': 'Imgur'
-                }
+        try:
+            soup = BeautifulSoup(r.content, 'html.parser')
+            bio = soup.find('div', id='account-bio').contents[0]
+            a_date = soup.find('div', class_='textbox bold')
+            acct_date = a_date.contents[2].split('\n')[1].strip()
+            return {'acct_date': acct_date,
+                    'bio': bio,
+                    'link': 'https://imgur.com/user/{}'.format(user_name),
+                    'site': 'Imgur'
+                    }
+        except:
+            return {'site': 'Imgur',
+                    'empty': 'No Imgur account with that username.'
+                    }
     else:
         return {'site': 'Imgur',
                 'empty': 'No Imgur account with that username.'
