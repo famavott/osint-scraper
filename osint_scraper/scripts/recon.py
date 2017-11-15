@@ -151,7 +151,8 @@ def imgur_recon(user_name):
     if r.status_code == 200:
         soup = BeautifulSoup(r.content, 'html.parser')
         bio = soup.find('div', id='account-bio').contents[0]
-        acct_date = soup.find('div', class_='textbox bold').contents[2].split('\n')[1].strip()
+        a_date = soup.find('div', class_='textbox bold')
+        acct_date = a_date.contents[2].split('\n')[1].strip()
         return {'acct_date': acct_date,
                 'bio': bio,
                 'link': 'https://imgur.com/user/{}'.format(user_name),
@@ -173,3 +174,41 @@ def hacked_email_recon(email):
         }
     else:
         return None
+
+
+def wikipedia_recon(user_name):
+    """Check for pb account with user_name."""
+    url = 'https://en.wikipedia.org/wiki/User:{}'.format(user_name)
+    r = requests.get(url)
+    if r.status_code == 404:
+        return {'site': 'Wikipedia',
+                'empty': 'No Wikipedia account with that user name.'
+                }
+    else:
+        return {'site': 'Wikipedia',
+                'url': url
+                }
+
+
+def steam_recon(user_name):
+    """Check for steam account with user_name."""
+    url = 'https://steamcommunity.com/id/{}'.format(user_name)
+    r = requests.get(url)
+    if 'Sorry!' in r.text:
+        return {'site': 'Steam',
+                'empty': 'No Steam account with that user name.'
+                }
+    else:
+        soup = BeautifulSoup(r.content, 'lxml')
+        ava = soup.find('div', class_="playerAvatarAutoSizeInner")
+        avatar = ava.find('img').attrs['src']
+        real_name = soup.find('span', class_='actual_persona_name').contents[0]
+        loc = soup.find('div', class_='header_real_name ellipsis')
+        location = loc.contents[-1].strip()
+        bio = soup.find('div', class_='profile_summary').contents[0].strip()
+        return {'site': 'Steam',
+                'avatar': avatar,
+                'real_name': real_name,
+                'location': location,
+                'bio': bio
+                }
