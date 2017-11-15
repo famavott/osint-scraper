@@ -1,6 +1,7 @@
 """Handle the recon functions."""
 from .recon import (facebook_recon,
                     github_recon,
+                    imgur_recon,
                     pwned_recon,
                     twitter_recon,
                     youtube_recon)
@@ -12,8 +13,9 @@ def recon_handler(user_name=None, email=None):
         ghuser = github_recon(user_name)
         twit = twitter_recon(user_name)
         yout = youtube_recon(user_name)
+        imgur = imgur_recon(user_name)
     else:
-        ghuser = twit = yout = None
+        ghuser = twit = yout = imgur = None
     if email:
         pwned = pwned_recon(email)
         facebook = facebook_recon(email)
@@ -23,5 +25,6 @@ def recon_handler(user_name=None, email=None):
             'twit': twit,
             'yout': yout,
             'pwned': pwned,
-            'facebook': facebook
+            'facebook': facebook,
+            'imgur': imgur
             }
