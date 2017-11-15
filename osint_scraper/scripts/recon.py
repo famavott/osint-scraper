@@ -31,14 +31,19 @@ def twitter_recon(username):
     try:
         user = api.get_user(username)
     except:
-        return None
-    return user._json
+        return {'site': 'Twitter',
+                'empty': 'No Twitter account with that username.'}
+    return {'site': 'Twitter',
+            'data': user._json
+            }
 
 
 def pwned_recon(email):
     """Check HIBP if email has been compromised."""
     results = pypwned.getAllBreachesForAccount(email=email)
-    return results
+    return {'site': 'Have I been pwned.',
+            'results': results
+            }
 
 
 def github_recon(user_name):
@@ -47,8 +52,11 @@ def github_recon(user_name):
     try:
         ghuser = gh.users(user_name).get()
     except:
-        return None
-    return ghuser
+        return {'site': 'GitHub',
+                'empty': 'No GitHub account with that username.'}
+    return {'site': 'GitHub',
+            'results': ghuser
+            }
 
 
 def facebook_recon(email):
@@ -56,9 +64,13 @@ def facebook_recon(email):
     try:
         r = requests.get('https://www.facebook.com/search/people?q={}'
                          .format(email))
-        return r.url
+        return {'site': 'Facebook',
+                'url': r.url
+                }
     except:
-        r = None
+        return {'site': 'Facebook',
+                'empty': 'No Facebook account with that name.'
+                }
 
 
 def photobucket_recon(user_name):
@@ -67,9 +79,13 @@ def photobucket_recon(user_name):
                      .format(user_name))
     if r.status_code == 200:
         soup = BeautifulSoup(r.content, "lxml")
-        return soup.find('input', 'linkcopy').attrs['value']
+        url = soup.find('input', 'linkcopy').attrs['value']
+        return {'site': 'Photobucket',
+                'url': url
+                }
     else:
-        return None
+        return {'site': 'Photobucket',
+                'empty': 'No Photobucket account with that name.'}
 
     # friends_count
     # followers_count
@@ -98,9 +114,13 @@ def youtube_recon(user_name):
         rawres = urlopen(url)
         res = rawres.read()
         response = json.loads(res)
-        return response
+        return {'site': 'YouTube',
+                'results': response
+                }
     except:
-        return None
+        return {'site': 'YouTube',
+                'empty': 'No YouTube account with that username.'
+                }
 
 
 def flickr_recon(user_name):
@@ -117,10 +137,13 @@ def flickr_recon(user_name):
                 'title': title,
                 'user_name': user_name,
                 'url': url,
-                'location': location
+                'location': location,
+                'site': 'Flickr'
                 }
     else:
-        return None
+        return {'site': 'Flickr',
+                'empty': 'No Flickr account with that username.'
+                }
 
 
 def hacker_recon(user_name):
@@ -130,7 +153,7 @@ def hacker_recon(user_name):
     soup = BeautifulSoup(r.content, "lxml")
     if b'No such user.' in r.content:
         return {'site': 'Hackernews',
-                'empty': 'No hackernews account with that user name.'
+                'empty': 'No Hackernews account with that username.'
                 }
     try:
         tds = soup.find_all('td')
@@ -140,7 +163,7 @@ def hacker_recon(user_name):
                 }
     except:
         return {'site': 'Hackernews',
-                'empty': 'No hackernews account with that user name.'
+                'empty': 'No Hackernews account with that username.'
                 }
 
 
@@ -159,7 +182,9 @@ def imgur_recon(user_name):
                 'site': 'Imgur'
                 }
     else:
-        return None
+        return {'site': 'Imgur',
+                'empty': 'No Imgur account with that username.'
+                }
 
 
 def hacked_email_recon(email):
@@ -173,7 +198,10 @@ def hacked_email_recon(email):
             'site': 'Hacked Emails'
         }
     else:
-        return None
+        return {
+            'empty': "Email has not been compromised.",
+            'site': 'Hacked Emails'
+        }
 
 
 def wikipedia_recon(user_name):
@@ -182,7 +210,7 @@ def wikipedia_recon(user_name):
     r = requests.get(url)
     if r.status_code == 404:
         return {'site': 'Wikipedia',
-                'empty': 'No Wikipedia account with that user name.'
+                'empty': 'No Wikipedia account with that username.'
                 }
     else:
         return {'site': 'Wikipedia',
@@ -196,7 +224,7 @@ def steam_recon(user_name):
     r = requests.get(url)
     if 'Sorry!' in r.text:
         return {'site': 'Steam',
-                'empty': 'No Steam account with that user name.'
+                'empty': 'No Steam account with that username.'
                 }
     if 'This profile is private.' in r.text:
         soup = BeautifulSoup(r.content, 'lxml')
@@ -230,7 +258,7 @@ def liveleak_recon(user_name):
     r = requests.get(url)
     if 'Channel cannot be found!' in r.text:
         return {'site': 'LiveLeak',
-                'empty': 'No LiveLeak account with that user name.'
+                'empty': 'No LiveLeak account with that username.'
                 }
     else:
         soup = BeautifulSoup(r.content, 'lxml')
