@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/famavott/osint-scraper.svg?branch=master)](https://travis-ci.org/famavott/osint-scraper)
+
+[![Coverage Status](https://coveralls.io/repos/github/famavott/osint-scraper/badge.svg?branch=matt_t)](https://coveralls.io/github/famavott/osint-scraper?branch=matt_t)
+
 # Open Source Intelligence (OSINT) Scraper
 
 This application utilizies a web scraper to locate, and compile information on various social media websites. Given an email, social media handle, or both, the application will scrape several popular websites for matches. If matches are found, the application will create a summary of information about the potential matches. This can be used to investigate a person's online presence.

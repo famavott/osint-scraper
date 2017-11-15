@@ -1,0 +1,4 @@
+[run]
+include=osint_scraper/scripts/recon_handler.py,
+        osint_scraper/scripts/recon.py,
+        osint_scraper/views/default.py
