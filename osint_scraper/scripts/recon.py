@@ -1,7 +1,11 @@
 """Data gathering module."""
 from __future__ import print_function
 
+import json
+
 import os
+
+from urllib.request import urlopen
 
 from bs4 import BeautifulSoup
 
@@ -12,10 +16,6 @@ import pypwned
 import requests
 
 import tweepy
-
-from urllib2 import urlopen
-
-import json
 
 
 def twitter_recon(username):
@@ -54,7 +54,8 @@ def github_recon(user_name):
 def facebook_recon(email):
     """Find facebook account if linked via email."""
     try:
-        r = requests.get('https://www.facebook.com/search/people?q={}'.format(email))
+        r = requests.get('https://www.facebook.com/search/people?q={}'
+                         .format(email))
         return r.url
     except:
         r = None
@@ -85,17 +86,59 @@ def photobucket_recon(user_name):
     # url
 
 
-def youtube_recon(username):
+def youtube_recon(user_name):
     """Use tweepy to access user data if name found."""
     youtube_key = os.environ.get('YOUTUBE_KEY')
     baseurl = 'https://www.googleapis.com/youtube/v3/'
-    url = '{0}search?part=snippet&q={1}&key={2}'.format(baseurl, username, youtube_key)
+    url = '{0}search?part=snippet&q={1}&key={2}'.format(baseurl,
+                                                        user_name,
+                                                        youtube_key)
 
     try:
         rawres = urlopen(url)
         res = rawres.read()
         response = json.loads(res)
-        # response['items'][0]
         return response
     except:
         return None
+
+
+def flickr_recon(user_name):
+    """Check for flickr account with user_name."""
+    url = 'https://www.flickr.com/people/{}/'.format(user_name)
+    r = requests.get(url)
+    if r.status_code == 200:
+        soup = BeautifulSoup(r.content, "lxml")
+        title = soup.find('h1').contents[0].strip()
+        av_div = soup.find('div', class_='avatar').attrs['style']
+        avatar = 'https:' + av_div.split(' ')[1][4:-2]
+        location = soup.find('p', class_='cp-location').contents[0]
+        return {'avatar': avatar,
+                'title': title,
+                'user_name': user_name,
+                'url': url,
+                'location': location
+                }
+    else:
+        return None
+
+
+def hacker_recon(user_name):
+    """Check for hackernews account with user_name."""
+    url = 'https://news.ycombinator.com/user?id={}'.format(user_name)
+    r = requests.get(url)
+    soup = BeautifulSoup(r.content, "lxml")
+    if b'No such user.' in r.content:
+        return {'site': 'Hackernews',
+                'empty': 'No hackernews account with that user name.'
+                }
+    try:
+        tds = soup.find_all('td')
+        about = tds[4].find_all('td')[7].contents[0].strip()
+        return {'site': 'Hackernews',
+                'about': about
+                }
+    except:
+        return {'site': 'Hackernews',
+                'empty': 'No hackernews account with that user name.'
+                }
