@@ -69,6 +69,19 @@
         {% endif %}
 
 
+        {% if reddit %}
+            <div id='info_block'>
+            <h3>{{ reddit.site }}:</h3>
+            {% if reddit.empty %}
+                <p>{{ reddit.empty }}</p>
+            {% endif %}
+            {% if reddit.avatar %}
+                <p>{{ reddit.url }}</p>
+            {% endif %}
+            </div>
+        {% endif %}
+
+
         {% if ghuser %}
         <div id='info_block'>
         <h3>{{ ghuser.site }}:</h3>
@@ -122,12 +135,89 @@
         </div>
         {% endif %}
 
+
+        {% if p_bucket %}
+        <div id='info_block'>
+        <h3>{{ p_bucket.site }}:</h3>
+        {% if p_bucket.empty %}
+            <p>{{ p_bucket.empty }}</p>
+        {% endif %}
+        {% if p_bucket.url %}
+            <p>{{ p_bucket.url }}</p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if flickr %}
+        <div id='info_block'>
+        <h3>{{ flickr.site }}:</h3>
+        {% if flickr.empty %}
+            <p>{{ flickr.empty }}</p>
+        {% endif %}
+        {% if flickr.avatar %}
+            <p>{{ flickr.avatar }}</p>
+            <p>{{ flickr.user_name }}</p>
+            <p>{{ flickr.title }}</p>
+            <p>{{ flickr.location }}</p>
+            <p>{{ flickr.url }}</p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if hacker %}
+        <div id='info_block'>
+        <h3>{{ hacker.site }}:</h3>
+        {% if hacker.empty %}
+            <p>{{ hacker.empty }}</p>
+        {% endif %}
+        {% if hacker.about %}
+            <p>{{ hacker.about }}</p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if wiki %}
+        <div id='info_block'>
+        <h3>{{ wiki.site }}:</h3>
+        {% if wiki.empty %}
+            <p>{{ wiki.empty }}</p>
+        {% endif %}
+        {% if wiki.url %}
+            <p>{{ wiki.url }}</p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
         {% if pwned %}
         <div id='info_block'>
         <h3>Have you been pwned:</h3>
-            {% for pwn in pwned%}
-                <p>{{ pwn }}</p>
+        {% for pwn in pwned.results %}
+            <p>{{ pwn.Name }}</p>
+            <p>{{ pwn.DataClasses }}</p>
+            <p>{{ pwn.Description }}</p>
+            <p>{{ pwn.BreachDate }}</p>
+        {% endfor %}
+        </div>
+        {% endif %}
+
+
+
+        {% if hacked_emails %}
+        <div id='info_block'>
+        <h3>{{ hacked_emails.site }}:</h3>
+        {% if hacked_emails.empty %}
+            <p>{{ hacked_emails.empty }}</p>
+        {% endif %}
+        {% if hacked_emails.hack_dict %}
+            {% for hack in hacked_emails %}
+                <p>{{ hack.title }}</p>
+                <p>{{ hack.date_leaked }}</p>
             {% endfor %}
+        {% endif %}
         </div>
         {% endif %}
 
