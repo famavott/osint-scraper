@@ -71,3 +71,13 @@ def test_name_for_wikipedia_in_results(name_example):
 def test_email_for_facebook_account(email_example):
     """Check facebook dict to ensure correct link returned when supplied with email."""
     assert email_example['facebook']['url'] == 'https://www.facebook.com/search/people?q=wmaserati76@gmail.com'
+
+
+def test_name_for_m_account(m_name_example):
+    """Check facebook dict to ensure correct link returned when supplied with email."""
+    assert m_name_example
+
+
+def test_name_for_jf_account(jf_name_example):
+    """Check facebook dict to ensure correct link returned when supplied with email."""
+    assert jf_name_example
