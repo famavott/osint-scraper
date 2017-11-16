@@ -1,0 +1,60 @@
+body {
+
+}
+
+#input_form {
+    position: relative;
+    width: 40%;
+    height: 10em;
+    margin: auto;
+    background-color: lightgrey;
+    box-shadow: 1px 1px 1px #888888;
+}
+
+table {
+    width: 80%;
+    margin-top: 1em;
+    margin-left: 10%;
+    position: absolute;
+}
+
+.stencil {
+    text-align: center;
+    font-size: 7em;
+    font-family: 'Stardos Stencil', cursive;
+    width: 40%;
+    margin: auto;
+    color: #333;
+}
+
+#instruct {
+    /*width: 20%;*/
+    /*margin: auto;*/
+    padding: 1em;
+}
+
+hr {
+    border: #c6bebe solid 0.3px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+input {
+    border: none;
+}
+
+.text_input {
+    width: 90%;
+}
+
+#submit_button {
+    margin-top: 2em;
+    border-radius: 0;
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+}
+
+#grey_box {
+    padding-top: 4em;
+}

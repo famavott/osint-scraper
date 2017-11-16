@@ -78,8 +78,15 @@ def photobucket_recon(user_name):
     if r.status_code == 200:
         soup = BeautifulSoup(r.content, "lxml")
         url = soup.find('input', 'linkcopy').attrs['value']
+        avatar = soup.find('img', class_="avatar largeProfile").attrs['src']
+        try:
+            bio = soup.find('p', class_="description").contents[0].strip()
+        except:
+            bio = None
         return {'site': 'Photobucket',
-                'url': url
+                'url': url,
+                'avatar': avatar,
+                'bio': bio
                 }
     else:
         return {'site': 'Photobucket',
