@@ -266,6 +266,7 @@ def reddit_recon(user_name):
         sub_list = []
         for i in soup.find_all('a', class_='subreddit hover'):
             sub_list.append(i.contents[0])
+        sub_list = list(set(sub_list))
         age = soup.find('span', class_='age').contents[1].contents[0]
         return {
             'site': 'reddit',

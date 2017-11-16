@@ -77,14 +77,15 @@
             {% if reddit.empty %}
                 <p>{{ reddit.empty }}</p>
             {% endif %}
+
             {% if reddit.url %}
                 <p><a href="{{ reddit.url }}">Reddit profile</a></p>
-                <p>Last subreddits</p>
-                {% for sub in reddit.sub_list %}
-                <p>{{ sub }}</p>
-                {% endfor %}
-                <p>{{ reddit.age }}</p>
+                <p><span class='bold'>Account age:</span> {{ reddit.age }}</p>
+                {% if reddit.sub_list %}
+                    <p><span class='bold'>Last active subreddits: </span>{{ reddit.sub_list }}</p>
+                {% endif %}
             {% endif %}
+            
             </div>
         {% endif %}
 
@@ -206,10 +207,13 @@
         <div class='info_block'>
         <h3 class='site_name'>{{ pwned.site }}:</h3>
         {% for pwn in pwned.results %}
-            <p>{{ pwn.Name }}</p>
-            <p>{{ pwn.DataClasses }}</p>
-            <p>{{ pwn.Description }}</p>
-            <p>{{ pwn.BreachDate }}</p>
+            <p><span class='bold'>Breach:</span> {{ pwn.Title }}</p>
+            <p><span class='bold'>Data types compromised:</span> {{ pwn.DataClasses }}</p>
+            {% if pwn.Domain %}
+            <p><span class='bold'>Domain:</span> {{ pwn.Domain }}</p>
+            {% endif %}
+            <p><span class='bold'>Breach date:</span> {{ pwn.BreachDate }}</p>
+            <br>
         {% endfor %}
         </div>
         {% endif %}
@@ -224,8 +228,9 @@
         {% endif %}
         {% if hacked_emails.hack_dict %}
             {% for hack in hacked_emails.hack_dict['data'] %}
-                <p>{{ hack.title }}</p>
-                <p>{{ hack.date_leaked }}</p>
+                <p><span class='bold'>Breach:</span> {{ hack.title }}</p>
+                <p><span class='bold'>Breach date:</span> {{ hack.date_leaked[:10] }}</p>
+                <br>
             {% endfor %}
         {% endif %}
         </div>

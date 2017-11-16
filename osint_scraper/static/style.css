@@ -28,8 +28,6 @@ table {
 }
 
 #instruct {
-    /*width: 20%;*/
-    /*margin: auto;*/
     padding: 1em;
 }
 
@@ -68,7 +66,7 @@ input {
 .info_block {
     margin: 1em;
     width: 80%;
-    min-height: 10em;
+    min-height: 12em;
     border-bottom: thin lightgrey solid;
     
 }
@@ -79,8 +77,6 @@ input {
     padding-bottom: 1em;
     background-color: #FFE4C2;
     box-shadow: 1px 6px 17px #888888;
-    /*font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;*/
-
 }
 
 #page {
@@ -103,8 +99,10 @@ p {
 
 img {
     width: 8em;
-    /*height: 8em;*/
     float: right;
+    border: white solid thick;
+    border-bottom-width: 1em;
+    box-shadow: 1px 6px 17px #888888;
 }
 
 .bold{
@@ -123,4 +121,8 @@ a{
 
 #home_link {
     padding-left: 1em;
+}
+
+#sub_list {
+    
 }
