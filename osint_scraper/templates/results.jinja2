@@ -64,7 +64,7 @@
         {% if lleak.location %}
             <p>{{ lleak.location }}</p>
             <p>{{ lleak.memb_since }}</p>
-            <p>{{ lleak.url }}</p>
+            <p><a href="{{ lleak.url }}">LiveLeak profile</a></p>
         {% endif %}
         </div>
         {% endif %}
@@ -76,8 +76,10 @@
             {% if reddit.empty %}
                 <p>{{ reddit.empty }}</p>
             {% endif %}
-            {% if reddit.avatar %}
-                <p>{{ reddit.url }}</p>
+            {% if reddit.url %}
+                <p><a href="{{ reddit.url }}">LiveLeak profile</a></p>
+                <p>{{ reddit.sub_list }}</p>
+                <p>{{ reddit.age }}</p>
             {% endif %}
             </div>
         {% endif %}
@@ -100,7 +102,7 @@
             <p>{{ ghuser.results.bio }}</p>
             <p>{{ ghuser.results.blog }}</p>
             <p>{{ ghuser.results.repos_url }}</p>
-            <p>{{ ghuser.results.html_url }}</p>
+            <a href="{{ ghuser.results.html_url }}">GitHub profile</a>
         {% endif %}
         </div>
         {% endif %}
@@ -113,7 +115,7 @@
             <p>{{ steam.empty }}</p>
         {% endif %}
         {% if steam.location %}
-            <p>{{ steam.avatar }}</p>
+            <img src="{{ steam.avatar }}" height="50px" width="50px">
             <p>{{ steam.real_name }}</p>
             <p>{{ steam.bio }}</p>
             <p>{{ steam.location }}</p>
@@ -130,7 +132,7 @@
         {% endif %}
         {% if imgur.url %}
             <p>{{ imgur.bio }}</p>
-            <p>{{ imgur.url }}</p>
+            <a href="{{ imgur.url }}">Imgur profile</a>
             <p>{{ imgur.acct_date }}</p>
         {% endif %}
         </div>
@@ -144,7 +146,9 @@
             <p>{{ p_bucket.empty }}</p>
         {% endif %}
         {% if p_bucket.url %}
-            <p>{{ p_bucket.url }}</p>
+            <img src="{{ p_bucket.avatar }}" height="50px" width="50px">
+            <p>{{ p_bucket.bio }}</p>
+            <a href="{{ p_bucket.url }}">Photobucket profile</a>
         {% endif %}
         </div>
         {% endif %}
@@ -157,11 +161,11 @@
             <p>{{ flickr.empty }}</p>
         {% endif %}
         {% if flickr.avatar %}
-            <p>{{ flickr.avatar }}</p>
+            <img src="{{ flickr.avatar }}" height="50px" width="50px">
             <p>{{ flickr.user_name }}</p>
             <p>{{ flickr.title }}</p>
             <p>{{ flickr.location }}</p>
-            <p>{{ flickr.url }}</p>
+            <a href="{{ flickr.url }}">Flickr profile</a>
         {% endif %}
         </div>
         {% endif %}
@@ -175,6 +179,7 @@
         {% endif %}
         {% if hacker.about %}
             <p>{{ hacker.about }}</p>
+            <a href="{{ hacker.url }}">Hackernews profile</a>
         {% endif %}
         </div>
         {% endif %}
@@ -187,7 +192,7 @@
             <p>{{ wiki.empty }}</p>
         {% endif %}
         {% if wiki.url %}
-            <p>{{ wiki.url }}</p>
+            <a href="{{ wiki.url }}">Wikipedia profile</a>
         {% endif %}
         </div>
         {% endif %}
