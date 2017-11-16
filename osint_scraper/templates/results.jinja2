@@ -213,7 +213,7 @@
             <p>{{ hacked_emails.empty }}</p>
         {% endif %}
         {% if hacked_emails.hack_dict %}
-            {% for hack in hacked_emails %}
+            {% for hack in hacked_emails.hack_dict['data'] %}
                 <p>{{ hack.title }}</p>
                 <p>{{ hack.date_leaked }}</p>
             {% endfor %}
