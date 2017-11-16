@@ -31,6 +31,7 @@ tests_require = [
     'pytest',
     'pytest-cov',
     'tox',
+    'scrapy'
 ]
 
 setup(
