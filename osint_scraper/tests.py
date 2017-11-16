@@ -81,3 +81,8 @@ def test_name_for_m_account(m_name_example):
 def test_name_for_jf_account(jf_name_example):
     """Check facebook dict to ensure correct link returned when supplied with email."""
     assert jf_name_example
+
+
+def test_name_for_matt_account(matt_name_example):
+    """Check steam private account."""
+    assert matt_name_example
