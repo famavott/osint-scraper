@@ -278,7 +278,7 @@ def liveleak_recon(user_name):
 def reddit_recon(user_name):
     """Check for reddit account information."""
     url = 'https://www.reddit.com/user/{}'.format(user_name)
-    r = requests.get(url)
+    r = requests.get(url, headers={'User-agent': 'Wayne Mazerati'})
     if r.status_code == 200:
         soup = BeautifulSoup(r.content, 'lxml')
         sub_list = []
