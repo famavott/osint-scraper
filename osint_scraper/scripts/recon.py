@@ -156,7 +156,8 @@ def hacker_recon(user_name):
         tds = soup.find_all('td')
         about = tds[4].find_all('td')[7].contents[0].strip()
         return {'site': 'Hackernews',
-                'about': about
+                'about': about,
+                'url': url
                 }
     except:
         return {'site': 'Hackernews',
@@ -275,18 +276,25 @@ def liveleak_recon(user_name):
 
 
 def reddit_recon(user_name):
-    """Check for reddit acoount information."""
+    """Check for reddit account information."""
     url = 'https://www.reddit.com/user/{}'.format(user_name)
-    r = requests.get(url)
+    r = requests.get(url, headers={'User-agent': 'Wayne Mazerati'})
     if r.status_code == 200:
+        soup = BeautifulSoup(r.content, 'lxml')
+        sub_list = []
+        for i in soup.find_all('a', class_='subreddit hover'):
+            sub_list.append(i.contents[0])
+        age = soup.find('span', class_='age').contents[1].contents[0]
         return {
             'site': 'reddit',
-            'url': url
+            'url': url,
+            'sub_list': sub_list,
+            'age': age
         }
     else:
         return {
             'site': 'reddit',
-            'empty': 'No reddit acoount with this username.'
+            'empty': 'No reddit account with this username.'
         }
 
 
