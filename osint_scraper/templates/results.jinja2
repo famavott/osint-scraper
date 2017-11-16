@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="content">
+        <a href="{{ request.route_url('home') }}"><input id='submit_button' type="submit" name="home" value="Home"></a>
     <h1>Search results</h1>
 
         {% if facebook %}
