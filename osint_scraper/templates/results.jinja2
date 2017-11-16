@@ -77,8 +77,11 @@
                 <p>{{ reddit.empty }}</p>
             {% endif %}
             {% if reddit.url %}
-                <p><a href="{{ reddit.url }}">LiveLeak profile</a></p>
-                <p>{{ reddit.sub_list }}</p>
+                <p><a href="{{ reddit.url }}">Reddit profile</a></p>
+                <p>Last subreddits</p>
+                {% for sub in reddit.sub_list %}
+                <p>{{ sub }}</p>
+                {% endfor %}
                 <p>{{ reddit.age }}</p>
             {% endif %}
             </div>
