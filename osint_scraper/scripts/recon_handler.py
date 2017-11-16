@@ -30,7 +30,7 @@ def recon_handler(user_name=None, email=None):
         hacker = hacker_recon(user_name)
         reddit = reddit_recon(user_name)
     else:
-        ghuser = twit = yout = imgur = wiki = lleak = steam = p_bucket = flickr = hacker = None
+        ghuser = twit = yout = imgur = wiki = lleak = steam = p_bucket = flickr = hacker = reddit = None
     if email:
         pwned = pwned_recon(email)
         facebook = facebook_recon(email)
