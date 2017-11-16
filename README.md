@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/famavott/osint-scraper.svg?branch=master)](https://travis-ci.org/famavott/osint-scraper)
 
-[![Coverage Status](https://coveralls.io/repos/github/famavott/osint-scraper/badge.svg?branch=matt_t)](https://coveralls.io/github/famavott/osint-scraper?branch=matt_t)
+[![Coverage Status](https://coveralls.io/repos/github/famavott/osint-scraper/badge.svg?branch=master)](https://coveralls.io/github/famavott/osint-scraper?branch=master)
 
 # Open Source Intelligence (OSINT) Scraper
 
