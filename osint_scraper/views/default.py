@@ -17,8 +17,8 @@ def results_view(request):
     # import pdb; pdb.set_trace()
     if not request:
         return {}
-    user_name = request.params['handle']  # pragma: no cover
-    email = request.params['email']  # pragma: no cover
+    user_name = request.params['handle'].split()  # pragma: no cover
+    email = request.params['email'].split()  # pragma: no cover
     return recon_handler(user_name, email)  # pragma: no cover
 
 

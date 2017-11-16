@@ -17,22 +17,37 @@ from .recon import (facebook_recon,
 def recon_handler(user_name=None, email=None):
     """Recon function handler."""
     if user_name:
-        ghuser = github_recon(user_name)
-        twit = twitter_recon(user_name)
-        yout = youtube_recon(user_name)
-        imgur = imgur_recon(user_name)
-        wiki = wikipedia_recon(user_name)
-        steam = steam_recon(user_name)
-        lleak = liveleak_recon(user_name)
-        p_bucket = photobucket_recon(user_name)
-        flickr = flickr_recon(user_name)
-        hacker = hacker_recon(user_name)
+        ghuser = []
+        twit = []
+        yout = []
+        imgur = []
+        wiki = []
+        steam = []
+        lleak = []
+        p_bucket = []
+        flickr = []
+        hacker = []
+        for user in user_name:
+            ghuser.append(github_recon(user))
+            twit.append(twitter_recon(user))
+            yout.append(youtube_recon(user))
+            imgur.append(imgur_recon(user))
+            wiki.append(wikipedia_recon(user))
+            steam.append(steam_recon(user))
+            lleak.append(liveleak_recon(user))
+            p_bucket.append(photobucket_recon(user))
+            flickr.append(flickr_recon(user))
+            hacker.append(hacker_recon(user))
     else:
         ghuser = twit = yout = imgur = wiki = lleak = steam = p_bucket = flickr = hacker = None
     if email:
-        pwned = pwned_recon(email)
-        facebook = facebook_recon(email)
-        hacked_emails = hacked_email_recon(email)
+        pwned = []
+        facebook = []
+        hacked_emails = []
+        for item in email:
+            pwned.append(pwned_recon(email))
+            facebook.append(facebook_recon(email))
+            hacked_emails.append(hacked_email_recon(email))
     else:
         pwned = facebook = hacked_emails = None
     return {'facebook': facebook,
