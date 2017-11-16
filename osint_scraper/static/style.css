@@ -58,3 +58,7 @@ input {
 #grey_box {
     padding-top: 4em;
 }
+
+#submit_button:hover {
+    cursor: pointer;
+}
