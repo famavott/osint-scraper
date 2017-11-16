@@ -63,6 +63,62 @@ input {
     cursor: pointer;
 }
 
+/**/
+
 .info_block {
+    margin: 1em;
+    width: 80%;
+    min-height: 10em;
+    border-bottom: thin lightgrey solid;
     
+}
+
+.content {
+    width: 80%;
+    margin: 1em auto;
+    background-color: #FFE4C2;
+    box-shadow: 1px 6px 17px #888888;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+
+}
+
+#page {
+    background-color: white;
+    margin: 1em;
+    box-shadow: 1px 6px 17px #888888;
+    padding-bottom: 1em;
+}
+
+.site_name {
+    font-weight: bold;
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
+p {
+    margin-left: 80px;
+}
+
+img {
+    width: 8em;
+    /*height: 8em;*/
+    float: right;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+a{
+    font-weight: bold;
+    text-decoration: none;
+    color: red;
+}
+
+#results_header {
+    font-size: 3em;
+}
+
+#home_link {
+    padding-left: 1em;
 }
