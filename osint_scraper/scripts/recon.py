@@ -97,7 +97,10 @@ def youtube_recon(user_name):
     soup = BeautifulSoup(r.content, 'lxml')
     ava = soup.find('img', class_='channel-header-profile-image')
     avatar = ava.attrs['src']
-    title = soup.find('span', id='channel-title').contents
+    try:
+        title = soup.find('span', id='channel-title').contents
+    except:
+        title = None
     return {'site': 'YouTube',
             'avatar': avatar,
             'title': title,
