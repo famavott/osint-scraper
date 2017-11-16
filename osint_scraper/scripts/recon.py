@@ -15,21 +15,49 @@ import requests
 def twitter_recon(username):
     """Use requests and BS to find public twitter profile and harvest information from HTML."""
     try:
-        r = requests.get('https://www.twitter.com/{}'.format(username))
+        url = 'https://www.twitter.com/{}'.format(username)
+        r = requests.get(url)
         if r.status_code == 200:
             soup = BeautifulSoup(r.content, 'lxml')
-            name = soup.find('h1').contents[1].text
-            location = soup.find('span', class_='ProfileHeaderCard-locationText u-dir').contents[1].text
-            description = soup.find('div', class_='ProfileHeaderCard').contents[5].text
-            created_at = soup.find('div', class_='ProfileHeaderCard-joinDate').contents[3].text
-            following_count = soup.find('ul', class_='ProfileNav-list').contents[2].find('span', class_='ProfileNav-value').attrs['data-count']
-            followers_count = soup.find('ul', class_='ProfileNav-list').contents[3].find('span', class_='ProfileNav-value').attrs['data-count']
-            all_tweets = soup.find('a', class_='ProfileNav-stat').find('span', class_='ProfileNav-value').attrs['data-count']
-            avatar = soup.find('div', class_='ProfileAvatar').find('img', class_='ProfileAvatar-image').attrs['src']
-            recent_tweet = soup.find('div', class_='content').find('p', class_='TweetTextSize TweetTextSize--normal js-tweet-text tweet-text').text
+            try:
+                name = soup.find('h1').contents[1].text
+            except:
+                name = None
+            try:
+                location = soup.find('span', class_='ProfileHeaderCard-locationText u-dir').contents[1].text
+            except:
+                location = None
+            try:
+                description = soup.find('div', class_='ProfileHeaderCard').contents[5].text
+            except:
+                description = None
+            try:
+                created_at = soup.find('div', class_='ProfileHeaderCard-joinDate').contents[3].text
+            except:
+                created_at = None
+            try:
+                following_count = soup.find('ul', class_='ProfileNav-list').contents[2].find('span', class_='ProfileNav-value').attrs['data-count']
+            except:
+                following_count = None
+            try:
+                followers_count = soup.find('ul', class_='ProfileNav-list').contents[3].find('span', class_='ProfileNav-value').attrs['data-count']
+            except:
+                followers_count = None
+            try:
+                all_tweets = soup.find('a', class_='ProfileNav-stat').find('span', class_='ProfileNav-value').attrs['data-count']
+            except:
+                all_tweets = None
+            try:
+                avatar = soup.find('div', class_='ProfileAvatar').find('img', class_='ProfileAvatar-image').attrs['src']
+            except:
+                avatar = None
+            try:
+                recent_tweet = soup.find('div', class_='content').find('p', class_='TweetTextSize TweetTextSize--normal js-tweet-text tweet-text').text
+            except:
+                recent_tweet = None
     except:
         return {'site': 'Twitter',
-                'name': None
+                'empty': 'No Twitter account with that username'
                 }
     return {'site': 'Twitter',
             'name': name,
@@ -40,7 +68,8 @@ def twitter_recon(username):
             'followers_count': followers_count,
             'all_tweets': all_tweets,
             'avatar': avatar,
-            'recent_tweet': recent_tweet
+            'recent_tweet': recent_tweet,
+            'url': url
             }
 
 
@@ -247,7 +276,10 @@ def liveleak_recon(user_name):
     else:
         soup = BeautifulSoup(r.content, 'lxml')
         loc = soup.find('h1').next_sibling.next_sibling.next_sibling
-        location = loc.next_sibling.find('span').contents[0]
+        try:
+            location = loc.next_sibling.find('span').contents[0]
+        except:
+            location = None
         memb = soup.find('h1').next_sibling.next_sibling.next_sibling.\
             next_sibling.next_sibling.next_sibling.find('span').contents[0]
         return {'site': 'LiveLeak',
