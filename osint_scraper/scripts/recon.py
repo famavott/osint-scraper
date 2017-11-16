@@ -156,7 +156,8 @@ def hacker_recon(user_name):
         tds = soup.find_all('td')
         about = tds[4].find_all('td')[7].contents[0].strip()
         return {'site': 'Hackernews',
-                'about': about
+                'about': about,
+                'url': url
                 }
     except:
         return {'site': 'Hackernews',
