@@ -5,26 +5,28 @@
     <title>OSInt scraper</title>
     <link href="{{request.static_url('osint_scraper:static/reset.css')}}" rel="stylesheet">
     <link href="{{request.static_url('osint_scraper:static/style.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Stardos+Stencil" rel="stylesheet">
   </head>
   <body>
     <header id="header" class="">
-
+        <h1 class="stencil">FOXTROT</h1>
     </header><!-- /header -->
-    <div>
+    <div id='grey_box'>
         <content>
-
         </content>
-        <form action="results">
+        <form id="input_form" action="results">
+            <p id='instruct'>Input username and/or email to check popular social media sites for digital footprint.</p>
+            <hr>
             <table>
                 <tr>
                     <td>
-                        <input type="text" name="email" placeholder="email">
+                        <input class='text_input' type="text" name="email" placeholder="email">
                     </td>
                     <td>
-                        <input type="text" name="handle" placeholder="social media handle">
+                        <input class='text_input' type="text" name="handle" placeholder="social media handle">
                     </td>
                 </tr>
-                <tr><td><a href="{{ request.route_url('results') }}"><input type="submit" name="search" value="Search"></a></td><td></td></tr>
+                <tr><td><a href="{{ request.route_url('results') }}"><input id='submit_button' type="submit" name="search" value="Search"></a></td></tr>
             </table>
         </form>
     </div>
