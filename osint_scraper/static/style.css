@@ -1,5 +1,5 @@
 body {
-
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;   
 }
 
 #input_form {
@@ -76,9 +76,10 @@ input {
 .content {
     width: 80%;
     margin: 1em auto;
+    padding-bottom: 1em;
     background-color: #FFE4C2;
     box-shadow: 1px 6px 17px #888888;
-    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    /*font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;*/
 
 }
 
@@ -87,6 +88,7 @@ input {
     margin: 1em;
     box-shadow: 1px 6px 17px #888888;
     padding-bottom: 1em;
+    background-image: url("dust_scratches.png");
 }
 
 .site_name {

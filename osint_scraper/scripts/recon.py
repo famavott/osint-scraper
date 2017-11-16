@@ -11,27 +11,37 @@ import pypwned
 
 import requests
 
-import tweepy
-
 
 def twitter_recon(username):
-    """Use tweepy to access user data if name found."""
-    twitter_con_key = os.environ.get('TWITTER_CON_KEY')
-    twitter_con_secret = os.environ.get('TWITTER_CON_SECRET')
-    twitter_token = os.environ.get('TWITTER_TOKEN')
-    twitter_token_secret = os.environ.get('TWITTER_TOKEN_SECRET')
-    auth = tweepy.OAuthHandler(twitter_con_key, twitter_con_secret)
-    auth.set_access_token(twitter_token, twitter_token_secret)
-
-    api = tweepy.API(auth)
+    """Use requests and BS to find public twitter profile and harvest information from HTML."""
     try:
-        user = api.get_user(username)
-        return {'site': 'Twitter',
-                'results': user._json
-                }
+        r = requests.get('https://www.twitter.com/{}'.format(username))
+        if r.status_code == 200:
+            soup = BeautifulSoup(r.content, 'lxml')
+            name = soup.find('h1').contents[1].text
+            location = soup.find('span', class_='ProfileHeaderCard-locationText u-dir').contents[1].text
+            description = soup.find('div', class_='ProfileHeaderCard').contents[5].text
+            created_at = soup.find('div', class_='ProfileHeaderCard-joinDate').contents[3].text
+            following_count = soup.find('ul', class_='ProfileNav-list').contents[2].find('span', class_='ProfileNav-value').attrs['data-count']
+            followers_count = soup.find('ul', class_='ProfileNav-list').contents[3].find('span', class_='ProfileNav-value').attrs['data-count']
+            all_tweets = soup.find('a', class_='ProfileNav-stat').find('span', class_='ProfileNav-value').attrs['data-count']
+            avatar = soup.find('div', class_='ProfileAvatar').find('img', class_='ProfileAvatar-image').attrs['src']
+            recent_tweet = soup.find('div', class_='content').find('p', class_='TweetTextSize TweetTextSize--normal js-tweet-text tweet-text').text
     except:
         return {'site': 'Twitter',
-                'empty': 'No Twitter account with that username.'}
+                'name': None
+                }
+    return {'site': 'Twitter',
+            'name': name,
+            'location': location,
+            'description': description,
+            'created_at': created_at,
+            'following_count': following_count,
+            'followers_count': followers_count,
+            'all_tweets': all_tweets,
+            'avatar': avatar,
+            'recent_tweet': recent_tweet
+            }
 
 
 def pwned_recon(email):
