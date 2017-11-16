@@ -1,11 +1,7 @@
 """Data gathering module."""
 from __future__ import print_function
 
-import json
-
 import os
-
-from urllib.request import urlopen
 
 from bs4 import BeautifulSoup
 
@@ -14,6 +10,8 @@ from github import GitHub
 import pypwned
 
 import requests
+
+import scrapy
 
 import tweepy
 
@@ -31,14 +29,19 @@ def twitter_recon(username):
     try:
         user = api.get_user(username)
     except:
-        return None
-    return user._json
+        return {'site': 'Twitter',
+                'empty': 'No Twitter account with that username.'}
+    return {'site': 'Twitter',
+            'results': user._json
+            }
 
 
 def pwned_recon(email):
     """Check HIBP if email has been compromised."""
     results = pypwned.getAllBreachesForAccount(email=email)
-    return results
+    return {'site': 'Have I been pwned.',
+            'results': results
+            }
 
 
 def github_recon(user_name):
@@ -47,8 +50,11 @@ def github_recon(user_name):
     try:
         ghuser = gh.users(user_name).get()
     except:
-        return None
-    return ghuser
+        return {'site': 'GitHub',
+                'empty': 'No GitHub account with that username.'}
+    return {'site': 'GitHub',
+            'results': ghuser
+            }
 
 
 def facebook_recon(email):
@@ -56,9 +62,13 @@ def facebook_recon(email):
     try:
         r = requests.get('https://www.facebook.com/search/people?q={}'
                          .format(email))
-        return r.url
+        return {'site': 'Facebook',
+                'url': r.url
+                }
     except:
-        r = None
+        return {'site': 'Facebook',
+                'empty': 'No Facebook account with that name.'
+                }
 
 
 def photobucket_recon(user_name):
@@ -67,40 +77,42 @@ def photobucket_recon(user_name):
                      .format(user_name))
     if r.status_code == 200:
         soup = BeautifulSoup(r.content, "lxml")
-        return soup.find('input', 'linkcopy').attrs['value']
+        url = soup.find('input', 'linkcopy').attrs['value']
+        avatar = soup.find('img', class_="avatar largeProfile").attrs['src']
+        try:
+            bio = soup.find('p', class_="description").contents[0].strip()
+        except:
+            bio = None
+        return {'site': 'Photobucket',
+                'url': url,
+                'avatar': avatar,
+                'bio': bio
+                }
     else:
-        return None
-
-    # friends_count
-    # followers_count
-    # location
-    # screen_name
-    # id
-    # description
-    # geo_enabled
-    # statuses_count
-    # profile_image_url
-    # profile_image_url_https
-    # lang
-    # created_at
-    # url
+        return {'site': 'Photobucket',
+                'empty': 'No Photobucket account with that name.'}
 
 
 def youtube_recon(user_name):
     """Use tweepy to access user data if name found."""
-    youtube_key = os.environ.get('YOUTUBE_KEY')
-    baseurl = 'https://www.googleapis.com/youtube/v3/'
-    url = '{0}search?part=snippet&q={1}&key={2}'.format(baseurl,
-                                                        user_name,
-                                                        youtube_key)
-
+    url = 'https://www.youtube.com/user/{}'.format(user_name)
+    r = requests.get(url)
+    if b'This channel does not exist.' in r.content:
+        return {'site': 'YouTube',
+                'empty': 'No YouTube account with that username.'
+                }
+    soup = BeautifulSoup(r.content, 'lxml')
+    ava = soup.find('img', class_='channel-header-profile-image')
+    avatar = ava.attrs['src']
     try:
-        rawres = urlopen(url)
-        res = rawres.read()
-        response = json.loads(res)
-        return response
+        title = soup.find('span', id='channel-title').contents
     except:
-        return None
+        title = None
+    return {'site': 'YouTube',
+            'avatar': avatar,
+            'title': title,
+            'url': url
+            }
 
 
 def flickr_recon(user_name):
@@ -108,19 +120,27 @@ def flickr_recon(user_name):
     url = 'https://www.flickr.com/people/{}/'.format(user_name)
     r = requests.get(url)
     if r.status_code == 200:
-        soup = BeautifulSoup(r.content, "lxml")
-        title = soup.find('h1').contents[0].strip()
-        av_div = soup.find('div', class_='avatar').attrs['style']
-        avatar = 'https:' + av_div.split(' ')[1][4:-2]
-        location = soup.find('p', class_='cp-location').contents[0]
-        return {'avatar': avatar,
-                'title': title,
-                'user_name': user_name,
-                'url': url,
-                'location': location
-                }
+        try:
+            soup = BeautifulSoup(r.content, "lxml")
+            title = soup.find('h1').contents[0].strip()
+            av_div = soup.find('div', class_='avatar').attrs['style']
+            avatar = 'https:' + av_div.split(' ')[1][4:-2]
+            location = soup.find('p', class_='cp-location').contents[0]
+            return {'avatar': avatar,
+                    'title': title,
+                    'user_name': user_name,
+                    'url': url,
+                    'location': location,
+                    'site': 'Flickr'
+                    }
+        except:
+            return {'site': 'Flickr',
+                    'empty': 'No Flickr account with that username.'
+                    }
     else:
-        return None
+        return {'site': 'Flickr',
+                'empty': 'No Flickr account with that username.'
+                }
 
 
 def hacker_recon(user_name):
@@ -130,7 +150,7 @@ def hacker_recon(user_name):
     soup = BeautifulSoup(r.content, "lxml")
     if b'No such user.' in r.content:
         return {'site': 'Hackernews',
-                'empty': 'No hackernews account with that user name.'
+                'empty': 'No Hackernews account with that username.'
                 }
     try:
         tds = soup.find_all('td')
@@ -140,7 +160,7 @@ def hacker_recon(user_name):
                 }
     except:
         return {'site': 'Hackernews',
-                'empty': 'No hackernews account with that user name.'
+                'empty': 'No Hackernews account with that username.'
                 }
 
 
@@ -150,16 +170,21 @@ def imgur_recon(user_name):
     r = requests.get(url)
     if r.status_code == 200:
         soup = BeautifulSoup(r.content, 'html.parser')
-        bio = soup.find('div', id='account-bio').contents[0]
+        try:
+            bio = soup.find('div', id='account-bio').contents[0]
+        except:
+            bio = None
         a_date = soup.find('div', class_='textbox bold')
         acct_date = a_date.contents[2].split('\n')[1].strip()
         return {'acct_date': acct_date,
                 'bio': bio,
-                'link': 'https://imgur.com/user/{}'.format(user_name),
+                'url': url,
                 'site': 'Imgur'
                 }
     else:
-        return None
+        return {'site': 'Imgur',
+                'empty': 'No Imgur account with that username.'
+                }
 
 
 def hacked_email_recon(email):
@@ -173,7 +198,10 @@ def hacked_email_recon(email):
             'site': 'Hacked Emails'
         }
     else:
-        return None
+        return {
+            'empty': "Email has not been compromised.",
+            'site': 'Hacked Emails'
+        }
 
 
 def wikipedia_recon(user_name):
@@ -182,7 +210,7 @@ def wikipedia_recon(user_name):
     r = requests.get(url)
     if r.status_code == 404:
         return {'site': 'Wikipedia',
-                'empty': 'No Wikipedia account with that user name.'
+                'empty': 'No Wikipedia account with that username.'
                 }
     else:
         return {'site': 'Wikipedia',
@@ -196,7 +224,7 @@ def steam_recon(user_name):
     r = requests.get(url)
     if 'Sorry!' in r.text:
         return {'site': 'Steam',
-                'empty': 'No Steam account with that user name.'
+                'empty': 'No Steam account with that username.'
                 }
     if 'This profile is private.' in r.text:
         soup = BeautifulSoup(r.content, 'lxml')
@@ -206,6 +234,7 @@ def steam_recon(user_name):
         return {'site': 'Steam',
                 'avatar': avatar,
                 'real_name': real_name,
+                'location': 'Private account',
                 'bio': 'Private account'
                 }
     else:
@@ -230,7 +259,7 @@ def liveleak_recon(user_name):
     r = requests.get(url)
     if 'Channel cannot be found!' in r.text:
         return {'site': 'LiveLeak',
-                'empty': 'No LiveLeak account with that user name.'
+                'empty': 'No LiveLeak account with that username.'
                 }
     else:
         soup = BeautifulSoup(r.content, 'lxml')
@@ -243,3 +272,42 @@ def liveleak_recon(user_name):
                 'memb_since': memb,
                 'url': url
                 }
+
+
+def reddit_recon(user_name):
+    """Check for reddit acoount information."""
+    url = 'https://www.reddit.com/user/{}'.format(user_name)
+    r = requests.get(url)
+    if r.status_code == 200:
+        return {
+            'site': 'reddit',
+            'url': url
+        }
+    else:
+        return {
+            'site': 'reddit',
+            'empty': 'No reddit acoount with this username.'
+        }
+
+
+class GoogleSpider(scrapy.Spider):
+    """Scraper for google serach."""
+
+    name = "googel_spider"
+
+    def __init__(self, first, last):
+        """Initialize the spider."""
+        super(GoogleSpider, self).__init__(first, last)
+        self.start_urls = ['http://www.google.com/search?q={first}+{last}&start=1'.format(first, last)]
+
+    def parse(self, response):
+        """Crawl through search and return first page information."""
+        SET_SELECTOR = '.g'
+        for post in response.css(SET_SELECTOR):
+
+            TITLE_SELECTOR = 'h3 a ::text'
+            SITE_SELECTOR = 'h3 a ::attr(href)'
+            yield{
+                'title': post.css(TITLE_SELECTOR).extract(),
+                'site': post.css(SITE_SELECTOR).extract_first()
+            }

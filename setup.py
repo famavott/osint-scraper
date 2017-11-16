@@ -22,7 +22,8 @@ requires = [
     'waitress',
     'tweepy',
     'requests',
-    'pypwned'
+    'pypwned',
+    'scrapy'
 ]
 
 tests_require = [

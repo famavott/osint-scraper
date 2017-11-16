@@ -14,13 +14,8 @@ def home_view(request):
 @view_config(route_name='results', renderer='../templates/results.jinja2')
 def results_view(request):
     """Result view."""
-    user_name = request.params['handle']
-    email = request.params['email']
-    return recon_handler(user_name, email)
-
-
-@view_config(route_name='detail', renderer='../templates/detail.jinja2')
-def detail_view(request):
-    """Result view."""
-    return {
-    }
+    if not request:
+        return {}
+    user_name = request.params['handle']  # pragma: no cover
+    email = request.params['email']  # pragma: no cover
+    return recon_handler(user_name, email)  # pragma: no cover
