@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="content">
+        <a href="{{ request.route_url('home') }}"><input id='submit_button' type="submit" name="home" value="Home"></a>
     <h1>Search results</h1>
 
         {% if facebook %}
@@ -213,7 +214,7 @@
             <p>{{ hacked_emails.empty }}</p>
         {% endif %}
         {% if hacked_emails.hack_dict %}
-            {% for hack in hacked_emails %}
+            {% for hack in hacked_emails.hack_dict['data'] %}
                 <p>{{ hack.title }}</p>
                 <p>{{ hack.date_leaked }}</p>
             {% endfor %}
