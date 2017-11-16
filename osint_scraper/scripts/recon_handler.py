@@ -11,7 +11,8 @@ from .recon import (facebook_recon,
                     steam_recon,
                     twitter_recon,
                     wikipedia_recon,
-                    youtube_recon)
+                    youtube_recon,
+                    reddit_recon)
 
 
 def recon_handler(user_name=None, email=None):
@@ -27,6 +28,7 @@ def recon_handler(user_name=None, email=None):
         p_bucket = photobucket_recon(user_name)
         flickr = flickr_recon(user_name)
         hacker = hacker_recon(user_name)
+        reddit = reddit_recon(user_name)
     else:
         ghuser = twit = yout = imgur = wiki = lleak = steam = p_bucket = flickr = hacker = None
     if email:
@@ -40,6 +42,7 @@ def recon_handler(user_name=None, email=None):
             'yout': yout,
             'lleak': lleak,
             'ghuser': ghuser,
+            'reddit': reddit,
             'steam': steam,
             'imgur': imgur,
             'p_bucket': p_bucket,
