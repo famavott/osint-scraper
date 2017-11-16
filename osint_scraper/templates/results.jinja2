@@ -26,16 +26,35 @@
         {% if twit.empty %}
             <p>{{ twit.empty }}</p>
         {% endif %}
-        {% if twit.results %}
-            <img src="{{ twit.results.profile_image_url }}">
-            <p>{{ twit.results.screen_name }}</p>
-            <p>{{ twit.results.name }}</p>
-            <p>{{ twit.results.location }}</p>
-            <p>{{ twit.results.description }}</p>
-            <p>{{ twit.results.created_at }}</p>
-            <p>{{ twit.results.followers_count }}</p>
-            <p>{{ twit.results.following_count }}</p>
-            <p>{{ twit.results.all_tweets }}</p>
+        {% if twit.avatar %}
+            <img src="{{ twit.avatar }}">
+        {% endif %}
+        {% if twit.name %}
+            <p><span class='bold'>Name:</span>{{ twit.name }}</p>
+        {% endif %}
+        {% if twit.location %}
+            <p><span class='bold'>Location:</span>{{ twit.location }}</p>
+        {% endif %}
+        {% if twit.description %}
+            <p><span class='bold'>Bio:</span>{{ twit.description }}</p>
+        {% endif %}
+        {% if twit.created_at %}
+            <p><span class='bold'>User Since:</span>{{ twit.created_at }}</p>
+        {% endif %}
+        {% if twit.followers_count %}
+            <p><span class='bold'>Followers:</span>{{ twit.followers_count }}</p>
+        {% endif %}
+        {% if twit.following_count %}
+            <p><span class='bold'>Following:</span>{{ twit.following_count }}</p>
+        {% endif %}
+        {% if twit.all_tweets %}
+            <p><span class='bold'>Total Tweets:</span>{{ twit.all_tweets }}</p>
+        {% endif %}
+        {% if twit.recent_tweet %}
+            <p><span class='bold'>Last Tweet:</span>{{ twit.recent_tweet }}</p>
+        {% endif %}
+        {% if twit.url %}
+            <p><a href="{{ twit.url }}">Twitter profile</a></p>
         {% endif %}
         </div>
         {% endif %}
