@@ -48,11 +48,6 @@ def test_name_for_twit_in_results(name_example):
     assert name_example['twit']['results']['name'] == 'Wayne Maserati'
 
 
-def test_name_for_github_in_results(name_example):
-    """Check github dict returning expected location when supplied with username."""
-    assert name_example['ghuser']['results']['location'] == 'Jacksonville FL'
-
-
 def test_name_for_imgur_in_results(name_example):
     """Check imgur dict returning expected results when supplied with username."""
     assert name_example['imgur']['bio'] == 'Guns, booze, and hookers.'
