@@ -11,8 +11,6 @@ import pypwned
 
 import requests
 
-import scrapy
-
 import tweepy
 
 
@@ -31,9 +29,6 @@ def twitter_recon(username):
         return {'site': 'Twitter',
                 'results': user._json
                 }
-    # except:
-    #     return {'site': 'Twitter',
-    #             'empty': 'No Twitter account with that username.'}
     except:
         return {'site': 'Twitter',
                 'empty': 'No Twitter account with that username.'}
@@ -62,16 +57,11 @@ def github_recon(user_name):
 
 def facebook_recon(email):
     """Find facebook account if linked via email."""
-    # try:
     r = requests.get('https://www.facebook.com/search/people?q={}'
                      .format(email))
     return {'site': 'Facebook',
             'url': r.url
             }
-    # except:
-    #     return {'site': 'Facebook',
-    #             'empty': 'No Facebook account with that name.'
-    #             }
 
 
 def photobucket_recon(user_name):
@@ -119,7 +109,6 @@ def flickr_recon(user_name):
     """Check for flickr account with user_name."""
     url = 'https://www.flickr.com/people/{}/'.format(user_name)
     r = requests.get(url)
-    # if r.status_code == 200:
     try:
         soup = BeautifulSoup(r.content, "lxml")
         title = soup.find('h1').contents[0].strip()
@@ -137,10 +126,6 @@ def flickr_recon(user_name):
         return {'site': 'Flickr',
                 'empty': 'No Flickr account with that username.'
                 }
-    # else:
-    #     return {'site': 'Flickr',
-    #             'empty': 'No Flickr account with that username.'
-    #             }
 
 
 def hacker_recon(user_name):
@@ -148,21 +133,17 @@ def hacker_recon(user_name):
     url = 'https://news.ycombinator.com/user?id={}'.format(user_name)
     r = requests.get(url)
     soup = BeautifulSoup(r.content, "lxml")
-    if b'No such user.' in r.content:
+    try:
+        tds = soup.find_all('td')
+        about = tds[4].find_all('td')[7].contents[0].strip()
+        return {'site': 'Hackernews',
+                'about': about,
+                'url': url
+                }
+    except:
         return {'site': 'Hackernews',
                 'empty': 'No Hackernews account with that username.'
                 }
-    # try:
-    tds = soup.find_all('td')
-    about = tds[4].find_all('td')[7].contents[0].strip()
-    return {'site': 'Hackernews',
-            'about': about,
-            'url': url
-            }
-    # except:
-    #     return {'site': 'Hackernews',
-    #             'empty': 'No Hackernews account with that username.'
-    #             }
 
 
 def imgur_recon(user_name):
@@ -189,17 +170,11 @@ def hacked_email_recon(email):
     """Check if email matches possible hacked emails from various breaches."""
     url = 'https://hacked-emails.com/api?q={}'.format(email)
     r = requests.get(url)
-    # try:
     to_dict = dict(r.json())
     return {
         'hack_dict': to_dict,
         'site': 'Hacked Emails'
     }
-    # except:
-    #     return {
-    #         'empty': "Email has not been compromised.",
-    #         'site': 'Hacked Emails'
-    #     }
 
 
 def wikipedia_recon(user_name):
@@ -293,26 +268,3 @@ def reddit_recon(user_name):
             'site': 'reddit',
             'empty': 'No reddit account with this username.'
         }
-
-
-class GoogleSpider(scrapy.Spider):
-    """Scraper for google serach."""
-
-    name = "googel_spider"
-
-    def __init__(self, first, last):
-        """Initialize the spider."""
-        super(GoogleSpider, self).__init__(first, last)
-        self.start_urls = ['http://www.google.com/search?q={first}+{last}&start=1'.format(first, last)]
-
-    def parse(self, response):
-        """Crawl through search and return first page information."""
-        SET_SELECTOR = '.g'
-        for post in response.css(SET_SELECTOR):
-
-            TITLE_SELECTOR = 'h3 a ::text'
-            SITE_SELECTOR = 'h3 a ::attr(href)'
-            yield{
-                'title': post.css(TITLE_SELECTOR).extract(),
-                'site': post.css(SITE_SELECTOR).extract_first()
-            }

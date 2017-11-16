@@ -2,7 +2,7 @@
 
 from pyramid.view import view_config
 
-# from ..scripts.recon_handler import recon_handler
+from ..scripts.recon_handler import recon_handler
 
 from ..scripts.dummy_recon import dummy_recon
 
