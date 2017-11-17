@@ -331,3 +331,27 @@ def medium_recon(user_name):
         return {'site': 'Medium',
                 'empty': 'No Medium with that username.'
                 }
+
+
+def trip_recon(user_name):
+    """Tripadvisor scraper."""
+    url = 'https://www.tripadvisor.com/members/{}'.format(user_name)
+    r = requests.get(url)
+    try:
+        soup = BeautifulSoup(r.content, 'lxml')
+        name = soup.find('span', class_='nameText').contents[0]
+        avatar = soup.find('img', class_="avatarUrl").attrs['src']
+        try:
+            location = soup.find('div', class_="hometown").contents[0].contents[0]
+        except:
+            location = None
+        return {'site': 'Pinterest',
+                'name': name,
+                'avatar': avatar,
+                'url': url,
+                'location': location
+                }
+    except:
+        return {'site': 'Tripadvisor',
+                'empty': 'No Tripadvisor with that username.'
+                }

@@ -182,6 +182,24 @@
         {% endif %}
 
 
+        {% if trip %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ trip.site }}:</h3>
+        {% if trip.empty %}
+            <p>{{ trip.empty }}</p>
+        {% endif %}
+        {% if trip.avatar %}
+            <img src="{{ trip.avatar }}">
+            <p><span class='bold'>Name:</span> {{ trip.name }}</p>
+            {% if trip.location %}
+                <p><span class='bold'>Location:</span> {{ trip.location }}</p>
+            {% endif %}
+            <p><a href="{{ trip.url }}">Tripadvisor profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
         {% if pinterest %}
         <div class='info_block'>
         <h3 class='site_name'>{{ pinterest.site }}:</h3>
