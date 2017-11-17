@@ -3,8 +3,6 @@ from __future__ import print_function
 
 from bs4 import BeautifulSoup
 
-from github import GitHub
-
 import pypwned
 
 import requests
@@ -59,11 +57,23 @@ def pwned_recon(email):
 
 def github_recon(user_name):
     """Github scraper."""
-    gh = GitHub()
+    url = 'https://github.com/{}'.format(user_name)
+    r = requests.get(url)
     try:
-        ghuser = gh.users(user_name).get()
+        soup = BeautifulSoup(r.content, 'lxml')
+        avatar_url = soup.find('img', class_="avatar width-full rounded-2").attrs['src']
+        name = soup.find('span', class_="p-name vcard-fullname d-block").contents[0]
+        location = soup.find('span', class_="p-label").contents[0]
+        bio = soup.find('div', class_='p-note user-profile-bio').find('div').contents[0]
+        repo_url = 'https://api.github.com/users/{}/repos'.format(user_name)
         return {'site': 'GitHub',
-                'results': ghuser
+                'avatar_url': avatar_url,
+                'login': user_name,
+                'name': name,
+                'location': location,
+                'bio': bio,
+                'repo_url': repo_url,
+                'url': url
                 }
     except:
         return {'site': 'GitHub',

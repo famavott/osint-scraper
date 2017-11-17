@@ -3,7 +3,7 @@ from .recon import (facebook_recon,
                     flickr_recon,
                     github_recon,
                     hacked_email_recon,
-                    hacker_recon,
+                    # hacker_recon,
                     imgur_recon,
                     liveleak_recon,
                     photobucket_recon,
@@ -27,10 +27,10 @@ def recon_handler(user_name=None, email=None):
         lleak = liveleak_recon(user_name)
         p_bucket = photobucket_recon(user_name)
         flickr = flickr_recon(user_name)
-        hacker = hacker_recon(user_name)
+        # hacker = hacker_recon(user_name)
         reddit = reddit_recon(user_name)
     else:
-        ghuser = twit = yout = imgur = wiki = lleak = steam = p_bucket = flickr = hacker = reddit = None
+        ghuser = twit = yout = imgur = wiki = lleak = steam = p_bucket = flickr = reddit = None
     if email:
         pwned = pwned_recon(email)
         facebook = facebook_recon(email)
@@ -47,7 +47,7 @@ def recon_handler(user_name=None, email=None):
             'imgur': imgur,
             'p_bucket': p_bucket,
             'flickr': flickr,
-            'hacker': hacker,
+            # 'hacker': hacker,
             'wiki': wiki,
             'pwned': pwned,
             'hacked_emails': hacked_emails
