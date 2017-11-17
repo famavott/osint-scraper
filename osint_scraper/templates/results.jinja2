@@ -106,22 +106,14 @@
         {% if ghuser.empty %}
             <p>{{ ghuser.empty }}</p>
         {% endif %}
-        {% if ghuser.results %}
-            <img src="{{ ghuser.results.avatar_url }}">
-            <p><span class='bold'>Username:</span> {{ ghuser.results.login }}</p>
-            <p><span class='bold'>Name:</span> {{ ghuser.results.name }}</p>
-            <p><span class='bold'>Email:</span> {{ ghuser.results.email }}</p>
-            <p><span class='bold'>Company:</span> {{ ghuser.results.company }}</p>
-            {% if ghuser.results.hirable %}
-                <p><span class='bold'>Hirable:</span> {{ ghuser.results.hirable }}</p>
-            {% endif %}
-            <p><span class='bold'>Location:</span> {{ ghuser.results.location }}</p>
-            <p><span class='bold'>Bio:</span> {{ ghuser.results.bio }}</p>
-            {% if ghuser.results.blog %}
-                <p><span class='bold'>Blog:</span> {{ ghuser.results.blog }}</p>
-            {% endif %}
-            <p><a href="{{ ghuser.results.repos_url }}">GitHub repos</a></p>
-            <p><a href="{{ ghuser.results.html_url }}">GitHub profile</a></p>
+        {% if ghuser.name %}
+            <img src="{{ ghuser.avatar_url }}">
+            <p><span class='bold'>Username:</span> {{ ghuser.login }}</p>
+            <p><span class='bold'>Name:</span> {{ ghuser.name }}</p>
+            <p><span class='bold'>Location:</span> {{ ghuser.location }}</p>
+            <p><span class='bold'>Bio:</span> {{ ghuser.bio }}</p>
+            <p><a href="{{ ghuser.repos_url }}">GitHub repos</a></p>
+            <p><a href="{{ ghuser.html_url }}">GitHub profile</a></p>
         {% endif %}
         </div>
         {% endif %}
