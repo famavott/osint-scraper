@@ -16,22 +16,17 @@ requires = [
     'pyramid_jinja2',
     'pyramid_retry',
     'pyramid_tm',
-    'SQLAlchemy',
     'transaction',
-    'zope.sqlalchemy',
     'waitress',
-    'tweepy',
     'requests',
-    'pypwned',
-    'scrapy'
+    'pypwned'
 ]
 
 tests_require = [
     'WebTest >= 1.3.1',  # py3 compat
     'pytest',
     'pytest-cov',
-    'tox',
-    'scrapy'
+    'tox'
 ]
 
 setup(
