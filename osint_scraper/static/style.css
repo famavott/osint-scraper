@@ -28,6 +28,7 @@ table {
 
 #instruct {
     padding: 1em;
+    margin-left: 0;
 }
 
 hr {
