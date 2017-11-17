@@ -11,6 +11,7 @@ from .recon import (facebook_recon,
                     pinterest_recon,
                     pwned_recon,
                     steam_recon,
+                    trip_recon,
                     twitter_recon,
                     wikipedia_recon,
                     youtube_recon,
@@ -33,8 +34,9 @@ def recon_handler(user_name=None, email=None):
         reddit = reddit_recon(user_name)
         pinterest = pinterest_recon(user_name)
         medium = medium_recon(user_name)
+        trip = trip_recon(user_name)
     else:
-        ghuser = twit = yout = imgur = wiki = lleak = steam = p_bucket = flickr = reddit = pinterest = medium = None
+        trip = ghuser = twit = yout = imgur = wiki = lleak = steam = p_bucket = flickr = reddit = pinterest = medium = None
     if email:
         pwned = pwned_recon(email)
         facebook = facebook_recon(email)
@@ -56,5 +58,6 @@ def recon_handler(user_name=None, email=None):
             'pwned': pwned,
             'hacked_emails': hacked_emails,
             'pinterest': pinterest,
-            'medium': medium
+            'medium': medium,
+            'trip': trip
             }
