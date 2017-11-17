@@ -175,7 +175,10 @@ def imgur_recon(user_name):
     r = requests.get(url)
     try:
         soup = BeautifulSoup(r.content, 'html.parser')
-        bio = soup.find('div', id='account-bio').contents[0]
+        try:
+            bio = soup.find('div', id='account-bio').contents[0]
+        except:
+            bio = None
         a_date = soup.find('div', class_='textbox bold')
         acct_date = a_date.contents[2].split('\n')[1].strip()
         return {'acct_date': acct_date,

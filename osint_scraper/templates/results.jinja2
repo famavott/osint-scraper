@@ -143,7 +143,9 @@
             <p>{{ imgur.empty }}</p>
         {% endif %}
         {% if imgur.url %}
-            <p><span class='bold'>Bio:</span> {{ imgur.bio }}</p>
+            {% if imgur.bio %}
+                <p><span class='bold'>Bio:</span> {{ imgur.bio }}</p>
+            {% endif %}
             <p><span class='bold'>Member since:</span> {{ imgur.acct_date }}</p>
             <p><a href="{{ imgur.url }}">Imgur profile</a></p>
         {% endif %}
