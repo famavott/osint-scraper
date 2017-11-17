@@ -27,7 +27,9 @@ table {
 }
 
 #instruct {
+    font-weight: bold;
     padding: 1em;
+    margin-left: 0;
 }
 
 hr {
