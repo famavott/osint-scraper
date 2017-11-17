@@ -310,3 +310,24 @@ def pinterest_recon(user_name):
         return {'site': 'Pinterest',
                 'empty': 'No Pinterest with that username.'
                 }
+
+
+def medium_recon(user_name):
+    """Grab data for Medium if it exists."""
+    url = 'https://www.medium.com/@{}/'.format(user_name)
+    r = requests.get(url)
+    try:
+        soup = BeautifulSoup(r.content, 'lxml')
+        name = soup.find('h1').text
+        avatar = soup.find('div', class_='hero-avatar').find('img')['src']
+        article = soup.find('div', class_='compressedPostListItem-title').text
+        return {'site': 'Medium',
+                'name': name,
+                'avatar': avatar,
+                'article': article,
+                'url': url
+                }
+    except:
+        return {'site': 'Medium',
+                'empty': 'No Medium with that username.'
+                }
