@@ -45,7 +45,7 @@ def test_recon_handler_with_non_email(non_email_example):
 
 def test_name_for_twit_in_results(name_example):
     """Check twitter dict returning expected result when supplied with username."""
-    assert name_example['twit']['results']['name'] == 'Wayne Maserati'
+    assert name_example['twit']['name'] == 'Wayne Maserati'
 
 
 def test_name_for_github_in_results(name_example):

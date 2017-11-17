@@ -9,19 +9,9 @@ import pypwned
 
 import requests
 
-import tweepy
-
 
 def twitter_recon(username):
     """Use requests and BS to find public twitter profile and harvest information from HTML."""
-    # twitter_con_key = os.environ.get('TWITTER_CON_KEY')
-    # twitter_con_secret = os.environ.get('TWITTER_CON_SECRET')
-    # twitter_token = os.environ.get('TWITTER_TOKEN')
-    # twitter_token_secret = os.environ.get('TWITTER_TOKEN_SECRET')
-    # auth = tweepy.OAuthHandler(twitter_con_key, twitter_con_secret)
-    # auth.set_access_token(twitter_token, twitter_token_secret)
-    #
-    # api = tweepy.API(auth)
     try:
         url = 'https://www.twitter.com/{}'.format(username)
         r = requests.get(url)
