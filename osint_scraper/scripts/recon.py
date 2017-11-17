@@ -33,9 +33,6 @@ def twitter_recon(username):
             location = None
         description = soup.find('div', class_='ProfileHeaderCard').contents[5].text
         created_at = soup.find('div', class_='ProfileHeaderCard-joinDate').contents[3].text
-        following_count = soup.find('ul', class_='ProfileNav-list').contents[2].find('span', class_='ProfileNav-value').attrs['data-count']
-        followers_count = soup.find('ul', class_='ProfileNav-list').contents[3].find('span', class_='ProfileNav-value').attrs['data-count']
-        all_tweets = soup.find('a', class_='ProfileNav-stat').find('span', class_='ProfileNav-value').attrs['data-count']
         avatar = soup.find('div', class_='ProfileAvatar').find('img', class_='ProfileAvatar-image').attrs['src']
         try:
             recent_tweet = soup.find('div', class_='content').find('p', class_='TweetTextSize TweetTextSize--normal js-tweet-text tweet-text').text
@@ -50,9 +47,6 @@ def twitter_recon(username):
             'location': location,
             'description': description,
             'created_at': created_at,
-            'following_count': following_count,
-            'followers_count': followers_count,
-            'all_tweets': all_tweets,
             'avatar': avatar,
             'recent_tweet': recent_tweet,
             'url': url
