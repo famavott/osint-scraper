@@ -19,10 +19,8 @@ requires = [
     'transaction',
     'waitress',
     'githubpy',
-    'tweepy',
     'requests',
     'pypwned',
-    'scrapy'
 ]
 
 tests_require = [
@@ -30,7 +28,6 @@ tests_require = [
     'pytest',
     'pytest-cov',
     'tox',
-    'scrapy'
 ]
 
 setup(
