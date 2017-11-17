@@ -291,3 +291,67 @@ def reddit_recon(user_name):
             'site': 'reddit',
             'empty': 'No reddit account with this username.'
         }
+
+
+def pinterest_recon(user_name):
+    """Pinterest scraper."""
+    url = 'https://www.pinterest.com/{}/'.format(user_name)
+    r = requests.get(url)
+    try:
+        soup = BeautifulSoup(r.content, 'lxml')
+        name = soup.find('h3').contents[0]
+        avatar = soup.find('img', class_="_mi _3i _2h _3u").attrs['src']
+        return {'site': 'Pinterest',
+                'name': name,
+                'avatar': avatar,
+                'url': url
+                }
+    except:
+        return {'site': 'Pinterest',
+                'empty': 'No Pinterest with that username.'
+                }
+
+
+def medium_recon(user_name):
+    """Grab data for Medium if it exists."""
+    url = 'https://www.medium.com/@{}/'.format(user_name)
+    r = requests.get(url)
+    try:
+        soup = BeautifulSoup(r.content, 'lxml')
+        name = soup.find('h1').text
+        avatar = soup.find('div', class_='hero-avatar').find('img')['src']
+        article = soup.find('div', class_='compressedPostListItem-title').text
+        return {'site': 'Medium',
+                'name': name,
+                'avatar': avatar,
+                'article': article,
+                'url': url
+                }
+    except:
+        return {'site': 'Medium',
+                'empty': 'No Medium with that username.'
+                }
+
+
+def trip_recon(user_name):
+    """Tripadvisor scraper."""
+    url = 'https://www.tripadvisor.com/members/{}'.format(user_name)
+    r = requests.get(url)
+    try:
+        soup = BeautifulSoup(r.content, 'lxml')
+        name = soup.find('span', class_='nameText').contents[0]
+        avatar = soup.find('img', class_="avatarUrl").attrs['src']
+        try:
+            location = soup.find('div', class_="hometown").contents[0].contents[0]
+        except:
+            location = None
+        return {'site': 'Pinterest',
+                'name': name,
+                'avatar': avatar,
+                'url': url,
+                'location': location
+                }
+    except:
+        return {'site': 'Tripadvisor',
+                'empty': 'No Tripadvisor with that username.'
+                }
