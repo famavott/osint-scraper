@@ -44,6 +44,9 @@ def twitter_recon(username):
 def pwned_recon(email):
     """Check HIBP if email has been compromised."""
     results = pypwned.getAllBreachesForAccount(email=email)
+    if '404' in results:
+        return {'site': 'Have I been pwnded',
+                'empty': 'Email has not been compromised.'}
     return {'site': 'Have I been pwned.',
             'results': results
             }
@@ -52,21 +55,22 @@ def pwned_recon(email):
 def github_recon(user_name):
     """Github scraper."""
     url = 'https://github.com/{}'.format(user_name)
-    r = requests.get(url)
+    r = requests.get(url, headers={'User-agent': 'Wayne Mazerati'})
     try:
         soup = BeautifulSoup(r.content, 'lxml')
         avatar_url = soup.find('img', class_="avatar width-full rounded-2").attrs['src']
         name = soup.find('span', class_="p-name vcard-fullname d-block").contents[0]
         location = soup.find('span', class_="p-label").contents[0]
-        bio = soup.find('div', class_='p-note user-profile-bio').find('div').contents[0]
-        repo_url = 'https://api.github.com/users/{}/repos'.format(user_name)
+        try:
+            bio = soup.find('div', class_='p-note user-profile-bio').find('div').contents[0]
+        except:
+            bio = None
         return {'site': 'GitHub',
                 'avatar_url': avatar_url,
                 'login': user_name,
                 'name': name,
                 'location': location,
                 'bio': bio,
-                'repo_url': repo_url,
                 'url': url
                 }
     except:
@@ -190,6 +194,9 @@ def hacked_email_recon(email):
     url = 'https://hacked-emails.com/api?q={}'.format(email)
     r = requests.get(url)
     to_dict = dict(r.json())
+    if to_dict['results'] == 0:
+        return {'site': 'Hacked Emails',
+                'empty': 'Email has not been compromised.'}
     return {
         'hack_dict': to_dict,
         'site': 'Hacked Emails'
@@ -281,7 +288,7 @@ def reddit_recon(user_name):
         sub_list = list(set(sub_list))
         age = soup.find('span', class_='age').contents[1].contents[0]
         return {
-            'site': 'reddit',
+            'site': 'Reddit',
             'url': url,
             'sub_list': sub_list,
             'age': age
@@ -345,7 +352,7 @@ def trip_recon(user_name):
             location = soup.find('div', class_="hometown").contents[0].contents[0]
         except:
             location = None
-        return {'site': 'Pinterest',
+        return {'site': 'Tripadvisor',
                 'name': name,
                 'avatar': avatar,
                 'url': url,
