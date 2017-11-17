@@ -16,14 +16,11 @@ requires = [
     'pyramid_jinja2',
     'pyramid_retry',
     'pyramid_tm',
-    'SQLAlchemy',
     'transaction',
-    'zope.sqlalchemy',
     'waitress',
-    'tweepy',
+    'githubpy',
     'requests',
     'pypwned',
-    'scrapy'
 ]
 
 tests_require = [
@@ -31,7 +28,6 @@ tests_require = [
     'pytest',
     'pytest-cov',
     'tox',
-    'scrapy'
 ]
 
 setup(

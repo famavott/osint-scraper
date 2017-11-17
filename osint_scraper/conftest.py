@@ -53,10 +53,28 @@ def email_example(scope="session"):
 @pytest.fixture
 def non_name_example(scope="session"):
     """."""
-    return recon_handler(user_name='m')
+    return recon_handler(user_name='dgfhjeldkslksdglkhsl')
 
 
 @pytest.fixture
 def non_email_example(scope="session"):
     """."""
     return recon_handler(email='xnxxn@xnx.com')
+
+
+@pytest.fixture
+def m_name_example(scope="session"):
+    """."""
+    return recon_handler(user_name='m')
+
+
+@pytest.fixture
+def jf_name_example(scope="session"):
+    """."""
+    return recon_handler(user_name='jf_112')
+
+
+@pytest.fixture
+def matt_name_example(scope="session"):
+    """."""
+    return recon_handler(user_name='matt')
