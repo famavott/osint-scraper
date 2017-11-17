@@ -50,7 +50,7 @@ def test_name_for_twit_in_results(name_example):
 
 def test_name_for_github_in_results(name_example):
     """Check github dict returning expected location when supplied with username."""
-    assert name_example['ghuser']['results']['location'] == 'Jacksonville FL'
+    assert name_example['ghuser']['location'] == 'Jacksonville FL'
 
 
 def test_name_for_imgur_in_results(name_example):

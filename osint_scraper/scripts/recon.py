@@ -147,7 +147,7 @@ def flickr_recon(user_name):
                 }
 
 
-def hacker_recon(user_name):
+def hacker_recon(user_name):  # pragma: no cover
     """Check for hackernews account with user_name."""
     url = 'https://news.ycombinator.com/user?id={}'.format(user_name)
     r = requests.get(url)
