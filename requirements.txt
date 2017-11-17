@@ -70,6 +70,10 @@ tox==2.9.1
 traitlets==4.3.2
 transaction==2.1.2
 translationstring==1.3
+<<<<<<< HEAD
+=======
+twitterscraper==0.3.2
+>>>>>>> 385329f7066563de59d9cb75aee6b344ee813dc2
 urllib3==1.22
 venusian==1.1.0
 virtualenv==15.1.0

@@ -19,7 +19,7 @@ requires = [
     'transaction',
     'waitress',
     'requests',
-    'pypwned'
+    'pypwned',
 ]
 
 tests_require = [
