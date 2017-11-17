@@ -2,17 +2,18 @@
 
 {% block content %}
 <div class="content">
-        <a href="{{ request.route_url('home') }}"><input id='submit_button' type="submit" name="home" value="Home"></a>
-    <h1>Search results</h1>
+        <a href="{{ request.route_url('home') }}" id='home_link'>Return to homepage</a>
+    <div id='page'>
+    <h1 id='results_header'>Search results:</h1>
 
         {% if facebook %}
-        <div id='info_block'>
-        <h3>{{ facebook.site }}:</h3>
+        <div class='info_block'>
+        <h3 class='site_name'>{{ facebook.site }}:</h3>
         {% if facebook.empty %}
             <p>{{ facebook.empty }}</p>
         {% endif %}
         {% if facebook.url %}
-            <p>{{ facebook.url }}</p>
+            <p><a href="{{ facebook.url }}">Potential Facebook profile</a></p>
         {% endif %}
         </div>
         {% endif %}
@@ -20,50 +21,60 @@
 
 
         {% if twit %}
-        <div id='info_block'>
-        <h3>{{ twit.site }}:</h3>
+        <div class='info_block'>
+        <h3 class='site_name'>{{ twit.site }}:</h3>
         {% if twit.empty %}
             <p>{{ twit.empty }}</p>
         {% endif %}
-        {% if twit.results %}
-            <img src="{{ twit.results.profile_image_url }}" height="50px" width="50px">
-            <p>{{ twit.results.screen_name }}</p>
-            <p>{{ twit.results.name }}</p>
-            <p>{{ twit.results.location }}</p>
-            <p>{{ twit.results.lang }}</p>
-            <p>{{ twit.results.description }}</p>
-            <p>{{ twit.results.created_at }}</p>
-            <p>{{ twit.results.followers_count }}</p>
-            <p>{{ twit.results.friend_count }}</p>
+        {% if twit.avatar %}
+            <img src="{{ twit.avatar }}">
+        {% endif %}
+        {% if twit.name %}
+            <p><span class='bold'>Name:</span>{{ twit.name }}</p>
+        {% endif %}
+        {% if twit.location %}
+            <p><span class='bold'>Location:</span>{{ twit.location }}</p>
+        {% endif %}
+        {% if twit.description %}
+            <p><span class='bold'>Bio:</span>{{ twit.description }}</p>
+        {% endif %}
+        {% if twit.created_at %}
+            <p><span class='bold'>User Since:</span>{{ twit.created_at }}</p>
+        {% endif %}
+        {% if twit.recent_tweet %}
+            <p><span class='bold'>Last Tweet:</span>{{ twit.recent_tweet }}</p>
+        {% endif %}
+        {% if twit.url %}
+            <p><a href="{{ twit.url }}">Twitter profile</a></p>
         {% endif %}
         </div>
         {% endif %}
 
 
         {% if yout %}
-            <div id='info_block'>
-            <h3>{{ yout.site }}:</h3>
+            <div class='info_block'>
+            <h3 class='site_name'>{{ yout.site }}:</h3>
             {% if yout.empty %}
                 <p>{{ yout.empty }}</p>
             {% endif %}
             {% if yout.avatar %}
-                <img src="{{ yout.avatar }}" height="50px" width="50px">
-                <p>{{ yout.title }}</p>
-                <p>{{ yout.url }}</p>
+                <img src="{{ yout.avatar }}">
+                <p><span class='bold'>Name:</span> {{ yout.title }}</p>
+                <p><a href="{{ yout.url }}">YouTube profile</a></p>
             {% endif %}
             </div>
         {% endif %}
 
 
         {% if lleak %}
-        <div id='info_block'>
-        <h3>{{ lleak.site }}:</h3>
+        <div class='info_block'>
+        <h3 class='site_name'>{{ lleak.site }}:</h3>
         {% if lleak.empty %}
             <p>{{ lleak.empty }}</p>
         {% endif %}
         {% if lleak.location %}
-            <p>{{ lleak.location }}</p>
-            <p>{{ lleak.memb_since }}</p>
+            <p><span class='bold'>Location:</span> {{ lleak.location }}</p>
+            <p><span class='bold'>Member since:</span> {{ lleak.memb_since }}</p>
             <p><a href="{{ lleak.url }}">LiveLeak profile</a></p>
         {% endif %}
         </div>
@@ -71,165 +82,174 @@
 
 
         {% if reddit %}
-            <div id='info_block'>
-            <h3>{{ reddit.site }}:</h3>
+            <div class='info_block'>
+            <h3 class='site_name'>{{ reddit.site }}:</h3>
             {% if reddit.empty %}
                 <p>{{ reddit.empty }}</p>
             {% endif %}
+
             {% if reddit.url %}
                 <p><a href="{{ reddit.url }}">Reddit profile</a></p>
-                <p>Last subreddits</p>
-                {% for sub in reddit.sub_list %}
-                <p>{{ sub }}</p>
-                {% endfor %}
-                <p>{{ reddit.age }}</p>
+                <p><span class='bold'>Account age:</span> {{ reddit.age }}</p>
+                {% if reddit.sub_list %}
+                    <p><span class='bold'>Last active subreddits: </span>{{ reddit.sub_list }}</p>
+                {% endif %}
             {% endif %}
+            
             </div>
         {% endif %}
 
 
         {% if ghuser %}
-        <div id='info_block'>
-        <h3>{{ ghuser.site }}:</h3>
+        <div class='info_block'>
+        <h3 class='site_name'>{{ ghuser.site }}:</h3>
         {% if ghuser.empty %}
             <p>{{ ghuser.empty }}</p>
         {% endif %}
         {% if ghuser.results %}
-            <img src="{{ ghuser.results.avatar_url }}" height="50px" width="50px">
-            <p>{{ ghuser.results.login }}</p>
-            <p>{{ ghuser.results.name }}</p>
-            <p>{{ ghuser.results.email }}</p>
-            <p>{{ ghuser.results.company }}</p>
-            <p>{{ ghuser.results.hirable }}</p>
-            <p>{{ ghuser.results.location }}</p>
-            <p>{{ ghuser.results.bio }}</p>
-            <p>{{ ghuser.results.blog }}</p>
-            <p>{{ ghuser.results.repos_url }}</p>
-            <a href="{{ ghuser.results.html_url }}">GitHub profile</a>
+            <img src="{{ ghuser.results.avatar_url }}">
+            <p><span class='bold'>Username:</span> {{ ghuser.results.login }}</p>
+            <p><span class='bold'>Name:</span> {{ ghuser.results.name }}</p>
+            <p><span class='bold'>Email:</span> {{ ghuser.results.email }}</p>
+            <p><span class='bold'>Company:</span> {{ ghuser.results.company }}</p>
+            {% if ghuser.results.hirable %}
+                <p><span class='bold'>Hirable:</span> {{ ghuser.results.hirable }}</p>
+            {% endif %}
+            <p><span class='bold'>Location:</span> {{ ghuser.results.location }}</p>
+            <p><span class='bold'>Bio:</span> {{ ghuser.results.bio }}</p>
+            {% if ghuser.results.blog %}
+                <p><span class='bold'>Blog:</span> {{ ghuser.results.blog }}</p>
+            {% endif %}
+            <p><a href="{{ ghuser.results.repos_url }}">GitHub repos</a></p>
+            <p><a href="{{ ghuser.results.html_url }}">GitHub profile</a></p>
         {% endif %}
         </div>
         {% endif %}
         
 
         {% if steam %}
-        <div id='info_block'>
-        <h3>{{ steam.site }}:</h3>
+        <div class='info_block'>
+        <h3 class='site_name'>{{ steam.site }}:</h3>
         {% if steam.empty %}
             <p>{{ steam.empty }}</p>
         {% endif %}
         {% if steam.location %}
-            <img src="{{ steam.avatar }}" height="50px" width="50px">
-            <p>{{ steam.real_name }}</p>
-            <p>{{ steam.bio }}</p>
-            <p>{{ steam.location }}</p>
+            <img src="{{ steam.avatar }}">
+            <p><span class='bold'>Name:</span> {{ steam.real_name }}</p>
+            <p><span class='bold'>Bio:</span> {{ steam.bio }}</p>
+            <p><span class='bold'>Location:</span> {{ steam.location }}</p>
         {% endif %}
         </div>
         {% endif %}
 
 
         {% if imgur %}
-        <div id='info_block'>
-        <h3>{{ imgur.site }}:</h3>
+        <div class='info_block'>
+        <h3 class='site_name'>{{ imgur.site }}:</h3>
         {% if imgur.empty %}
             <p>{{ imgur.empty }}</p>
         {% endif %}
         {% if imgur.url %}
-            <p>{{ imgur.bio }}</p>
-            <a href="{{ imgur.url }}">Imgur profile</a>
-            <p>{{ imgur.acct_date }}</p>
+            <p><span class='bold'>Bio:</span> {{ imgur.bio }}</p>
+            <p><span class='bold'>Member since:</span> {{ imgur.acct_date }}</p>
+            <p><a href="{{ imgur.url }}">Imgur profile</a></p>
         {% endif %}
         </div>
         {% endif %}
 
 
         {% if p_bucket %}
-        <div id='info_block'>
-        <h3>{{ p_bucket.site }}:</h3>
+        <div class='info_block'>
+        <h3 class='site_name'>{{ p_bucket.site }}:</h3>
         {% if p_bucket.empty %}
             <p>{{ p_bucket.empty }}</p>
         {% endif %}
         {% if p_bucket.url %}
-            <img src="{{ p_bucket.avatar }}" height="50px" width="50px">
-            <p>{{ p_bucket.bio }}</p>
-            <a href="{{ p_bucket.url }}">Photobucket profile</a>
+            <img src="{{ p_bucket.avatar }}">
+            <p><span class='bold'>Bio:</span> {{ p_bucket.bio }}</p>
+            <p><a href="{{ p_bucket.url }}">Photobucket profile</a></p>
         {% endif %}
         </div>
         {% endif %}
 
 
         {% if flickr %}
-        <div id='info_block'>
-        <h3>{{ flickr.site }}:</h3>
+        <div class='info_block'>
+        <h3 class='site_name'>{{ flickr.site }}:</h3>
         {% if flickr.empty %}
             <p>{{ flickr.empty }}</p>
         {% endif %}
         {% if flickr.avatar %}
-            <img src="{{ flickr.avatar }}" height="50px" width="50px">
-            <p>{{ flickr.user_name }}</p>
-            <p>{{ flickr.title }}</p>
-            <p>{{ flickr.location }}</p>
-            <a href="{{ flickr.url }}">Flickr profile</a>
+            <img src="{{ flickr.avatar }}">
+            <p><span class='bold'>Username:</span> {{ flickr.user_name }}</p>
+            <p><span class='bold'>Name:</span> {{ flickr.title }}</p>
+            <p><span class='bold'>Location:</span> {{ flickr.location }}</p>
+            <p><a href="{{ flickr.url }}">Flickr profile</a></p>
         {% endif %}
         </div>
         {% endif %}
 
 
         {% if hacker %}
-        <div id='info_block'>
-        <h3>{{ hacker.site }}:</h3>
+        <div class='info_block'>
+        <h3 class='site_name'>{{ hacker.site }}:</h3>
         {% if hacker.empty %}
             <p>{{ hacker.empty }}</p>
         {% endif %}
         {% if hacker.about %}
-            <p>{{ hacker.about }}</p>
-            <a href="{{ hacker.url }}">Hackernews profile</a>
+            <p><span class='bold'>Bio:</span> {{ hacker.about }}</p>
+            <p><a href="{{ hacker.url }}">Hackernews profile</a></p>
         {% endif %}
         </div>
         {% endif %}
 
 
         {% if wiki %}
-        <div id='info_block'>
-        <h3>{{ wiki.site }}:</h3>
+        <div class='info_block'>
+        <h3 class='site_name'>{{ wiki.site }}:</h3>
         {% if wiki.empty %}
             <p>{{ wiki.empty }}</p>
         {% endif %}
         {% if wiki.url %}
-            <a href="{{ wiki.url }}">Wikipedia profile</a>
+            <p><a href="{{ wiki.url }}">Wikipedia profile</a></p>
         {% endif %}
         </div>
         {% endif %}
 
 
         {% if pwned %}
-        <div id='info_block'>
-        <h3>Have you been pwned:</h3>
+        <div class='info_block'>
+        <h3 class='site_name'>{{ pwned.site }}:</h3>
         {% for pwn in pwned.results %}
-            <p>{{ pwn.Name }}</p>
-            <p>{{ pwn.DataClasses }}</p>
-            <p>{{ pwn.Description }}</p>
-            <p>{{ pwn.BreachDate }}</p>
+            <p><span class='bold'>Breach:</span> {{ pwn.Title }}</p>
+            <p><span class='bold'>Data types compromised:</span> {{ pwn.DataClasses }}</p>
+            {% if pwn.Domain %}
+            <p><span class='bold'>Domain:</span> {{ pwn.Domain }}</p>
+            {% endif %}
+            <p><span class='bold'>Breach date:</span> {{ pwn.BreachDate }}</p>
+            <br>
         {% endfor %}
         </div>
         {% endif %}
 
 
-
+    
         {% if hacked_emails %}
-        <div id='info_block'>
-        <h3>{{ hacked_emails.site }}:</h3>
+        <div class='info_block'>
+        <h3 class='site_name'>{{ hacked_emails.site }}:</h3>
         {% if hacked_emails.empty %}
             <p>{{ hacked_emails.empty }}</p>
         {% endif %}
         {% if hacked_emails.hack_dict %}
             {% for hack in hacked_emails.hack_dict['data'] %}
-                <p>{{ hack.title }}</p>
-                <p>{{ hack.date_leaked }}</p>
+                <p><span class='bold'>Breach:</span> {{ hack.title }}</p>
+                <p><span class='bold'>Breach date:</span> {{ hack.date_leaked[:10] }}</p>
+                <br>
             {% endfor %}
         {% endif %}
         </div>
         {% endif %}
 
-
+    </div>
 </div>
 {% endblock content %}
