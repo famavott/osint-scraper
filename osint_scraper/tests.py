@@ -100,3 +100,8 @@ def test_name_for_jf_account(jf_name_example):
 def test_name_for_matt_account(matt_name_example):
     """Check steam private account."""
     assert matt_name_example
+
+
+def test_email_for_tom(tom_email_example):
+    """Check hacked and pwnd emails."""
+    assert tom_email_example
