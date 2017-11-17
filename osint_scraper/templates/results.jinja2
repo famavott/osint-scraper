@@ -111,9 +111,10 @@
             <p><span class='bold'>Username:</span> {{ ghuser.login }}</p>
             <p><span class='bold'>Name:</span> {{ ghuser.name }}</p>
             <p><span class='bold'>Location:</span> {{ ghuser.location }}</p>
-            <p><span class='bold'>Bio:</span> {{ ghuser.bio }}</p>
-            <p><a href="{{ ghuser.repos_url }}">GitHub repos</a></p>
-            <p><a href="{{ ghuser.html_url }}">GitHub profile</a></p>
+            {% if ghuser.bio %}
+                <p><span class='bold'>Bio:</span> {{ ghuser.bio }}</p>
+            {% endif %}
+            <p><a href="{{ ghuser.url }}">GitHub profile</a></p>
         {% endif %}
         </div>
         {% endif %}
@@ -261,6 +262,10 @@
         {% if pwned %}
         <div class='info_block'>
         <h3 class='site_name'>{{ pwned.site }}:</h3>
+        {% if pwned.empty %}
+            <p>{{ pwned.empty }}</p>
+        {% endif %}
+        {% if pwned.results %}
         {% for pwn in pwned.results %}
             <p><span class='bold'>Breach:</span> {{ pwn.Title }}</p>
             <p><span class='bold'>Data types compromised:</span> {{ pwn.DataClasses }}</p>
@@ -270,6 +275,7 @@
             <p><span class='bold'>Breach date:</span> {{ pwn.BreachDate }}</p>
             <br>
         {% endfor %}
+        {% endif %}
         </div>
         {% endif %}
 
