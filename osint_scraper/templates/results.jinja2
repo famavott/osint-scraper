@@ -197,6 +197,22 @@
         {% endif %}
 
 
+        {% if medium %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ medium.site }}:</h3>
+        {% if medium.empty %}
+            <p>{{ medium.empty }}</p>
+        {% endif %}
+        {% if medium.avatar %}
+            <img src="{{ medium.avatar }}">
+            <p><span class='bold'>Name:</span> {{ medium.name }}</p>
+            <p><span class='bold'>Last Article Activity:</span> {{medium.article}}
+            <p><a href="{{ medium.url }}">Medium Profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
         {% if hacker %}
         <div class='info_block'>
         <h3 class='site_name'>{{ hacker.site }}:</h3>
