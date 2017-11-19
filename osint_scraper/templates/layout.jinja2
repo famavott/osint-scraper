@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="{{request.locale_name}}">
+  <head>
+    <meta charset="utf-8">
+    <title>OSInt scraper</title>
+    <link href="{{request.static_url('osint_scraper:static/reset.css')}}" rel="stylesheet">
+    <link href="{{request.static_url('osint_scraper:static/style.css')}}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{request.static_url('osint_scraper:static/Spy.png')}}">
+  </head>
+
+  <body>
+    <div>
+      {% block content %}
+      {% endblock content %}
+    </div>
+    <div class="copyright">
+      Copyright &copy; Team Foxtrot
+    </div>
+  </body>
+</html>

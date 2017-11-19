@@ -1,0 +1,304 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+<div class="content">
+        <a href="{{ request.route_url('home') }}" id='home_link'>Return to homepage</a>
+    <div id='page'>
+    <h1 id='results_header'>Search results:</h1>
+
+        {% if facebook %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ facebook.site }}:</h3>
+        {% if facebook.empty %}
+            <p>{{ facebook.empty }}</p>
+        {% endif %}
+        {% if facebook.url %}
+            <p><a href="{{ facebook.url }}">Potential Facebook profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+
+        {% if twit %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ twit.site }}:</h3>
+        {% if twit.empty %}
+            <p>{{ twit.empty }}</p>
+        {% endif %}
+        {% if twit.avatar %}
+            <img src="{{ twit.avatar }}">
+        {% endif %}
+        {% if twit.name %}
+            <p><span class='bold'>Name:</span>{{ twit.name }}</p>
+        {% endif %}
+        {% if twit.location %}
+            <p><span class='bold'>Location:</span>{{ twit.location }}</p>
+        {% endif %}
+        {% if twit.description %}
+            <p><span class='bold'>Bio:</span>{{ twit.description }}</p>
+        {% endif %}
+        {% if twit.created_at %}
+            <p><span class='bold'>User Since:</span>{{ twit.created_at }}</p>
+        {% endif %}
+        {% if twit.recent_tweet %}
+            <p><span class='bold'>Last Tweet:</span>{{ twit.recent_tweet }}</p>
+        {% endif %}
+        {% if twit.url %}
+            <p><a href="{{ twit.url }}">Twitter profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if yout %}
+            <div class='info_block'>
+            <h3 class='site_name'>{{ yout.site }}:</h3>
+            {% if yout.empty %}
+                <p>{{ yout.empty }}</p>
+            {% endif %}
+            {% if yout.avatar %}
+                <img src="{{ yout.avatar }}">
+                <p><span class='bold'>Name:</span> {{ yout.title }}</p>
+                <p><a href="{{ yout.url }}">YouTube profile</a></p>
+            {% endif %}
+            </div>
+        {% endif %}
+
+
+        {% if lleak %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ lleak.site }}:</h3>
+        {% if lleak.empty %}
+            <p>{{ lleak.empty }}</p>
+        {% endif %}
+        {% if lleak.location %}
+            <p><span class='bold'>Location:</span> {{ lleak.location }}</p>
+            <p><span class='bold'>Member since:</span> {{ lleak.memb_since }}</p>
+            <p><a href="{{ lleak.url }}">LiveLeak profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if reddit %}
+            <div class='info_block'>
+            <h3 class='site_name'>{{ reddit.site }}:</h3>
+            {% if reddit.empty %}
+                <p>{{ reddit.empty }}</p>
+            {% endif %}
+
+            {% if reddit.url %}
+                <p><a href="{{ reddit.url }}">Reddit profile</a></p>
+                <p><span class='bold'>Account age:</span> {{ reddit.age }}</p>
+                {% if reddit.sub_list %}
+                    <p><span class='bold'>Last active subreddits: </span>{{ reddit.sub_list }}</p>
+                {% endif %}
+            {% endif %}
+            
+            </div>
+        {% endif %}
+
+
+        {% if ghuser %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ ghuser.site }}:</h3>
+        {% if ghuser.empty %}
+            <p>{{ ghuser.empty }}</p>
+        {% endif %}
+        {% if ghuser.name %}
+            <img src="{{ ghuser.avatar_url }}">
+            <p><span class='bold'>Username:</span> {{ ghuser.login }}</p>
+            <p><span class='bold'>Name:</span> {{ ghuser.name }}</p>
+            <p><span class='bold'>Location:</span> {{ ghuser.location }}</p>
+            {% if ghuser.bio %}
+                <p><span class='bold'>Bio:</span> {{ ghuser.bio }}</p>
+            {% endif %}
+            <p><a href="{{ ghuser.url }}">GitHub profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+        
+
+        {% if steam %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ steam.site }}:</h3>
+        {% if steam.empty %}
+            <p>{{ steam.empty }}</p>
+        {% endif %}
+        {% if steam.location %}
+            <img src="{{ steam.avatar }}">
+            <p><span class='bold'>Name:</span> {{ steam.real_name }}</p>
+            <p><span class='bold'>Bio:</span> {{ steam.bio }}</p>
+            <p><span class='bold'>Location:</span> {{ steam.location }}</p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if imgur %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ imgur.site }}:</h3>
+        {% if imgur.empty %}
+            <p>{{ imgur.empty }}</p>
+        {% endif %}
+        {% if imgur.url %}
+            {% if imgur.bio %}
+                <p><span class='bold'>Bio:</span> {{ imgur.bio }}</p>
+            {% endif %}
+            <p><span class='bold'>Member since:</span> {{ imgur.acct_date }}</p>
+            <p><a href="{{ imgur.url }}">Imgur profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if p_bucket %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ p_bucket.site }}:</h3>
+        {% if p_bucket.empty %}
+            <p>{{ p_bucket.empty }}</p>
+        {% endif %}
+        {% if p_bucket.url %}
+            <img src="{{ p_bucket.avatar }}">
+            <p><span class='bold'>Bio:</span> {{ p_bucket.bio }}</p>
+            <p><a href="{{ p_bucket.url }}">Photobucket profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if flickr %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ flickr.site }}:</h3>
+        {% if flickr.empty %}
+            <p>{{ flickr.empty }}</p>
+        {% endif %}
+        {% if flickr.avatar %}
+            <img src="{{ flickr.avatar }}">
+            <p><span class='bold'>Username:</span> {{ flickr.user_name }}</p>
+            <p><span class='bold'>Name:</span> {{ flickr.title }}</p>
+            <p><span class='bold'>Location:</span> {{ flickr.location }}</p>
+            <p><a href="{{ flickr.url }}">Flickr profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if trip %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ trip.site }}:</h3>
+        {% if trip.empty %}
+            <p>{{ trip.empty }}</p>
+        {% endif %}
+        {% if trip.avatar %}
+            <img src="{{ trip.avatar }}">
+            <p><span class='bold'>Name:</span> {{ trip.name }}</p>
+            {% if trip.location %}
+                <p><span class='bold'>Location:</span> {{ trip.location }}</p>
+            {% endif %}
+            <p><a href="{{ trip.url }}">Tripadvisor profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if pinterest %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ pinterest.site }}:</h3>
+        {% if pinterest.empty %}
+            <p>{{ pinterest.empty }}</p>
+        {% endif %}
+        {% if pinterest.avatar %}
+            <img src="{{ pinterest.avatar }}">
+            <p><span class='bold'>Name:</span> {{ pinterest.name }}</p>
+            <p><a href="{{ pinterest.url }}">Pinterest profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if medium %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ medium.site }}:</h3>
+        {% if medium.empty %}
+            <p>{{ medium.empty }}</p>
+        {% endif %}
+        {% if medium.avatar %}
+            <img src="{{ medium.avatar }}">
+            <p><span class='bold'>Name:</span> {{ medium.name }}</p>
+            <p><span class='bold'>Last Article Activity:</span> {{medium.article}}
+            <p><a href="{{ medium.url }}">Medium Profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if hacker %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ hacker.site }}:</h3>
+        {% if hacker.empty %}
+            <p>{{ hacker.empty }}</p>
+        {% endif %}
+        {% if hacker.about %}
+            <p><span class='bold'>Bio:</span> {{ hacker.about }}</p>
+            <p><a href="{{ hacker.url }}">Hackernews profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if wiki %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ wiki.site }}:</h3>
+        {% if wiki.empty %}
+            <p>{{ wiki.empty }}</p>
+        {% endif %}
+        {% if wiki.url %}
+            <p><a href="{{ wiki.url }}">Wikipedia profile</a></p>
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+        {% if pwned %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ pwned.site }}:</h3>
+        {% if pwned.empty %}
+            <p>{{ pwned.empty }}</p>
+        {% endif %}
+        {% if pwned.results %}
+        {% for pwn in pwned.results %}
+            <p><span class='bold'>Breach:</span> {{ pwn.Title }}</p>
+            <p><span class='bold'>Data types compromised:</span> {{ pwn.DataClasses }}</p>
+            {% if pwn.Domain %}
+            <p><span class='bold'>Domain:</span> {{ pwn.Domain }}</p>
+            {% endif %}
+            <p><span class='bold'>Breach date:</span> {{ pwn.BreachDate }}</p>
+            <br>
+        {% endfor %}
+        {% endif %}
+        </div>
+        {% endif %}
+
+
+    
+        {% if hacked_emails %}
+        <div class='info_block'>
+        <h3 class='site_name'>{{ hacked_emails.site }}:</h3>
+        {% if hacked_emails.empty %}
+            <p>{{ hacked_emails.empty }}</p>
+        {% endif %}
+        {% if hacked_emails.hack_dict %}
+            {% for hack in hacked_emails.hack_dict['data'] %}
+                <p><span class='bold'>Breach:</span> {{ hack.title }}</p>
+                <p><span class='bold'>Breach date:</span> {{ hack.date_leaked[:10] }}</p>
+                <br>
+            {% endfor %}
+        {% endif %}
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock content %}

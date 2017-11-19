@@ -1,0 +1,14 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+<div class="content">
+    <div id="bio">
+        
+    </div>
+    {% if result %}
+        <h1>{{ result.name }} detail view</h1>
+        {% for item in result%}
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock content %}
