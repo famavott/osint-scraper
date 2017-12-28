@@ -5,16 +5,10 @@ from bs4 import BeautifulSoup
 
 import pypwned
 
-import requests
 
-
-def twitter_recon(username):
+def twitter_recon(r, url):
     """Use requests and BS to find public twitter profile and harvest information from HTML."""
-    if username is None:
-        return None
     try:
-        url = 'https://www.twitter.com/{}'.format(username)
-        r = requests.get(url)
         soup = BeautifulSoup(r.content, 'lxml')
         name = soup.find('h1').contents[1].text
         try:
@@ -43,25 +37,19 @@ def twitter_recon(username):
             }
 
 
-def pwned_recon(email):
-    """Check HIBP if email has been compromised."""
-    if email is None:
-        return None
-    results = pypwned.getAllBreachesForAccount(email=email)
-    if '404' in results:
-        return {'site': 'Have I been pwnded',
-                'empty': 'Email has not been compromised.'}
-    return {'site': 'Have I been pwned.',
-            'results': results
-            }
+# def pwned_recon(r, url):
+#     """Check HIBP if email has been compromised."""
+#     results = pypwned.getAllBreachesForAccount(email=email)
+#     if '404' in results:
+#         return {'site': 'Have I been pwnded',
+#                 'empty': 'Email has not been compromised.'}
+#     return {'site': 'Have I been pwned.',
+#             'results': results
+#             }
 
 
-def github_recon(user_name):
+def github_recon(r, url):
     """Github scraper."""
-    if user_name is None:
-        return None
-    url = 'https://github.com/{}'.format(user_name)
-    r = requests.get(url, headers={'User-agent': 'Wayne Mazerati'})
     try:
         soup = BeautifulSoup(r.content, 'lxml')
         avatar_url = soup.find('img', class_="avatar width-full rounded-2").attrs['src']
@@ -73,7 +61,7 @@ def github_recon(user_name):
             bio = None
         return {'site': 'GitHub',
                 'avatar_url': avatar_url,
-                'login': user_name,
+                'login': 'PLACEHOLDER',
                 'name': name,
                 'location': location,
                 'bio': bio,
@@ -84,23 +72,15 @@ def github_recon(user_name):
                 'empty': 'No GitHub account with that username.'}
 
 
-def facebook_recon(email):
+def facebook_recon(r, url):
     """Find facebook account if linked via email."""
-    if email is None:
-        return None
-    r = requests.get('https://www.facebook.com/search/people?q={}'
-                     .format(email))
     return {'site': 'Facebook',
-            'url': r.url
+            'url': url
             }
 
 
-def photobucket_recon(user_name):
+def photobucket_recon(r, url):
     """Check for pb account with user_name."""
-    if user_name is None:
-        return None
-    r = requests.get('http://s594.photobucket.com/user/{}/profile/'
-                     .format(user_name))
     try:
         soup = BeautifulSoup(r.content, "lxml")
         url = soup.find('input', 'linkcopy').attrs['value']
@@ -116,12 +96,8 @@ def photobucket_recon(user_name):
                 'empty': 'No Photobucket account with that name.'}
 
 
-def youtube_recon(user_name):
+def youtube_recon(r, url):
     """Use tweepy to access user data if name found."""
-    if user_name is None:
-        return None
-    url = 'https://www.youtube.com/user/{}'.format(user_name)
-    r = requests.get(url)
     if b'This channel does not exist.' in r.content:
         return {'site': 'YouTube',
                 'empty': 'No YouTube account with that username.'
@@ -140,12 +116,8 @@ def youtube_recon(user_name):
             }
 
 
-def flickr_recon(user_name):
+def flickr_recon(r, url):
     """Check for flickr account with user_name."""
-    if user_name is None:
-        return None
-    url = 'https://www.flickr.com/people/{}/'.format(user_name)
-    r = requests.get(url)
     try:
         soup = BeautifulSoup(r.content, "lxml")
         title = soup.find('h1').contents[0].strip()
@@ -154,7 +126,7 @@ def flickr_recon(user_name):
         location = soup.find('p', class_='cp-location').contents[0]
         return {'avatar': avatar,
                 'title': title,
-                'user_name': user_name,
+                'user_name': 'PLACEHOLDER',
                 'url': url,
                 'location': location,
                 'site': 'Flickr'
@@ -185,8 +157,6 @@ def flickr_recon(user_name):
 
 def imgur_recon(user_name):
     """Check for imgur account with user_name."""
-    if user_name is None:
-        return None
     url = 'https://imgur.com/user/{}'.format(user_name)
     r = requests.get(url)
     try:
@@ -210,8 +180,6 @@ def imgur_recon(user_name):
 
 def hacked_email_recon(email):
     """Check if email matches possible hacked emails from various breaches."""
-    if email is None:
-        return None
     url = 'https://hacked-emails.com/api?q={}'.format(email)
     r = requests.get(url)
     to_dict = dict(r.json())
@@ -226,8 +194,6 @@ def hacked_email_recon(email):
 
 def wikipedia_recon(user_name):
     """Check for pb account with user_name."""
-    if user_name is None:
-        return None
     url = 'https://en.wikipedia.org/wiki/User:{}'.format(user_name)
     r = requests.get(url)
     if r.status_code == 404:
@@ -242,8 +208,6 @@ def wikipedia_recon(user_name):
 
 def steam_recon(user_name):
     """Check for steam account with user_name."""
-    if user_name is None:
-        return None
     url = 'https://steamcommunity.com/id/{}'.format(user_name)
     r = requests.get(url)
     if 'Sorry!' in r.text:
@@ -281,8 +245,6 @@ def steam_recon(user_name):
 
 def liveleak_recon(user_name):
     """Check for liveleak account with user_name."""
-    if user_name is None:
-        return None
     url = 'https://www.liveleak.com/c/{}'.format(user_name)
     r = requests.get(url)
     if 'Channel cannot be found!' in r.text:
@@ -307,8 +269,6 @@ def liveleak_recon(user_name):
 
 def reddit_recon(user_name):
     """Check for reddit account information."""
-    if user_name is None:
-        return None
     url = 'https://www.reddit.com/user/{}'.format(user_name)
     r = requests.get(url, headers={'User-agent': 'Wayne Mazerati'})
     try:
@@ -333,8 +293,6 @@ def reddit_recon(user_name):
 
 def pinterest_recon(user_name):
     """Pinterest scraper."""
-    if user_name is None:
-        return None
     url = 'https://www.pinterest.com/{}/'.format(user_name)
     r = requests.get(url)
     try:
@@ -354,8 +312,6 @@ def pinterest_recon(user_name):
 
 def medium_recon(user_name):
     """Grab data for Medium if it exists."""
-    if user_name is None:
-        return None
     url = 'https://www.medium.com/@{}/'.format(user_name)
     r = requests.get(url)
     try:
@@ -377,8 +333,6 @@ def medium_recon(user_name):
 
 def trip_recon(user_name):
     """Tripadvisor scraper."""
-    if user_name is None:
-        return None
     url = 'https://www.tripadvisor.com/members/{}'.format(user_name)
     r = requests.get(url)
     try:
