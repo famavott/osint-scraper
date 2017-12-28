@@ -155,10 +155,8 @@ def flickr_recon(r, url):
 #                 }
 
 
-def imgur_recon(user_name):
+def imgur_recon(r, url):
     """Check for imgur account with user_name."""
-    url = 'https://imgur.com/user/{}'.format(user_name)
-    r = requests.get(url)
     try:
         soup = BeautifulSoup(r.content, 'html.parser')
         try:
@@ -178,10 +176,8 @@ def imgur_recon(user_name):
                 }
 
 
-def hacked_email_recon(email):
+def hacked_email_recon(r, url):
     """Check if email matches possible hacked emails from various breaches."""
-    url = 'https://hacked-emails.com/api?q={}'.format(email)
-    r = requests.get(url)
     to_dict = dict(r.json())
     if to_dict['results'] == 0:
         return {'site': 'Hacked Emails',
@@ -192,10 +188,8 @@ def hacked_email_recon(email):
     }
 
 
-def wikipedia_recon(user_name):
+def wikipedia_recon(r, url):
     """Check for pb account with user_name."""
-    url = 'https://en.wikipedia.org/wiki/User:{}'.format(user_name)
-    r = requests.get(url)
     if r.status_code == 404:
         return {'site': 'Wikipedia',
                 'empty': 'No Wikipedia account with that username.'
@@ -206,10 +200,8 @@ def wikipedia_recon(user_name):
                 }
 
 
-def steam_recon(user_name):
+def steam_recon(r, url):
     """Check for steam account with user_name."""
-    url = 'https://steamcommunity.com/id/{}'.format(user_name)
-    r = requests.get(url)
     if 'Sorry!' in r.text:
         return {'site': 'Steam',
                 'empty': 'No Steam account with that username.'
@@ -243,10 +235,8 @@ def steam_recon(user_name):
                 }
 
 
-def liveleak_recon(user_name):
+def liveleak_recon(r, url):
     """Check for liveleak account with user_name."""
-    url = 'https://www.liveleak.com/c/{}'.format(user_name)
-    r = requests.get(url)
     if 'Channel cannot be found!' in r.text:
         return {'site': 'LiveLeak',
                 'empty': 'No LiveLeak account with that username.'
@@ -267,10 +257,8 @@ def liveleak_recon(user_name):
                 }
 
 
-def reddit_recon(user_name):
+def reddit_recon(r, url):
     """Check for reddit account information."""
-    url = 'https://www.reddit.com/user/{}'.format(user_name)
-    r = requests.get(url, headers={'User-agent': 'Wayne Mazerati'})
     try:
         soup = BeautifulSoup(r.content, 'lxml')
         sub_list = []
@@ -291,10 +279,8 @@ def reddit_recon(user_name):
         }
 
 
-def pinterest_recon(user_name):
+def pinterest_recon(r, url):
     """Pinterest scraper."""
-    url = 'https://www.pinterest.com/{}/'.format(user_name)
-    r = requests.get(url)
     try:
         soup = BeautifulSoup(r.content, 'lxml')
         name = soup.find('h3').contents[0]
@@ -310,10 +296,8 @@ def pinterest_recon(user_name):
                 }
 
 
-def medium_recon(user_name):
+def medium_recon(r, url):
     """Grab data for Medium if it exists."""
-    url = 'https://www.medium.com/@{}/'.format(user_name)
-    r = requests.get(url)
     try:
         soup = BeautifulSoup(r.content, 'lxml')
         name = soup.find('h1').text
@@ -331,10 +315,8 @@ def medium_recon(user_name):
                 }
 
 
-def trip_recon(user_name):
+def trip_recon(r, url):
     """Tripadvisor scraper."""
-    url = 'https://www.tripadvisor.com/members/{}'.format(user_name)
-    r = requests.get(url)
     try:
         soup = BeautifulSoup(r.content, 'lxml')
         name = soup.find('span', class_='nameText').contents[0]
