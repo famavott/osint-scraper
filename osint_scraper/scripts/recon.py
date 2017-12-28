@@ -237,7 +237,8 @@ def steam_recon(user_name):
                 'avatar': avatar,
                 'real_name': real_name,
                 'location': 'Private account',
-                'bio': 'Private account'
+                'bio': 'Private account',
+                'url': url
                 }
     else:
         soup = BeautifulSoup(r.content, 'lxml')
@@ -251,7 +252,8 @@ def steam_recon(user_name):
                 'avatar': avatar,
                 'real_name': real_name,
                 'location': location,
-                'bio': bio
+                'bio': bio,
+                'url': url
                 }
 
 
