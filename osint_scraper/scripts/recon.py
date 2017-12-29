@@ -8,14 +8,19 @@ import pypwned
 import requests
 
 
+def social_soup(url):
+    """Return social soup."""
+    r = requests.get(url, headers={'User-agent': 'Wayne Mazerati'})
+    return BeautifulSoup(r.content, 'lxml')
+
+
 def twitter_recon(username):
     """Use requests and BS to find public twitter profile and harvest information from HTML."""
     if username is None:
         return None
     try:
         url = 'https://www.twitter.com/{}'.format(username)
-        r = requests.get(url)
-        soup = BeautifulSoup(r.content, 'lxml')
+        soup = social_soup(url)
         name = soup.find('h1').contents[1].text
         try:
             location = soup.find('span', class_='ProfileHeaderCard-locationText u-dir').contents[1].text
@@ -61,9 +66,8 @@ def github_recon(user_name):
     if user_name is None:
         return None
     url = 'https://github.com/{}'.format(user_name)
-    r = requests.get(url, headers={'User-agent': 'Wayne Mazerati'})
     try:
-        soup = BeautifulSoup(r.content, 'lxml')
+        soup = social_soup(url)
         avatar_url = soup.find('img', class_="avatar width-full rounded-2").attrs['src']
         name = soup.find('span', class_="p-name vcard-fullname d-block").contents[0]
         location = soup.find('span', class_="p-label").contents[0]
@@ -99,11 +103,9 @@ def photobucket_recon(user_name):
     """Check for pb account with user_name."""
     if user_name is None:
         return None
-    r = requests.get('http://s594.photobucket.com/user/{}/profile/'
-                     .format(user_name))
+    url = 'http://s594.photobucket.com/user/{}/profile/'.format(user_name)
     try:
-        soup = BeautifulSoup(r.content, "lxml")
-        url = soup.find('input', 'linkcopy').attrs['value']
+        soup = social_soup(url)
         avatar = soup.find('img', class_="avatar largeProfile").attrs['src']
         bio = soup.find('p', class_="description").contents[0].strip()
         return {'site': 'Photobucket',
@@ -145,9 +147,8 @@ def flickr_recon(user_name):
     if user_name is None:
         return None
     url = 'https://www.flickr.com/people/{}/'.format(user_name)
-    r = requests.get(url)
     try:
-        soup = BeautifulSoup(r.content, "lxml")
+        soup = social_soup(url)
         title = soup.find('h1').contents[0].strip()
         av_div = soup.find('div', class_='avatar').attrs['style']
         avatar = 'https:' + av_div.split(' ')[1][4:-2]
@@ -165,32 +166,13 @@ def flickr_recon(user_name):
                 }
 
 
-# def hacker_recon(user_name):  # pragma: no cover
-#     """Check for hackernews account with user_name."""
-#     url = 'https://news.ycombinator.com/user?id={}'.format(user_name)
-#     r = requests.get(url)
-#     soup = BeautifulSoup(r.content, "lxml")
-#     try:
-#         tds = soup.find_all('td')
-#         about = tds[4].find_all('td')[7].contents[0].strip()
-#         return {'site': 'Hackernews',
-#                 'about': about,
-#                 'url': url
-#                 }
-#     except:
-#         return {'site': 'Hackernews',
-#                 'empty': 'No Hackernews account with that username.'
-#                 }
-
-
 def imgur_recon(user_name):
     """Check for imgur account with user_name."""
     if user_name is None:
         return None
     url = 'https://imgur.com/user/{}'.format(user_name)
-    r = requests.get(url)
     try:
-        soup = BeautifulSoup(r.content, 'html.parser')
+        soup = social_soup(url)
         try:
             bio = soup.find('div', id='account-bio').contents[0]
         except:
@@ -310,9 +292,8 @@ def reddit_recon(user_name):
     if user_name is None:
         return None
     url = 'https://www.reddit.com/user/{}'.format(user_name)
-    r = requests.get(url, headers={'User-agent': 'Wayne Mazerati'})
     try:
-        soup = BeautifulSoup(r.content, 'lxml')
+        soup = social_soup(url)
         sub_list = []
         for i in soup.find_all('a', class_='subreddit hover'):
             sub_list.append(i.contents[0])
@@ -336,9 +317,8 @@ def pinterest_recon(user_name):
     if user_name is None:
         return None
     url = 'https://www.pinterest.com/{}/'.format(user_name)
-    r = requests.get(url)
     try:
-        soup = BeautifulSoup(r.content, 'lxml')
+        soup = social_soup(url)
         name = soup.find('h3').contents[0]
         avatar = soup.find('img', class_="_mi _3i _2h _3u").attrs['src']
         return {'site': 'Pinterest',
@@ -357,9 +337,8 @@ def medium_recon(user_name):
     if user_name is None:
         return None
     url = 'https://www.medium.com/@{}/'.format(user_name)
-    r = requests.get(url)
     try:
-        soup = BeautifulSoup(r.content, 'lxml')
+        soup = social_soup(url)
         name = soup.find('h1').text
         avatar = soup.find('div', class_='hero-avatar').find('img')['src']
         article = soup.find('div', class_='compressedPostListItem-title').text
@@ -380,9 +359,8 @@ def trip_recon(user_name):
     if user_name is None:
         return None
     url = 'https://www.tripadvisor.com/members/{}'.format(user_name)
-    r = requests.get(url)
     try:
-        soup = BeautifulSoup(r.content, 'lxml')
+        soup = social_soup(url)
         name = soup.find('span', class_='nameText').contents[0]
         avatar = soup.find('img', class_="avatarUrl").attrs['src']
         try:

@@ -20,5 +20,6 @@ def results_view(request):
         return {}
     user_name = request.params['handle']  # pragma: no cover
     email = request.params['email']  # pragma: no cover
-    return recon_handler(user_name, email)  # pragma: no cover
+    checks = request.params.getall('testbox')
+    return recon_handler(user_name, email, checks)  # pragma: no cover
     # return dummy_recon(user_name, email)  # pragma: no cover

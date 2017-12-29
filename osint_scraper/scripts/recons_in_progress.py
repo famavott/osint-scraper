@@ -2,6 +2,24 @@
 import json
 
 
+# def hacker_recon(user_name):  # pragma: no cover
+#     """Check for hackernews account with user_name."""
+#     url = 'https://news.ycombinator.com/user?id={}'.format(user_name)
+#     r = requests.get(url)
+#     soup = BeautifulSoup(r.content, "lxml")
+#     try:
+#         tds = soup.find_all('td')
+#         about = tds[4].find_all('td')[7].contents[0].strip()
+#         return {'site': 'Hackernews',
+#                 'about': about,
+#                 'url': url
+#                 }
+#     except:
+#         return {'site': 'Hackernews',
+#                 'empty': 'No Hackernews account with that username.'
+#                 }
+
+
 def youtube_recon(user_name):
     """Use tweepy to access user data if name found."""
     # youtube_key = os.environ.get('YOUTUBE_KEY')
