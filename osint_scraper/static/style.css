@@ -4,6 +4,21 @@
 
 #main-box {
     width: 70%;
-    height: 30em;
+    height: 34em;
     margin: auto;
+    text-align: center;
+}
+
+.input-fields {
+    margin: auto;
+}
+
+#instructions {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#search {
+    margin: 1em auto;
+    width: 40%;
 }
