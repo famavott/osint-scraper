@@ -4,7 +4,7 @@
 
 #main-box {
     width: 70%;
-    height: 30em;
+    height: 34em;
     margin: auto;
     text-align: center;
 }
@@ -13,10 +13,12 @@
     margin: auto;
 }
 
-.table-boxes-1 {
-
+#instructions {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
-.table-boxes-2 {
-
+#search {
+    margin: 1em auto;
+    width: 40%;
 }

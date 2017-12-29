@@ -14,106 +14,102 @@
     <div class="progress" style="display: none"></div>
     <div class="main_page">
         <header id="header">
-            <h1>Social Recon</h1>
         </header>
-        <div id="main-box" class="card text-white bg-primary mb-3">
+        <div id="main-box" class="card bg-secondary text-white mb-3">
+            <h1 class="header">Social Recon</h1>
             <form id="input_form" action="results">
-                <p>Input username and/or email to check popular social media sites for digital footprint. Use the checkboxes below to choose specific sites, or search all.</p>
+                <div>
+                    <h6 id="instructions">Input username and/or email to check popular social media sites for digital footprint.<br>Use the checkboxes below to choose specific sites, or search all.</h6>
+                </div>
+                <hr class="my-4">
                 <table class="input-fields">
                     <tr>
                         <td>
                             <input class='form-control' type="text" name="email" placeholder="email" id="inputDefault">
                         </td>
-                        <hr>
+                        <td id="ghost-td">
+                        </td>
                         <td>
                             <input class='form-control' type="text" name="handle" placeholder="social media handle" id="inputDefault">
                         </td>
                     </tr>
                     <tr>
-                        <td><a href="{{ request.route_url('results') }}"><input class="btn btn-primary btn-lg btn-block"" type="submit" name="search" value="Search"></a>
+                        <td colspan="3"><a href="{{ request.route_url('results') }}"><input class="btn btn-success btn-lg btn-block"" type="submit" name="search" value="Search" id="search"></a>
                         </td>
                     </tr>
-                </table>
-                <table class="table-boxes-1">
                     <tr>
                         <td>
+                            <label for="twitter">Twitter</label>
                             <input type='checkbox' name='selected_sites' value='twitter'>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
+                            <label for="pwned">Pwned Emails</label>
                             <input type='checkbox' name='selected_sites' value='pwned'>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
+                            <label for="github">Github</label>
                             <input type='checkbox' name='selected_sites' value='github'>
                         </td>
                     </tr>
                     <tr>
                         <td>
+                            <label for="facebook">Facebook</label>
                             <input type='checkbox' name='selected_sites' value='facebook'>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
+                            <label for="photobucket">Photobucket</label>
                             <input type='checkbox' name='selected_sites' value='photobucket'>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
+                            <label for="youtube">YouTube</label>
                             <input type='checkbox' name='selected_sites' value='youtube'>
                         </td>
                     </tr>
                     <tr>
                         <td>
+                            <label for="flickr">Flickr</label>
                             <input type='checkbox' name='selected_sites' value='flickr'>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
+                            <label for="imgur">Imgur</label>
                             <input type='checkbox' name='selected_sites' value='imgur'>
                         </td>
-                    </tr>
-                </table>
-                <table class="table-boxes-2">
-                    <tr>
                         <td>
+                            <label for="hacked_email">Hacked Emails</label>
                             <input type='checkbox' name='selected_sites' value='hacked_email'>
                         </td>
                     </tr>
                     <tr>
                         <td>
+                            <label for="wikipedia">Wikipedia</label>
                             <input type='checkbox' name='selected_sites' value='wikipedia'>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
+                            <label for="steam">Steam</label>
                             <input type='checkbox' name='selected_sites' value='steam'>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
+                            <label for="liveleak">Liveleak</label>
                             <input type='checkbox' name='selected_sites' value='liveleak'>
                         </td>
                     </tr>
                     <tr>
                         <td>
+                            <label for="reddit">Reddit</label>
                             <input type='checkbox' name='selected_sites' value='reddit'>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
+                            <label for="pinterest">Pinterest</label>
                             <input type='checkbox' name='selected_sites' value='pinterest'>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
+                            <label for="medium">Medium</label>
                             <input type='checkbox' name='selected_sites' value='medium'>
                         </td>
                     </tr>
                     <tr>
                         <td>
+                            <label for="trip">TripAdvisor</label>
                             <input type='checkbox' name='selected_sites' value='trip'>
                         </td>
                     </tr>
