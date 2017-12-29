@@ -21,8 +21,9 @@ def recon_handler(user_name=None, email=None, checks=None):
     """Recon function handler."""
     results = {}
     for check in checks:
+        recon = eval(check + "_recon")
         if check in ['pwned', 'facebook', 'hacked_email']:
-            results[check] = eval(check + '_recon({})'.format(email))
+            results[check] = recon(email)
         else:
-            results[check] = eval(check + '_recon({})'.format(user_name))
+            results[check] = recon(user_name)
     return results

@@ -26,7 +26,7 @@ def twitter_recon(username):
             location = None
         description = soup.find('div', class_='ProfileHeaderCard').contents[5].text
         created_at = soup.find('div', class_='ProfileHeaderCard-joinDate').contents[3].text
-        avatar = soup.find('div', class_='ProfileAvatar').find('img', class_='ProfileAvatar-image').attrs['src']
+        avatar = soup.find('div', class_='ProfileAvatar').find('img', class_='ProfileAvatar-image').get('src')
         try:
             recent_tweet = soup.find('div', class_='content').find('p', class_='TweetTextSize TweetTextSize--normal js-tweet-text tweet-text').text
         except:
@@ -62,7 +62,7 @@ def github_recon(user_name):
     url = 'https://github.com/{}'.format(user_name)
     try:
         soup = social_soup(url)
-        avatar_url = soup.find('img', class_="avatar width-full rounded-2").attrs['src']
+        avatar_url = soup.find('img', class_="avatar width-full rounded-2").get('src')
         name = soup.find('span', class_="p-name vcard-fullname d-block").contents[0]
         location = soup.find('span', class_="p-label").contents[0]
         try:
@@ -94,7 +94,7 @@ def photobucket_recon(user_name):
     url = 'http://s594.photobucket.com/user/{}/profile/'.format(user_name)
     try:
         soup = social_soup(url)
-        avatar = soup.find('img', class_="avatar largeProfile").attrs['src']
+        avatar = soup.find('img', class_="avatar largeProfile").get('src')
         bio = soup.find('p', class_="description").contents[0].strip()
         return {'site': 'Photobucket',
                 'url': url,
@@ -115,8 +115,8 @@ def youtube_recon(user_name):
                 'empty': 'No YouTube account with that username.'
                 }
     soup = BeautifulSoup(r.content, 'lxml')
-    ava = soup.find('img', class_='channel-header-profile-image')
-    avatar = ava.attrs['src']
+    avatar = soup.find('img', class_='channel-header-profile-image').get('src')
+    # avatar = ava.attrs['src']
     try:
         title = soup.find('span', id='channel-title').contents
     except:
@@ -290,7 +290,7 @@ def pinterest_recon(user_name):
     try:
         soup = social_soup(url)
         name = soup.find('h3').contents[0]
-        avatar = soup.find('img', class_="_mi _3i _2h _3u").attrs['src']
+        avatar = soup.find('img', class_="_mi _3i _2h _3u").get('src')
         return {'site': 'Pinterest',
                 'name': name,
                 'avatar': avatar,
@@ -328,7 +328,7 @@ def trip_recon(user_name):
     try:
         soup = social_soup(url)
         name = soup.find('span', class_='nameText').contents[0]
-        avatar = soup.find('img', class_="avatarUrl").attrs['src']
+        avatar = soup.find('img', class_="avatarUrl").get('src')
         try:
             location = soup.find('div', class_="hometown").contents[0].contents[0]
         except:
