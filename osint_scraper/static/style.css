@@ -2,10 +2,15 @@
     text-align: center;
 }
 
+.header{
+    font-size: 4em;
+    font-family: 'Playfair Display', serif;
+}
+
 #main-box {
     width: 70%;
-    height: 34em;
-    margin: auto;
+    height: 32em;
+    margin: 3em auto;
     text-align: center;
 }
 
@@ -20,5 +25,22 @@
 
 #search {
     margin: 1em auto;
-    width: 40%;
+    width: 100%;
+}
+
+.box{
+    width: 33%;
+}
+
+.box_pad {
+    padding: 0 0 0 1.5em;
+}
+
+.four_five {
+    width: 45%;
+}
+
+tbody {
+    text-align: right;
+    line-height: 0.9;
 }

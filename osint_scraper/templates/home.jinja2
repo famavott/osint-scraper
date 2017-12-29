@@ -8,6 +8,7 @@
     <link href="{{request.static_url('osint_scraper:static/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{request.static_url('osint_scraper:static/loading.css')}}">
     <link rel="shortcut icon" href="{{request.static_url('osint_scraper:static/Spy.png')}}">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
   </head>
   <body>
     <div class="body" style="display: none"></div>
@@ -15,11 +16,11 @@
     <div class="main_page">
         <header id="header">
         </header>
-        <div id="main-box" class="card bg-secondary text-white mb-3">
+        <div id="main-box" class="card bg-secondary border-light text-white mb-3">
             <h1 class="header">Social Recon</h1>
             <form id="input_form" action="results">
                 <div>
-                    <h6 id="instructions">Input username and/or email to check popular social media sites for digital footprint.<br>Use the checkboxes below to choose specific sites, or search all.</h6>
+                    <h5 id="instructions">Input username and/or email to check popular social media sites for digital footprint.<br>Use the checkboxes below to choose specific sites, or search all.</h5>
                 </div>
                 <hr class="my-4">
                 <table class="input-fields">
@@ -33,82 +34,89 @@
                             <input class='form-control' type="text" name="handle" placeholder="social media handle" id="inputDefault">
                         </td>
                     </tr>
+                    <table class="input-fields four_five" >
                     <tr>
-                        <td colspan="3"><a href="{{ request.route_url('results') }}"><input class="btn btn-success btn-lg btn-block"" type="submit" name="search" value="Search" id="search"></a>
+                        <td class='box'></td>
+                        <td class='box'><a href="{{ request.route_url('results') }}"><input class="btn btn-success btn-block" type="submit" name="search" value="Search" id="search"></a>
                         </td>
+                        <td class='box'></td>
+
                     </tr>
+                </table>
+                </table>
+                <table class="input-fields">
                     <tr>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="twitter">Twitter</label>
                             <input type='checkbox' name='selected_sites' value='twitter'>
                         </td>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="pwned">Pwned Emails</label>
                             <input type='checkbox' name='selected_sites' value='pwned'>
                         </td>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="github">Github</label>
                             <input type='checkbox' name='selected_sites' value='github'>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="facebook">Facebook</label>
                             <input type='checkbox' name='selected_sites' value='facebook'>
                         </td>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="photobucket">Photobucket</label>
                             <input type='checkbox' name='selected_sites' value='photobucket'>
                         </td>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="youtube">YouTube</label>
                             <input type='checkbox' name='selected_sites' value='youtube'>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="flickr">Flickr</label>
                             <input type='checkbox' name='selected_sites' value='flickr'>
                         </td>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="imgur">Imgur</label>
                             <input type='checkbox' name='selected_sites' value='imgur'>
                         </td>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="hacked_email">Hacked Emails</label>
                             <input type='checkbox' name='selected_sites' value='hacked_email'>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="wikipedia">Wikipedia</label>
                             <input type='checkbox' name='selected_sites' value='wikipedia'>
                         </td>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="steam">Steam</label>
                             <input type='checkbox' name='selected_sites' value='steam'>
                         </td>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="liveleak">Liveleak</label>
                             <input type='checkbox' name='selected_sites' value='liveleak'>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="reddit">Reddit</label>
                             <input type='checkbox' name='selected_sites' value='reddit'>
                         </td>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="pinterest">Pinterest</label>
                             <input type='checkbox' name='selected_sites' value='pinterest'>
                         </td>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="medium">Medium</label>
                             <input type='checkbox' name='selected_sites' value='medium'>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class='box box_pad'>
                             <label for="trip">TripAdvisor</label>
                             <input type='checkbox' name='selected_sites' value='trip'>
                         </td>
