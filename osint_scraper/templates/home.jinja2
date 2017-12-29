@@ -3,35 +3,118 @@
   <head>
     <meta charset="utf-8">
     <title>Social Recon</title>
-    <link href="{{request.static_url('osint_scraper:static/reset.css')}}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css"/>
     <link href="{{request.static_url('osint_scraper:static/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{request.static_url('osint_scraper:static/loading.css')}}">
-    <link href="https://fonts.googleapis.com/css?family=Stardos+Stencil" rel="stylesheet">
     <link rel="shortcut icon" href="{{request.static_url('osint_scraper:static/Spy.png')}}">
   </head>
   <body>
     <div class="body" style="display: none"></div>
     <div class="progress" style="display: none"></div>
     <div class="main_page">
-        <header id="header" class="">
-            <h1 class="stencil">Social Recon</h1>
-        </header><!-- /header -->
-        <div id='grey_box'>
-            <content>
-            </content>
+        <header id="header">
+            <h1>Social Recon</h1>
+        </header>
+        <div id="main-box" class="card text-white bg-primary mb-3">
             <form id="input_form" action="results">
-                <p id='instruct'>Input username and/or email to check popular social media sites for digital footprint.</p>
-                <hr>
+                <p>Input username and/or email to check popular social media sites for digital footprint. Use the checkboxes below to choose specific sites, or search all.</p>
                 <table>
                     <tr>
                         <td>
-                            <input class='text_input' type="text" name="email" placeholder="email">
+                            <input class='form-control' type="text" name="email" placeholder="email" id="inputDefault">
                         </td>
+                        <hr>
                         <td>
-                            <input class='text_input' type="text" name="handle" placeholder="social media handle">
+                            <input class='form-control' type="text" name="handle" placeholder="social media handle" id="inputDefault">
                         </td>
                     </tr>
-                    <tr><td><a href="{{ request.route_url('results') }}"><input id='submit_button' type="submit" name="search" value="Search"></a></td></tr>
+                    <tr>
+                        <td><a href="{{ request.route_url('results') }}"><input class="btn btn-primary btn-lg btn-block"" type="submit" name="search" value="Search"></a>
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='twitter'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='pwned'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='github'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='facebook'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='photobucket'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='youtube'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='flickr'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='imgur'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='hacked_email'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='wikipedia'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='steam'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='liveleak'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='reddit'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='pintrest'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='medium'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='selected_sites' value='trip'>
+                        </td>
+                    </tr>
                 </table>
             </form>
         </div>
