@@ -1,10 +1,8 @@
 'use strict'
 
 
-console.log('hello world')
-
 $(document).ready(
-    $('#submit_button').on('click', loading_page)
+    $('#search').on('click', loading_page)
     )
 
 function loading_page(){
