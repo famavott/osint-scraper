@@ -30,3 +30,9 @@ $('input[name=handle]').keyup(function(){
         $('input[class="all-box"]').prop('disabled', false)
     }
 })
+
+$('input[name="select_all"]').change(function(){
+    if(this.checked){
+        $('input[name="selected_sites"]').prop('checked', true)
+    }
+})
