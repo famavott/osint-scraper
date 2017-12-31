@@ -1,129 +1,56 @@
-body {
-    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;   
-}
-
-#input_form {
-    position: relative;
-    width: 40%;
-    height: 10em;
-    margin: auto;
-    background-color: lightgrey;
-    box-shadow: 1px 1px 1px #888888;
-}
-
-table {
-    width: 80%;
-    margin-top: 1em;
-    margin-left: 10%;
-    position: absolute;
-}
-
-.stencil {
+/* Home styling */
+#header {
     text-align: center;
-    font-size: 7em;
-    font-family: 'Stardos Stencil', cursive;
+}
+
+.header{
+    font-size: 4em;
+    font-family: 'Poppins', sans-serif;
+}
+
+#main-box {
+    width: 70%;
+    height: 32em;
+    margin: 3em auto;
+    text-align: center;
+}
+
+.input-fields {
     margin: auto;
-    color: #333;
 }
 
-#instruct {
-    font-weight: bold;
-    padding: 1em;
-    margin-left: 0;
+#instructions {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
-hr {
-    border: #c6bebe solid 0.3px;
-    width: 95%;
-    margin: 0 auto;
-}
-
-input {
-    border: none;
-}
-
-.text_input {
-    width: 90%;
-}
-
-#submit_button {
-    margin-top: 2em;
-    border-radius: 0;
-    background-color: #333;
-    color: white;
-    font-weight: bold;
-}
-
-#grey_box {
-    padding-top: 4em;
-}
-
-#submit_button:hover {
-    cursor: pointer;
-}
-
-/**/
-
-.info_block {
-    margin: 1em;
-    width: 80%;
-    min-height: 12em;
-    border-bottom: thin lightgrey solid;
-    
-}
-
-.content {
-    width: 80%;
+#search {
     margin: 1em auto;
-    padding-bottom: 1em;
-    background-color: #FFE4C2;
-    box-shadow: 1px 6px 17px #888888;
+    width: 100%;
 }
 
-#page {
-    background-color: white;
-    margin: 1em;
-    box-shadow: 1px 6px 17px #888888;
-    padding-bottom: 1em;
-    background-image: url("dust_scratches.png");
+.box{
+    width: 33%;
 }
 
-.site_name {
-    font-weight: bold;
-    font-size: 1.2em;
-    text-decoration: underline;
+.box_pad {
+    padding: 0 0 0 1.5em;
 }
 
-p {
-    margin-left: 80px;
+.four_five {
+    width: 45%;
 }
 
-img {
-    width: 8em;
-    float: right;
-    border: white solid thick;
-    border-bottom-width: 1em;
-    box-shadow: 1px 6px 17px #888888;
+tbody {
+    text-align: right;
+    line-height: 0.9;
 }
 
-.bold{
-    font-weight: bold;
-}
-
-a{
-    font-weight: bold;
-    text-decoration: none;
-    color: red;
+/* Results styling */
+#home_link {
+    font-size: 1.5em;
 }
 
 #results_header {
-    font-size: 3em;
-}
-
-#home_link {
-    padding-left: 1em;
-}
-
-#sub_list {
-    
+    text-align: center;
 }
