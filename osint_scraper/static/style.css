@@ -1,10 +1,11 @@
+/* Home styling */
 #header {
     text-align: center;
 }
 
 .header{
     font-size: 4em;
-    font-family: 'Yantramanav', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 #main-box {
@@ -43,4 +44,13 @@
 tbody {
     text-align: right;
     line-height: 0.9;
+}
+
+/* Results styling */
+#home_link {
+    font-size: 1.5em;
+}
+
+#results_header {
+    text-align: center;
 }
