@@ -49,6 +49,16 @@
         {% endif %}
         </div>
         {% endif %}
+        {% if not twitter %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">Twitter
+        </div>
+        </div>
+        {% endif %}
 
 
         {% if youtube %}
@@ -64,6 +74,16 @@
             {% endif %}
             </div>
         {% endif %}
+        {% if not youtube %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">YouTube
+        </div>
+        </div>
+        {% endif %}
 
 
         {% if liveleak %}
@@ -77,6 +97,16 @@
             <p><span class='bold'>Member since:</span> {{ liveleak.memb_since }}</p>
             <p><a href="{{ liveleak.url }}">LiveLeak profile</a></p>
         {% endif %}
+        </div>
+        {% endif %}
+        {% if not liveleak %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">LiveLeak
+        </div>
         </div>
         {% endif %}
 
@@ -95,8 +125,17 @@
                     <p><span class='bold'>Last active subreddits: </span>{{ reddit.sub_list }}</p>
                 {% endif %}
             {% endif %}
-            
             </div>
+        {% endif %}
+        {% if not reddit %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">Reddit
+        </div>
+        </div>
         {% endif %}
 
 
@@ -118,7 +157,17 @@
         {% endif %}
         </div>
         {% endif %}
-        
+        {% if not github %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">Github
+        </div>
+        </div>
+        {% endif %}
+
 
         {% if steam %}
         <div class='info_block'>
@@ -133,6 +182,16 @@
             <p><span class='bold'>Location:</span> {{ steam.location }}</p>
             <p><a href="{{ steam.url }}">Steam profile</a></p>
         {% endif %}
+        </div>
+        {% endif %}
+        {% if not steam %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">Steam
+        </div>
         </div>
         {% endif %}
 
@@ -152,6 +211,16 @@
         {% endif %}
         </div>
         {% endif %}
+        {% if not imgur %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">Imgur
+        </div>
+        </div>
+        {% endif %}
 
 
         {% if photobucket %}
@@ -165,6 +234,16 @@
             <p><span class='bold'>Bio:</span> {{ photobucket.bio }}</p>
             <p><a href="{{ photobucket.url }}">Photobucket profile</a></p>
         {% endif %}
+        </div>
+        {% endif %}
+        {% if not photobucket %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">Photobucket
+        </div>
         </div>
         {% endif %}
 
@@ -182,6 +261,16 @@
             <p><span class='bold'>Location:</span> {{ flickr.location }}</p>
             <p><a href="{{ flickr.url }}">Flickr profile</a></p>
         {% endif %}
+        </div>
+        {% endif %}
+        {% if not flickr %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">Flickr
+        </div>
         </div>
         {% endif %}
 
@@ -202,6 +291,16 @@
         {% endif %}
         </div>
         {% endif %}
+        {% if not trip %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">TripAdvisor
+        </div>
+        </div>
+        {% endif %}
 
 
         {% if pinterest %}
@@ -215,6 +314,16 @@
             <p><span class='bold'>Name:</span> {{ pinterest.name }}</p>
             <p><a href="{{ pinterest.url }}">Pinterest profile</a></p>
         {% endif %}
+        </div>
+        {% endif %}
+        {% if not pinterest %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">Pinterest
+        </div>
         </div>
         {% endif %}
 
@@ -233,18 +342,14 @@
         {% endif %}
         </div>
         {% endif %}
-
-
-        {% if hacker %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ hacker.site }}:</h3>
-        {% if hacker.empty %}
-            <p>{{ hacker.empty }}</p>
-        {% endif %}
-        {% if hacker.about %}
-            <p><span class='bold'>Bio:</span> {{ hacker.about }}</p>
-            <p><a href="{{ hacker.url }}">Hackernews profile</a></p>
-        {% endif %}
+        {% if not medium %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">Medium
+        </div>
         </div>
         {% endif %}
 
@@ -258,6 +363,16 @@
         {% if wikipedia.url %}
             <p><a href="{{ wikipedia.url }}">Wikipedia profile</a></p>
         {% endif %}
+        </div>
+        {% endif %}
+        {% if not wikipedia %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">Wikipedia
+        </div>
         </div>
         {% endif %}
 
@@ -281,14 +396,25 @@
         {% endif %}
         </div>
         {% endif %}
+        {% if not pwned %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <h4 class="card-title">Secondary card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="photo-foot card-header">Have I Been Pwned
+        </div>
+        </div>
+        {% endif %}
+
 
 <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
   <div class="card-body text-secondary">
     <h4 class="card-title">Secondary card title</h4>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
-  <div class="photo-foot card-header">Header
-    <button type="button" class="btn btn-secondary" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+  <div class="photo-foot card-header"><a class='photo-a'>Header</a>
+    <button type="button" class="btn photo-button" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
 sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Bottom</button>
   </div>
 </div>
