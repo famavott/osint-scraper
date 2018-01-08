@@ -34,6 +34,8 @@ $('input[name=handle]').keyup(function(){
 $('input[name="select_all"]').change(function(){
     if(this.checked){
         $('input[name="selected_sites"]').prop('checked', true)
+    } else {
+        $('input[name="selected_sites"]').removeAttr('checked')
     }
 })
 

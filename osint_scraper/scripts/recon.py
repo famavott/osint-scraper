@@ -10,7 +10,7 @@ import requests
 
 def social_soup(url):
     """Return social soup."""
-    r = requests.get(url, headers={'User-agent': 'Wayne Mazerati'})
+    r = requests.get(url, headers={'User-agent': 'Social Recon'})
     return BeautifulSoup(r.content, 'lxml')
 
 
@@ -34,9 +34,7 @@ def twitter_recon(user_name):
         except:
             recent_tweet = None
     except:
-        return {'site': 'Twitter',
-                'empty': 'No Twitter account with that username'
-                }
+        return None
     return {'site': 'Twitter',
             'name': name,
             'location': location,
@@ -54,8 +52,7 @@ def pwned_recon(email):
         return None
     results = pypwned.getAllBreachesForAccount(email=email)
     if '404' in results:
-        return {'site': 'Have I been pwnded',
-                'empty': 'Email has not been compromised.'}
+        return None
     if results.startswith('A server error'):
         return None
     return {'site': 'Have I been pwned.',
@@ -86,8 +83,7 @@ def github_recon(user_name):
                 'url': url
                 }
     except:
-        return {'site': 'GitHub',
-                'empty': 'No GitHub account with that username.'}
+        return None
 
 
 def facebook_recon(email):
@@ -114,8 +110,7 @@ def photobucket_recon(user_name):
                 'bio': bio
                 }
     except:
-        return {'site': 'Photobucket',
-                'empty': 'No Photobucket account with that name.'}
+        return None
 
 
 def youtube_recon(user_name):
@@ -125,9 +120,7 @@ def youtube_recon(user_name):
     url = 'https://www.youtube.com/user/{}'.format(user_name)
     r = requests.get(url)
     if b'This channel does not exist.' in r.content:
-        return {'site': 'YouTube',
-                'empty': 'No YouTube account with that username.'
-                }
+        return None
     soup = BeautifulSoup(r.content, 'lxml')
     avatar = soup.find('img', class_='channel-header-profile-image').get('src')
     # avatar = ava.attrs['src']
@@ -161,9 +154,7 @@ def flickr_recon(user_name):
                 'site': 'Flickr'
                 }
     except:
-        return {'site': 'Flickr',
-                'empty': 'No Flickr account with that username.'
-                }
+        return None
 
 
 def imgur_recon(user_name):
@@ -185,9 +176,7 @@ def imgur_recon(user_name):
                 'site': 'Imgur'
                 }
     except:
-        return {'site': 'Imgur',
-                'empty': 'No Imgur account with that username.'
-                }
+        return None
 
 
 def hacked_email_recon(email):
@@ -198,8 +187,7 @@ def hacked_email_recon(email):
     r = requests.get(url)
     to_dict = dict(r.json())
     if to_dict['results'] == 0:
-        return {'site': 'Hacked Emails',
-                'empty': 'Email has not been compromised.'}
+        return None
     return {
         'hack_dict': to_dict,
         'site': 'Hacked Emails'
@@ -213,9 +201,7 @@ def wikipedia_recon(user_name):
     url = 'https://en.wikipedia.org/wiki/User:{}'.format(user_name)
     r = requests.get(url)
     if r.status_code == 404:
-        return {'site': 'Wikipedia',
-                'empty': 'No Wikipedia account with that username.'
-                }
+        return None
     else:
         return {'site': 'Wikipedia',
                 'url': url
@@ -229,9 +215,7 @@ def steam_recon(user_name):
     url = 'https://steamcommunity.com/id/{}'.format(user_name)
     r = requests.get(url)
     if 'Sorry!' in r.text:
-        return {'site': 'Steam',
-                'empty': 'No Steam account with that username.'
-                }
+        return None
     if 'This profile is private.' in r.text:
         soup = BeautifulSoup(r.content, 'lxml')
         ava = soup.find('div', class_="playerAvatarAutoSizeInner")
@@ -268,9 +252,7 @@ def liveleak_recon(user_name):
     url = 'https://www.liveleak.com/c/{}'.format(user_name)
     r = requests.get(url)
     if 'Channel cannot be found!' in r.text:
-        return {'site': 'LiveLeak',
-                'empty': 'No LiveLeak account with that username.'
-                }
+        return None
     else:
         soup = BeautifulSoup(r.content, 'lxml')
         loc = soup.find('h1').next_sibling.next_sibling.next_sibling
@@ -306,10 +288,7 @@ def reddit_recon(user_name):
             'age': age
         }
     except:
-        return {
-            'site': 'reddit',
-            'empty': 'No reddit account with this username.'
-        }
+        return None
 
 
 def pinterest_recon(user_name):
@@ -327,9 +306,7 @@ def pinterest_recon(user_name):
                 'url': url
                 }
     except:
-        return {'site': 'Pinterest',
-                'empty': 'No Pinterest with that username.'
-                }
+        return None
 
 
 def medium_recon(user_name):
@@ -349,9 +326,7 @@ def medium_recon(user_name):
                 'url': url
                 }
     except:
-        return {'site': 'Medium',
-                'empty': 'No Medium with that username.'
-                }
+        return None
 
 
 def trip_recon(user_name):
@@ -374,6 +349,4 @@ def trip_recon(user_name):
                 'location': location
                 }
     except:
-        return {'site': 'Tripadvisor',
-                'empty': 'No Tripadvisor with that username.'
-                }
+        return None
