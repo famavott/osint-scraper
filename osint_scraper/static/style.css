@@ -81,3 +81,10 @@ tbody {
     float: right;
     background-color: #eef2f5;
 }
+
+.photo-pic {
+    width: 100%;
+    background-color: white;
+}
+
+/*<img class='photo-pic' src="./../static/black_x.png" alt="">*/
