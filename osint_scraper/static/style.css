@@ -70,3 +70,14 @@ tbody {
     border-top: 1px solid rgba(0,0,0,0.6);
     border-bottom: none;
 }
+
+.photo-a {
+    color: black !important;
+    font-size: 1.5em;
+    width: 33%;
+}
+
+.photo-button {
+    float: right;
+    background-color: #eef2f5;
+}
