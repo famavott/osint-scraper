@@ -282,6 +282,23 @@
         </div>
         {% endif %}
 
+<div class="card border-secondary mb-3" style="max-width: 20rem;">
+  <div class="card-body text-secondary">
+    <h4 class="card-title">Secondary card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <div class="card-header">Header
+  </div>
+</div>
+
+
+
+
+<button type="button" class="btn btn-secondary" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Bottom</button>
+
+
+
 
     
         {% if hacked_email %}
@@ -300,6 +317,13 @@
         </div>
         {% endif %}
 
+
     </div>
 </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{request.static_url('osint_scraper:static/app.js')}}"></script>
 {% endblock content %}

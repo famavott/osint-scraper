@@ -36,3 +36,7 @@ $('input[name="select_all"]').change(function(){
         $('input[name="selected_sites"]').prop('checked', true)
     }
 })
+
+$(function() {
+    $("[data-toggle='popover']").popover()
+})
