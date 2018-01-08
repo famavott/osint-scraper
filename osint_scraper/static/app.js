@@ -38,3 +38,7 @@ $('input[name="select_all"]').change(function(){
         $('input[name="selected_sites"]').removeAttr('checked')
     }
 })
+
+$(function() {
+    $("[data-toggle='popover']").popover()
+})
