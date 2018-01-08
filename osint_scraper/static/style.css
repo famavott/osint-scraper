@@ -58,3 +58,15 @@ tbody {
 #all-box {
     font-size: 1.4em;
 }
+
+.photo-div {
+    /*color: #eef2f5;*/
+    border-width: 6px;
+    border-color: #eef2f5 !important;
+}
+
+.photo-foot {
+    background-color: #eef2f5;
+    border-top: 1px solid rgba(0,0,0,0.6);
+    border-bottom: none;
+}
