@@ -56,6 +56,8 @@ def pwned_recon(email):
     if '404' in results:
         return {'site': 'Have I been pwnded',
                 'empty': 'Email has not been compromised.'}
+    if results.startswith('A server error'):
+        return None
     return {'site': 'Have I been pwned.',
             'results': results
             }
