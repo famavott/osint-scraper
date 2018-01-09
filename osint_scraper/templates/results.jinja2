@@ -189,7 +189,6 @@
                     <li><span class='bold'>Bio:</span> {{ github.bio }}</li>
                     {% endif %}
                 </ul>
-                
             </div>
             {% if github.avatar %}
                 <img class="photo-pic found" src="{{ github.avatar }}">
@@ -359,6 +358,14 @@
         {% if trip %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class="site-detail">
+                <ul>
+                    <li><span class='bold'>Name: </span>{{ trip.name }}</li>
+                    {% if trip.location %}
+                    <li><span class='bold'>Location: </span>{{ trip.location }}</li>
+                    {% endif %}
+                </ul>
+            </div>
             {% if trip.avatar %}
                 <img class="photo-pic found" src="{{ trip.avatar }}">
             {% endif %}
@@ -386,6 +393,11 @@
         {% if pinterest %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class="site-detail">
+                <ul>
+                    <li><span class='bold'>Pinterest Name: </span>{{ pinterest.name }}</li>
+                </ul>
+            </div>
             {% if pinterest.avatar %}
                 <img class="photo-pic found" src="{{ pinterest.avatar }}">
             {% endif %}
@@ -413,6 +425,12 @@
         {% if medium %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class="site-detail">
+                <ul>
+                    <li><span class='bold'>Name: </span>{{ medium.name }}</li>
+                    <li><span class='bold'>Last Article Activity: </span>{{ medium.article }}</li>
+                </ul>
+            </div>
             {% if medium.avatar %}
                 <img class="photo-pic found" src="{{ medium.avatar }}">
             {% endif %}
@@ -440,6 +458,11 @@
         {% if wikipedia %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class="site-detail">
+                <ul>
+                    <li><span class='bold'>Wikpedia Profile </span>{{ wikipedia.url }}</li>
+                </ul>
+            </div>
         <img class="photo-pic found" src="./../static/wikipedia.png">
         </div>
         <div class="photo-foot card-header"><a href="{{ wikipedia.url }}" class="photo-a">Wikipedia</a>
