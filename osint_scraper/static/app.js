@@ -1,6 +1,5 @@
 'use strict'
 
-
 $(document).ready(
     $('#search').on('click', loading_page)
     )
@@ -11,26 +10,6 @@ function loading_page(){
     $('.progress').fadeIn('slow');
 }
 
-$('input[name=email]').keyup(function(){
-    if (this.value.length > 0) {
-        $('input[class="email-box"]').prop('disabled', false)
-        $('input[class="all-box"]').prop('disabled', false)
-    } else {
-        $('input[class="email-box"]').prop('disabled', true)
-        $('input[class="all-box"]').prop('disabled', true)
-    }
-})
-
-$('input[name=handle]').keyup(function(){
-    if (this.value.length > 0) {
-        $('input[class="handle-box"]').prop('disabled', false)
-        $('input[class="all-box"]').prop('disabled', false)
-    } else {
-        $('input[class="handle-box"]').prop('disabled', true)
-        $('input[class="all-box"]').prop('disabled', true)
-    }
-})
-
 $('input[name="select_all"]').change(function(){
     if(this.checked){
         $('input[name="selected_sites"]').prop('checked', true)
@@ -40,9 +19,10 @@ $('input[name="select_all"]').change(function(){
 })
 
 $('.form-control').keyup(function() {
-    if ($('input[class="handle-box"]').val() == '' || $('input[class="email-box"]').val() == '' ) {
-        $('.form-btn').prop('disabled', true);
+    if ($('input[class="inputHandle"]').val() == '' || $('input[class="inputEmail"]').val() == '' ) {
+        $('.form-btn').prop('disabled', true)
     } else {
-        $('.form-btn').prop('disabled', false);
+        $('.form-btn').prop('disabled', false)
+        $('.all-box').prop('disabled', false)
     }
 });
