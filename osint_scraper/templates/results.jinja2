@@ -450,6 +450,20 @@
         {% if pwned %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class='site-detail'>
+            {% if pwned.results %}
+                {% for pwn in pwned.results %}
+                    <ul>
+                        <li><span class='bold'>Breach: </span>{{ pwn.Title }}</li>
+                        <li><span class='bold'>Data types compromised: </span>{{ pwn.DataClasses }}</li>
+                        {% if pwn.Domain %}
+                        <li><span class='bold'>Domain: </span>{{ pwn.Domain }}</li>
+                        {% endif %}
+                        <li><span class='bold'>Breach date: </span>{{ pwn.BreachDate }}</li>
+                    </ul>
+                {% endfor %}
+            {% endif %}
+            </div>
         <img class="photo-pic found" src="./../static/hibp.png">
         </div>
         <div class="photo-foot card-header"><a href="{{ pwned.url }}" class="photo-a">Pwned Emails</a>
@@ -469,22 +483,36 @@
 
 
 
-{#       <div class="col-lg-3 col-md-4 col-xs-6">
+      <div class="col-lg-3 col-md-4 col-xs-6">
         {% if hacked_email %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ hacked_email.site }}:</h3>
-        {% if hacked_email.empty %}
-            <p>{{ hacked_email.empty }}</p>
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+            <div class='site-detail'>
+                {% if hacked_email.hack_dict %}
+                    {% for hack in hacked_email.hack_dict['data'] %}
+                        <ul>
+                            <li><span class='bold'>Breach: </span>{{ hack.title }}</li>
+                            <li><span class='bold'>Breach Date: </span>{{ hack.date_leaked[:10] }}</li>
+                        </ul>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        <img class="photo-pic found" src="./../static/hacked_emails.png">
+        </div>
+        <div class="photo-foot card-header"><a href="{{ hacked_email.url }}" class="photo-a">Hacked Emails</a>
+        </div>
+        </div>
         {% endif %}
-        {% if hacked_email.hack_dict %}
-            {% for hack in hacked_email.hack_dict['data'] %}
-                <p><span class='bold'>Breach:</span> {{ hack.title }}</p>
-                <p><span class='bold'>Breach date:</span> {{ hack.date_leaked[:10] }}</p>
-                <br>
-            {% endfor %}
+        {% if not hacked_email %}
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
+        </div>
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Hacked Emails</p>
+        </div>
+        </div>
         {% endif %}
         </div>
-        {% endif %} #}
 
 
     </div>
