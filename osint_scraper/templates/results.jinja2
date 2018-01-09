@@ -28,7 +28,7 @@
                 <img class="photo-pic" src="{{ twitter.avatar }}">
             {% endif %}
             {% if not twitter.avatar %}
-                <img class="photo-pic" src="./../static/twitter_bird.png"">
+                <img class="photo-pic" src="./../static/twitter_bird.png>
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ twitter.url }}" class='photo-a'>Twitter</a>
@@ -67,114 +67,117 @@
         </div>
         {% endif %}
         </div>
-{#
+
+
+        <div class="col-lg-3 col-md-4 col-xs-6">
         {% if youtube %}
-            <div class='info_block'>
-            <h3 class='site_name'>{{ youtube.site }}:</h3>
-            {% if youtube.empty %}
-                <p>{{ youtube.empty }}</p>
-            {% endif %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
             {% if youtube.avatar %}
-                <img src="{{ youtube.avatar }}">
-                <p><span class='bold'>Name:</span> {{ youtube.title }}</p>
-                <p><a href="{{ youtube.url }}">YouTube profile</a></p>
+                <img class="photo-pic" src="{{ youtube.avatar }}">
             {% endif %}
-            </div>
+            {% if not youtube.avatar %}
+                <img class="photo-pic" src="./../static/youtube.png">
+            {% endif %}
+        </div>
+        <div class="photo-foot card-header"><a href="{{ youtube.url }}" class="photo-a">YouTube</a>
+        </div>
+        </div>
         {% endif %}
         {% if not youtube %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">YouTube
+        <div class="photo-foot card-header"><p class="photo-a">YouTube</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
 
+        <div class="col-lg-3 col-md-4 col-xs-6">
         {% if liveleak %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ liveleak.site }}:</h3>
-        {% if liveleak.empty %}
-            <p>{{ liveleak.empty }}</p>
-        {% endif %}
-        {% if liveleak.location %}
-            <p><span class='bold'>Location:</span> {{ liveleak.location }}</p>
-            <p><span class='bold'>Member since:</span> {{ liveleak.memb_since }}</p>
-            <p><a href="{{ liveleak.url }}">LiveLeak profile</a></p>
-        {% endif %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+            {% if liveleak.avatar %}
+                <img class="photo-pic" src="{{ liveleak.avatar }}">
+            {% endif %}
+            {% if not liveleak.avatar %}
+                <img class="photo-pic" src="./../static/liveleak.png">
+            {% endif %}
+        </div>
+        <div class="photo-foot card-header"><a href="{{ liveleak.url }}" class="photo-a">LiveLeak</a>
+        </div>
         </div>
         {% endif %}
         {% if not liveleak %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">LiveLeak
+        <div class="photo-foot card-header"><p class="photo-a">Liveleak</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
 
+        <div class="col-lg-3 col-md-4 col-xs-6">
         {% if reddit %}
-            <div class='info_block'>
-            <h3 class='site_name'>{{ reddit.site }}:</h3>
-            {% if reddit.empty %}
-                <p>{{ reddit.empty }}</p>
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+            {% if reddit.avatar %}
+                <img class="photo-pic" src="{{ reddit.avatar }}">
             {% endif %}
-
-            {% if reddit.url %}
-                <p><a href="{{ reddit.url }}">Reddit profile</a></p>
-                <p><span class='bold'>Account age:</span> {{ reddit.age }}</p>
-                {% if reddit.sub_list %}
-                    <p><span class='bold'>Last active subreddits: </span>{{ reddit.sub_list }}</p>
-                {% endif %}
+            {% if not reddit.avatar %}
+                <img class="photo-pic" src="./../static/reddit.png">
             {% endif %}
-            </div>
+        </div>
+        <div class="photo-foot card-header"><a href="{{ reddit.url }}" class="photo-a">Reddit</a>
+        </div>
+        </div>
         {% endif %}
         {% if not reddit %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">Reddit
+        <div class="photo-foot card-header"><p class="photo-a">Reddit</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
 
+        <div class="col-lg-3 col-md-4 col-xs-6">
         {% if github %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ github.site }}:</h3>
-        {% if github.empty %}
-            <p>{{ github.empty }}</p>
-        {% endif %}
-        {% if github.name %}
-            <img src="{{ github.avatar_url }}">
-            <p><span class='bold'>Username:</span> {{ github.login }}</p>
-            <p><span class='bold'>Name:</span> {{ github.name }}</p>
-            <p><span class='bold'>Location:</span> {{ github.location }}</p>
-            {% if github.bio %}
-                <p><span class='bold'>Bio:</span> {{ github.bio }}</p>
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+            {% if github.avatar %}
+                <img class="photo-pic" src="{{ github.avatar }}">
             {% endif %}
-            <p><a href="{{ github.url }}">GitHub profile</a></p>
-        {% endif %}
+            {% if not github.avatar %}
+                <img class="photo-pic" src="./../static/github.jpg">
+            {% endif %}
+        </div>
+        <div class="photo-foot card-header"><a href="{{ github.url }}" class="photo-a">Github</a>
+        </div>
         </div>
         {% endif %}
         {% if not github %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">Github
+        <div class="photo-foot card-header"><p class="photo-a">Github</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
+
+{#
 
         {% if steam %}
         <div class='info_block'>
