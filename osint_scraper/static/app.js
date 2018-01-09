@@ -27,7 +27,7 @@ $('input[name=handle]').keyup(function(){
         $('input[class="all-box"]').prop('disabled', false)
     } else {
         $('input[class="handle-box"]').prop('disabled', true)
-        $('input[class="all-box"]').prop('disabled', false)
+        $('input[class="all-box"]').prop('disabled', true)
     }
 })
 
@@ -39,15 +39,10 @@ $('input[name="select_all"]').change(function(){
     }
 })
 
-$(function() {
-    $("[data-toggle='popover']").popover()
-})
-
-// $("#input_form").submit(function() {
-//     if($("#inputDefault").val().length === 0) {
-//         alert("Enter an email, username, or both.")
-//         event.preventDefault()
-//     }
-// })
-
-
+$('.form-control').keyup(function() {
+    if ($('input[class="handle-box"]').val() == '' || $('input[class="email-box"]').val() == '' ) {
+        $('.form-btn').prop('disabled', true);
+    } else {
+        $('.form-btn').prop('disabled', false);
+    }
+});
