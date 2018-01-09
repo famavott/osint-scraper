@@ -82,19 +82,45 @@ tbody {
 }
 
 .photo-pic {
+    position: relative;
     width: 100%;
     background-color: white;
+    z-index: 10;
+}
+
+.found:hover{
+    opacity: 0;
 }
 
 /*<img class='photo-pic' src="./../static/black_x.png" alt="">*/
 
 .strike-out {
     margin: 0;
-    text-decoration: line-through;
-    text-decoration-color: red;
 }
 
 .content {
     width: 90%;
     margin: auto;
+}
+
+.not-found {
+    opacity: 0.2;
+}
+
+.card-body:hover {
+    /*background-color: white;*/
+}
+
+.site-detail {
+    position: absolute;
+    color: white;
+    font-size: 0.8em;
+    z-index: 5;
+    max-width: 80%;
+    max-height: 70%;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: underline;
 }
