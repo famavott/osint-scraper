@@ -33,28 +33,6 @@
         </div>
         <div class="photo-foot card-header"><a href="{{ twitter.url }}" class='photo-a'>Twitter</a>
         </div>
-{#         <h3 class='site_name'>{{ twitter.site }}:</h3>
-        {% if twitter.avatar %}
-            <img src="{{ twitter.avatar }}">
-        {% endif %}
-        {% if twitter.name %}
-            <p><span class='bold'>Name:</span>{{ twitter.name }}</p>
-        {% endif %}
-        {% if twitter.location %}
-            <p><span class='bold'>Location:</span>{{ twitter.location }}</p>
-        {% endif %}
-        {% if twitter.description %}
-            <p><span class='bold'>Bio:</span>{{ twitter.description }}</p>
-        {% endif %}
-        {% if twitter.created_at %}
-            <p><span class='bold'>User Since:</span>{{ twitter.created_at }}</p>
-        {% endif %}
-        {% if twitter.recent_tweet %}
-            <p><span class='bold'>Last Tweet:</span>{{ twitter.recent_tweet }}</p>
-        {% endif %}
-        {% if twitter.url %}
-            <p><a href="{{ twitter.url }}">Twitter profile</a></p>
-        {% endif %} #}
         </div>
         {% endif %}
         {% if not twitter %}
@@ -177,247 +155,241 @@
         </div>
 
 
-{#
-
+        <div class="col-lg-3 col-md-4 col-xs-6">
         {% if steam %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ steam.site }}:</h3>
-        {% if steam.empty %}
-            <p>{{ steam.empty }}</p>
-        {% endif %}
-        {% if steam.location %}
-            <img src="{{ steam.avatar }}">
-            <p><span class='bold'>Name:</span> {{ steam.real_name }}</p>
-            <p><span class='bold'>Bio:</span> {{ steam.bio }}</p>
-            <p><span class='bold'>Location:</span> {{ steam.location }}</p>
-            <p><a href="{{ steam.url }}">Steam profile</a></p>
-        {% endif %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+            {% if steam.avatar_url %}
+                <img class="photo-pic" src="{{ steam.avatar_url }}">
+            {% endif %}
+            {% if not steam.avatar_url %}
+                <img class="photo-pic" src="./../static/steam.png">
+            {% endif %}
+        </div>
+        <div class="photo-foot card-header"><a href="{{ steam.url }}" class="photo-a">Steam</a>
+        </div>
         </div>
         {% endif %}
         {% if not steam %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">Steam
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Steam</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
 
+        <div class="col-lg-3 col-md-4 col-xs-6">
         {% if imgur %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ imgur.site }}:</h3>
-        {% if imgur.empty %}
-            <p>{{ imgur.empty }}</p>
-        {% endif %}
-        {% if imgur.url %}
-            {% if imgur.bio %}
-                <p><span class='bold'>Bio:</span> {{ imgur.bio }}</p>
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+            {% if imgur.avatar_url %}
+                <img class="photo-pic" src="{{ imgur.avatar_url }}">
             {% endif %}
-            <p><span class='bold'>Member since:</span> {{ imgur.acct_date }}</p>
-            <p><a href="{{ imgur.url }}">Imgur profile</a></p>
-        {% endif %}
+            {% if not imgur.avatar_url %}
+                <img class="photo-pic" src="./../static/imgur.png">
+            {% endif %}
+        </div>
+        <div class="photo-foot card-header"><a href="{{ imgur.url }}" class="photo-a">Imgur</a>
+        </div>
         </div>
         {% endif %}
         {% if not imgur %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">Imgur
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Imgur</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
 
+        <div class="col-lg-3 col-md-4 col-xs-6">
         {% if photobucket %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ photobucket.site }}:</h3>
-        {% if photobucket.empty %}
-            <p>{{ photobucket.empty }}</p>
-        {% endif %}
-        {% if photobucket.url %}
-            <img src="{{ photobucket.avatar }}">
-            <p><span class='bold'>Bio:</span> {{ photobucket.bio }}</p>
-            <p><a href="{{ photobucket.url }}">Photobucket profile</a></p>
-        {% endif %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+            {% if photobucket.avatar_url %}
+                <img class="photo-pic" src="{{ photobucket.avatar_url }}">
+            {% endif %}
+            {% if not photobucket.avatar_url %}
+                <img class="photo-pic" src="./../static/photobucket.png">
+            {% endif %}
+        </div>
+        <div class="photo-foot card-header"><a href="{{ photobucket.url }}" class="photo-a">Photobucket</a>
+        </div>
         </div>
         {% endif %}
         {% if not photobucket %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">Photobucket
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Photobucket</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
 
+       <div class="col-lg-3 col-md-4 col-xs-6">
         {% if flickr %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ flickr.site }}:</h3>
-        {% if flickr.empty %}
-            <p>{{ flickr.empty }}</p>
-        {% endif %}
-        {% if flickr.avatar %}
-            <img src="{{ flickr.avatar }}">
-            <p><span class='bold'>Username:</span> {{ flickr.user_name }}</p>
-            <p><span class='bold'>Name:</span> {{ flickr.title }}</p>
-            <p><span class='bold'>Location:</span> {{ flickr.location }}</p>
-            <p><a href="{{ flickr.url }}">Flickr profile</a></p>
-        {% endif %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+            {% if flickr.avatar_url %}
+                <img class="photo-pic" src="{{ flickr.avatar_url }}">
+            {% endif %}
+            {% if not flickr.avatar_url %}
+                <img class="photo-pic" src="./../static/flickr.png">
+            {% endif %}
+        </div>
+        <div class="photo-foot card-header"><a href="{{ flickr.url }}" class="photo-a">Flickr</a>
+        </div>
         </div>
         {% endif %}
         {% if not flickr %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">Flickr
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Flickr</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
 
+       <div class="col-lg-3 col-md-4 col-xs-6">
         {% if trip %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ trip.site }}:</h3>
-        {% if trip.empty %}
-            <p>{{ trip.empty }}</p>
-        {% endif %}
-        {% if trip.avatar %}
-            <img src="{{ trip.avatar }}">
-            <p><span class='bold'>Name:</span> {{ trip.name }}</p>
-            {% if trip.location %}
-                <p><span class='bold'>Location:</span> {{ trip.location }}</p>
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+            {% if trip.avatar_url %}
+                <img class="photo-pic" src="{{ trip.avatar_url }}">
             {% endif %}
-            <p><a href="{{ trip.url }}">Tripadvisor profile</a></p>
-        {% endif %}
+            {% if not trip.avatar_url %}
+                <img class="photo-pic" src="./../static/trip.jpg">
+            {% endif %}
+        </div>
+        <div class="photo-foot card-header"><a href="{{ trip.url }}" class="photo-a">TripAdvisor</a>
+        </div>
         </div>
         {% endif %}
         {% if not trip %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">TripAdvisor
+        <div class="photo-foot card-header"><p class="photo-a strike-out">TripAdvisor</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
 
+       <div class="col-lg-3 col-md-4 col-xs-6">
         {% if pinterest %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ pinterest.site }}:</h3>
-        {% if pinterest.empty %}
-            <p>{{ pinterest.empty }}</p>
-        {% endif %}
-        {% if pinterest.avatar %}
-            <img src="{{ pinterest.avatar }}">
-            <p><span class='bold'>Name:</span> {{ pinterest.name }}</p>
-            <p><a href="{{ pinterest.url }}">Pinterest profile</a></p>
-        {% endif %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+            {% if pinterest.avatar_url %}
+                <img class="photo-pic" src="{{ pinterest.avatar_url }}">
+            {% endif %}
+            {% if not pinterest.avatar_url %}
+                <img class="photo-pic" src="./../static/pinterest.png">
+            {% endif %}
+        </div>
+        <div class="photo-foot card-header"><a href="{{ pinterest.url }}" class="photo-a">Pinterest</a>
+        </div>
         </div>
         {% endif %}
         {% if not pinterest %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">Pinterest
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Pinterest</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
 
+       <div class="col-lg-3 col-md-4 col-xs-6">
         {% if medium %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ medium.site }}:</h3>
-        {% if medium.empty %}
-            <p>{{ medium.empty }}</p>
-        {% endif %}
-        {% if medium.avatar %}
-            <img src="{{ medium.avatar }}">
-            <p><span class='bold'>Name:</span> {{ medium.name }}</p>
-            <p><span class='bold'>Last Article Activity:</span> {{medium.article}}
-            <p><a href="{{ medium.url }}">Medium Profile</a></p>
-        {% endif %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+            {% if medium.avatar %}
+                <img class="photo-pic" src="{{ medium.avatar }}">
+            {% endif %}
+            {% if not medium.avatar %}
+                <img class="photo-pic" src="./../static/medium.png">
+            {% endif %}
+        </div>
+        <div class="photo-foot card-header"><a href="{{ medium.url }}" class="photo-a">Medium</a>
+        </div>
         </div>
         {% endif %}
         {% if not medium %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">Medium
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Medium</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
 
+       <div class="col-lg-3 col-md-4 col-xs-6">
         {% if wikipedia %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ wikipedia.site }}:</h3>
-        {% if wikipedia.empty %}
-            <p>{{ wikipedia.empty }}</p>
-        {% endif %}
-        {% if wikipedia.url %}
-            <p><a href="{{ wikipedia.url }}">Wikipedia profile</a></p>
-        {% endif %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <img class="photo-pic" src="./../static/wikipedia.png">
+        </div>
+        <div class="photo-foot card-header"><a href="{{ wikipedia.url }}" class="photo-a">Wikipedia</a>
+        </div>
         </div>
         {% endif %}
         {% if not wikipedia %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">Wikipedia
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Wikipedia</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
 
+       <div class="col-lg-3 col-md-4 col-xs-6">
         {% if pwned %}
-        <div class='info_block'>
-        <h3 class='site_name'>{{ pwned.site }}:</h3>
-        {% if pwned.empty %}
-            <p>{{ pwned.empty }}</p>
-        {% endif %}
-        {% if pwned.results %}
-        {% for pwn in pwned.results %}
-            <p><span class='bold'>Breach:</span> {{ pwn.Title }}</p>
-            <p><span class='bold'>Data types compromised:</span> {{ pwn.DataClasses }}</p>
-            {% if pwn.Domain %}
-            <p><span class='bold'>Domain:</span> {{ pwn.Domain }}</p>
-            {% endif %}
-            <p><span class='bold'>Breach date:</span> {{ pwn.BreachDate }}</p>
-            <br>
-        {% endfor %}
-        {% endif %}
+        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <img class="photo-pic" src="./../static/hibp.png">
+        </div>
+        <div class="photo-foot card-header"><a href="{{ pwned.url }}" class="photo-a">Pwned Emails</a>
+        </div>
         </div>
         {% endif %}
         {% if not pwned %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <h4 class="card-title">Secondary card title</h4>
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header">Have I Been Pwned
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Pwned Emails</p>
         </div>
         </div>
         {% endif %}
+        </div>
 
 
+
+{#       <div class="col-lg-3 col-md-4 col-xs-6">
         {% if hacked_email %}
         <div class='info_block'>
         <h3 class='site_name'>{{ hacked_email.site }}:</h3>
@@ -433,18 +405,6 @@
         {% endif %}
         </div>
         {% endif %} #}
-
-
-{# <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
-  <div class="card-body text-secondary">
-    <h4 class="card-title">Secondary card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <div class="photo-foot card-header"><a class='photo-a'>Header</a>
-    <button type="button" class="btn photo-button" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
-sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">Bottom</button>
-  </div>
-</div> #}
 
 
     </div>
