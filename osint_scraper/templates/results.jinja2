@@ -293,6 +293,11 @@
         {% if photobucket %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class='site-detail'>
+                <ul>
+                    <li><span class='bold'>Bio:</span> {{ photobucket.bio }}</li>
+                </ul>
+            </div>
             {% if photobucket.avatar %}
                 <img class="photo-pic found" src="{{ photobucket.avatar }}">
             {% endif %}
@@ -320,6 +325,13 @@
         {% if flickr %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class='site-detail'>
+                <ul>
+                    <li><span class='bold'>Username:</span> {{ flickr.user_name }}</li>
+                    <li><span class='bold'>Name:</span> {{ flickr.title }}</li>
+                    <li><span class='bold'>Location:</span> {{ flickr.location }}</li>
+                </ul>
+            </div>
             {% if flickr.avatar %}
                 <img class="photo-pic found" src="{{ flickr.avatar }}">
             {% endif %}
