@@ -51,11 +51,13 @@ def pwned_recon(email):
     if not email:
         return None
     results = pypwned.getAllBreachesForAccount(email=email)
+    url = 'https://haveibeenpwned.com/'
     if '404' in results:
         return None
     if 'A server error' in results:
         return None
     return {'site': 'Have I been pwned.',
+            'url': url,
             'results': results
             }
 
@@ -190,6 +192,7 @@ def hacked_email_recon(email):
         return None
     return {
         'hack_dict': to_dict,
+        'url': url,
         'site': 'Hacked Emails'
     }
 
