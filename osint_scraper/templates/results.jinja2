@@ -154,10 +154,10 @@
         {% if github %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-            {% if github.avatar %}
-                <img class="photo-pic" src="{{ github.avatar }}">
+            {% if github.avatar_url %}
+                <img class="photo-pic" src="{{ github.avatar_url }}">
             {% endif %}
-            {% if not github.avatar %}
+            {% if not github.avatar_url %}
                 <img class="photo-pic" src="./../static/github.jpg">
             {% endif %}
         </div>

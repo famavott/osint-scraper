@@ -88,3 +88,14 @@ tbody {
 }
 
 /*<img class='photo-pic' src="./../static/black_x.png" alt="">*/
+
+.strike-out {
+    margin: 0;
+    text-decoration: line-through;
+    text-decoration-color: red;
+}
+
+.content {
+    width: 90%;
+    margin: auto;
+}

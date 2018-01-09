@@ -53,7 +53,7 @@ def pwned_recon(email):
     results = pypwned.getAllBreachesForAccount(email=email)
     if '404' in results:
         return None
-    if results.startswith('A server error'):
+    if 'A server error' in results:
         return None
     return {'site': 'Have I been pwned.',
             'results': results
