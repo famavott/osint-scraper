@@ -67,7 +67,7 @@ def github_recon(user_name):
     url = 'https://github.com/{}'.format(user_name)
     try:
         soup = social_soup(url)
-        avatar_url = soup.find('img', class_="avatar width-full rounded-2").get('src')
+        avatar = soup.find('img', class_="avatar width-full rounded-2").get('src')
         name = soup.find('span', class_="p-name vcard-fullname d-block").contents[0]
         location = soup.find('span', class_="p-label").contents[0]
         try:
@@ -75,7 +75,7 @@ def github_recon(user_name):
         except:
             bio = None
         return {'site': 'GitHub',
-                'avatar_url': avatar_url,
+                'avatar_url': avatar,
                 'login': user_name,
                 'name': name,
                 'location': location,
