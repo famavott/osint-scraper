@@ -62,7 +62,7 @@
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header"><p class="photo-a">Twitter</p>
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Twitter</p>
         </div>
         </div>
         {% endif %}
@@ -89,7 +89,7 @@
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header"><p class="photo-a">YouTube</p>
+        <div class="photo-foot card-header"><p class="photo-a strike-out">YouTube</p>
         </div>
         </div>
         {% endif %}
@@ -116,7 +116,7 @@
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header"><p class="photo-a">Liveleak</p>
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Liveleak</p>
         </div>
         </div>
         {% endif %}
@@ -142,8 +142,8 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
-        </div>
-        <div class="photo-foot card-header"><p class="photo-a">Reddit</p>
+        </div> 
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Reddit</p>
         </div>
         </div>
         {% endif %}
@@ -154,10 +154,10 @@
         {% if github %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-            {% if github.avatar %}
-                <img class="photo-pic" src="{{ github.avatar }}">
+            {% if github.avatar_url %}
+                <img class="photo-pic" src="{{ github.avatar_url }}">
             {% endif %}
-            {% if not github.avatar %}
+            {% if not github.avatar_url %}
                 <img class="photo-pic" src="./../static/github.jpg">
             {% endif %}
         </div>
@@ -170,7 +170,7 @@
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
-        <div class="photo-foot card-header"><p class="photo-a">Github</p>
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Github</p>
         </div>
         </div>
         {% endif %}
@@ -410,7 +410,7 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
         <div class="photo-foot card-header">Have I Been Pwned
         </div>
