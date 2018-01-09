@@ -42,3 +42,12 @@ $('input[name="select_all"]').change(function(){
 $(function() {
     $("[data-toggle='popover']").popover()
 })
+
+// $("#input_form").submit(function() {
+//     if($("#inputDefault").val().length === 0) {
+//         alert("Enter an email, username, or both.")
+//         event.preventDefault()
+//     }
+// })
+
+
