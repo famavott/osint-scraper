@@ -11,9 +11,19 @@
         {% if facebook %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
             <div class="card-body text-secondary">
-                <img class="photo-pic" src="../static/facebook.png"/>
+                <div class='site-detail'>Click link to see potential Facebook profile. Make sure you are logged in to Facebook beforehand.</div>
+                <img class="photo-pic found" src="../static/facebook.png"/>
             </div>
         <div class="photo-foot card-header"><a href="{{ facebook.url }}" class='photo-a'>Facebook</a>
+        </div>
+        </div>
+        {% endif %}
+        {% if not facebook %}
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
+        <div class="card-body text-secondary">
+        <img class='photo-pic' src="./../static/black_x.png" alt="">
+        </div>
+        <div class="photo-foot card-header"><p class="photo-a strike-out">Facebook</p>
         </div>
         </div>
         {% endif %}
@@ -24,11 +34,29 @@
        {% if twitter %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class='site-detail'>
+                <ul>
+
+        {% if twitter.name %}
+            <li><span class='bold'>Name:</span>{{ twitter.name }}</li>
+        {% endif %}
+        {% if twitter.location %}
+            <li><span class='bold'>Location:</span>{{ twitter.location }}</li>
+        {% endif %}
+        {% if twitter.description %}
+            <li><span class='bold'>Bio:</span>{{ twitter.description }}</li>
+        {% endif %}
+        {% if twitter.created_at %}
+            <li><span class='bold'>User Since:</span>{{ twitter.created_at }}</li>
+        {% endif %}
+
+                </ul>
+            </div>
             {% if twitter.avatar %}
-                <img class="photo-pic" src="{{ twitter.avatar }}">
+                <img class="photo-pic found" src="{{ twitter.avatar }}">
             {% endif %}
             {% if not twitter.avatar %}
-                <img class="photo-pic" src="./../static/twitter_bird.png>
+                <img class="photo-pic found" src="./../static/twitter_bird.png>
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ twitter.url }}" class='photo-a'>Twitter</a>
@@ -36,7 +64,7 @@
         </div>
         {% endif %}
         {% if not twitter %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
@@ -52,18 +80,18 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
             {% if youtube.avatar %}
-                <img class="photo-pic" src="{{ youtube.avatar }}">
+                <img class="photo-pic found" src="{{ youtube.avatar }}">
             {% endif %}
             {% if not youtube.avatar %}
-                <img class="photo-pic" src="./../static/youtube.png">
+                <img class="photo-pic found" src="./../static/youtube.png">
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ youtube.url }}" class="photo-a">YouTube</a>
         </div>
         </div>
         {% endif %}
-        {% if not youtube %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        {% if not youtube %} 
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
@@ -79,10 +107,10 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
             {% if liveleak.avatar %}
-                <img class="photo-pic" src="{{ liveleak.avatar }}">
+                <img class="photo-pic found" src="{{ liveleak.avatar }}">
             {% endif %}
             {% if not liveleak.avatar %}
-                <img class="photo-pic" src="./../static/liveleak.png">
+                <img class="photo-pic found" src="./../static/liveleak.png">
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ liveleak.url }}" class="photo-a">LiveLeak</a>
@@ -90,7 +118,7 @@
         </div>
         {% endif %}
         {% if not liveleak %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
@@ -106,10 +134,10 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
             {% if reddit.avatar %}
-                <img class="photo-pic" src="{{ reddit.avatar }}">
+                <img class="photo-pic found" src="{{ reddit.avatar }}">
             {% endif %}
             {% if not reddit.avatar %}
-                <img class="photo-pic" src="./../static/reddit.png">
+                <img class="photo-pic found" src="./../static/reddit.png">
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ reddit.url }}" class="photo-a">Reddit</a>
@@ -117,7 +145,7 @@
         </div>
         {% endif %}
         {% if not reddit %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div> 
@@ -133,10 +161,10 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
             {% if github.avatar %}
-                <img class="photo-pic" src="{{ github.avatar }}">
+                <img class="photo-pic found" src="{{ github.avatar }}">
             {% endif %}
             {% if not github.avatar %}
-                <img class="photo-pic" src="./../static/github.jpg">
+                <img class="photo-pic found" src="./../static/github.jpg">
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ github.url }}" class="photo-a">Github</a>
@@ -144,7 +172,7 @@
         </div>
         {% endif %}
         {% if not github %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
@@ -160,10 +188,10 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
             {% if steam.avatar %}
-                <img class="photo-pic" src="{{ steam.avatar }}">
+                <img class="photo-pic found" src="{{ steam.avatar }}">
             {% endif %}
             {% if not steam.avatar %}
-                <img class="photo-pic" src="./../static/steam.png">
+                <img class="photo-pic found" src="./../static/steam.png">
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ steam.url }}" class="photo-a">Steam</a>
@@ -171,7 +199,7 @@
         </div>
         {% endif %}
         {% if not steam %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
@@ -187,10 +215,10 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
             {% if imgur.avatar %}
-                <img class="photo-pic" src="{{ imgur.avatar }}">
+                <img class="photo-pic found" src="{{ imgur.avatar }}">
             {% endif %}
             {% if not imgur.avatar %}
-                <img class="photo-pic" src="./../static/imgur.png">
+                <img class="photo-pic found" src="./../static/imgur.png">
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ imgur.url }}" class="photo-a">Imgur</a>
@@ -198,7 +226,7 @@
         </div>
         {% endif %}
         {% if not imgur %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
@@ -214,10 +242,10 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
             {% if photobucket.avatar %}
-                <img class="photo-pic" src="{{ photobucket.avatar }}">
+                <img class="photo-pic found" src="{{ photobucket.avatar }}">
             {% endif %}
             {% if not photobucket.avatar %}
-                <img class="photo-pic" src="./../static/photobucket.png">
+                <img class="photo-pic found" src="./../static/photobucket.png">
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ photobucket.url }}" class="photo-a">Photobucket</a>
@@ -225,7 +253,7 @@
         </div>
         {% endif %}
         {% if not photobucket %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
@@ -241,10 +269,10 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
             {% if flickr.avatar %}
-                <img class="photo-pic" src="{{ flickr.avatar }}">
+                <img class="photo-pic found" src="{{ flickr.avatar }}">
             {% endif %}
             {% if not flickr.avatar %}
-                <img class="photo-pic" src="./../static/flickr.png">
+                <img class="photo-pic found" src="./../static/flickr.png">
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ flickr.url }}" class="photo-a">Flickr</a>
@@ -252,7 +280,7 @@
         </div>
         {% endif %}
         {% if not flickr %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
@@ -268,10 +296,10 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
             {% if trip.avatar %}
-                <img class="photo-pic" src="{{ trip.avatar }}">
+                <img class="photo-pic found" src="{{ trip.avatar }}">
             {% endif %}
             {% if not trip.avatar %}
-                <img class="photo-pic" src="./../static/trip.jpg">
+                <img class="photo-pic found" src="./../static/trip.jpg">
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ trip.url }}" class="photo-a">TripAdvisor</a>
@@ -279,7 +307,7 @@
         </div>
         {% endif %}
         {% if not trip %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
@@ -295,10 +323,10 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
             {% if pinterest.avatar %}
-                <img class="photo-pic" src="{{ pinterest.avatar }}">
+                <img class="photo-pic found" src="{{ pinterest.avatar }}">
             {% endif %}
             {% if not pinterest.avatar %}
-                <img class="photo-pic" src="./../static/pinterest.png">
+                <img class="photo-pic found" src="./../static/pinterest.png">
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ pinterest.url }}" class="photo-a">Pinterest</a>
@@ -306,7 +334,7 @@
         </div>
         {% endif %}
         {% if not pinterest %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
@@ -322,10 +350,10 @@
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
             {% if medium.avatar %}
-                <img class="photo-pic" src="{{ medium.avatar }}">
+                <img class="photo-pic found" src="{{ medium.avatar }}">
             {% endif %}
             {% if not medium.avatar %}
-                <img class="photo-pic" src="./../static/medium.png">
+                <img class="photo-pic found" src="./../static/medium.png">
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ medium.url }}" class="photo-a">Medium</a>
@@ -333,7 +361,7 @@
         </div>
         {% endif %}
         {% if not medium %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
@@ -348,14 +376,14 @@
         {% if wikipedia %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <img class="photo-pic" src="./../static/wikipedia.png">
+        <img class="photo-pic found" src="./../static/wikipedia.png">
         </div>
         <div class="photo-foot card-header"><a href="{{ wikipedia.url }}" class="photo-a">Wikipedia</a>
         </div>
         </div>
         {% endif %}
         {% if not wikipedia %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
@@ -370,14 +398,14 @@
         {% if pwned %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
-        <img class="photo-pic" src="./../static/hibp.png">
+        <img class="photo-pic found" src="./../static/hibp.png">
         </div>
         <div class="photo-foot card-header"><a href="{{ pwned.url }}" class="photo-a">Pwned Emails</a>
         </div>
         </div>
         {% endif %}
         {% if not pwned %}
-        <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="photo-div card border-secondary mb-3 not-found" style="max-width: 20rem;">
         <div class="card-body text-secondary">
         <img class='photo-pic' src="./../static/black_x.png" alt="">
         </div>
