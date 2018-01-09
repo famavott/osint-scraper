@@ -302,7 +302,7 @@ def pinterest_recon(user_name):
     try:
         soup = social_soup(url)
         name = soup.find('h3').contents[0]
-        avatar = soup.find('img', class_="_mi _3i _2h _3u").get('src')
+        avatar = soup.find('img', class_="_mi").get('src')
         return {'site': 'Pinterest',
                 'name': name,
                 'avatar': avatar,
