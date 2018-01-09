@@ -75,7 +75,7 @@ def github_recon(user_name):
         except:
             bio = None
         return {'site': 'GitHub',
-                'avatar_url': avatar,
+                'avatar': avatar,
                 'login': user_name,
                 'name': name,
                 'location': location,

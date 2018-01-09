@@ -56,7 +56,7 @@
                 <img class="photo-pic found" src="{{ twitter.avatar }}">
             {% endif %}
             {% if not twitter.avatar %}
-                <img class="photo-pic found" src="./../static/twitter_bird.png>
+                <img class="photo-pic found" src="./../static/twitter_bird.png">
             {% endif %}
         </div>
         <div class="photo-foot card-header"><a href="{{ twitter.url }}" class='photo-a'>Twitter</a>
@@ -79,6 +79,11 @@
         {% if youtube %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class='site-detail'>
+                <ul>
+                    <li><span class='bold'>Name:</span> {{ youtube.title }}</li>
+                </ul>
+            </div>
             {% if youtube.avatar %}
                 <img class="photo-pic found" src="{{ youtube.avatar }}">
             {% endif %}
@@ -106,6 +111,14 @@
         {% if liveleak %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class='site-detail'>
+            <ul>
+            {% if liveleak.location %}
+            <li><span class='bold'>Location:</span> {{ liveleak.location }}</li>
+            <li><span class='bold'>Member since:</span> {{ liveleak.memb_since }}</li>
+            {% endif %}
+            </ul>   
+            </div>
             {% if liveleak.avatar %}
                 <img class="photo-pic found" src="{{ liveleak.avatar }}">
             {% endif %}
@@ -133,6 +146,14 @@
         {% if reddit %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class='site-detail'>
+                <ul>
+                <li><span class='bold'>Account age:</span> {{ reddit.age }}</li>
+                {% if reddit.sub_list %}
+                    <li><span class='bold'>Last active subreddits: </span>{{ reddit.sub_list }}</li>
+                {% endif %}
+                </ul>
+            </div>
             {% if reddit.avatar %}
                 <img class="photo-pic found" src="{{ reddit.avatar }}">
             {% endif %}
@@ -160,6 +181,16 @@
         {% if github %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class='site-detail'>
+                <ul>
+                    <li><span class='bold'>Name:</span> {{ github.name }}</li>
+                    <li><span class='bold'>Location:</span> {{ github.location }}</li>
+                    {% if github.bio %}
+                    <li><span class='bold'>Bio:</span> {{ github.bio }}</li>
+                    {% endif %}
+                </ul>
+                
+            </div>
             {% if github.avatar %}
                 <img class="photo-pic found" src="{{ github.avatar }}">
             {% endif %}
@@ -187,6 +218,19 @@
         {% if steam %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class='site-detail'>
+                <ul>
+                {% if steam.real_name %}
+                <li><span class='bold'>Name:</span> {{ steam.real_name }}</li>
+                {% endif %}
+                {% if steam.bio %}
+                <li><span class='bold'>Bio:</span> {{ steam.bio }}</li>
+                {% endif %}
+                {% if steam.location %}
+                <li><span class='bold'>Location:</span> {{ steam.location }}</li>
+                {% endif %}
+                </ul>
+            </div>
             {% if steam.avatar %}
                 <img class="photo-pic found" src="{{ steam.avatar }}">
             {% endif %}
@@ -214,6 +258,14 @@
         {% if imgur %}
         <div class="photo-div card border-secondary mb-3" style="max-width: 20rem;">
         <div class="card-body text-secondary">
+            <div class='site-detail'>
+                <ul>
+                {% if imgur.bio %}
+                <li><span class='bold'>Bio:</span> {{ imgur.bio }}</li>
+                {% endif %}
+                <li><span class='bold'>Member since:</span> {{ imgur.acct_date }}</li>
+                </ul>
+            </div>
             {% if imgur.avatar %}
                 <img class="photo-pic found" src="{{ imgur.avatar }}">
             {% endif %}

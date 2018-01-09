@@ -92,7 +92,9 @@ tbody {
     opacity: 0;
 }
 
-/*<img class='photo-pic' src="./../static/black_x.png" alt="">*/
+.bold {
+    font-weight: bold;
+}
 
 .strike-out {
     margin: 0;
