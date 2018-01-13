@@ -20,46 +20,49 @@ def main(global_config, **settings):
 @pytest.fixture
 def name_example(scope="session"):
     """."""
-    return recon_handler(user_name='wmaserati76')
+    return recon_handler(user_name='wmaserati76',
+                         checks=['twitter', 'facebook', 'wikipedia',
+                                 'medium', 'pinterest', 'github',
+                                 'photobucket', 'imgur'])
 
 
 @pytest.fixture
 def email_example(scope="session"):
     """."""
-    return recon_handler(email='wmaserati76@gmail.com')
+    return recon_handler(email='wmaserati76@gmail.com', checks=['facebook'])
 
 
 @pytest.fixture
 def non_name_example(scope="session"):
     """."""
-    return recon_handler(user_name='dgfhjeldkslksdglkhsl')
+    return recon_handler(user_name='dgfhjeldkslksdglkhsl', checks=['twitter'])
 
 
 @pytest.fixture
 def non_email_example(scope="session"):
     """."""
-    return recon_handler(email='xnxxn@xnx.com')
+    return recon_handler(email='xnxxn@xnx.com', checks=['twitter'])
 
 
 @pytest.fixture
 def m_name_example(scope="session"):
     """."""
-    return recon_handler(user_name='m')
+    return recon_handler(user_name='m', checks=['twitter'])
 
 
 @pytest.fixture
 def jf_name_example(scope="session"):
     """."""
-    return recon_handler(user_name='jf_112')
+    return recon_handler(user_name='jf_112', checks=['twitter'])
 
 
 @pytest.fixture
 def matt_name_example(scope="session"):
     """."""
-    return recon_handler(user_name='matt')
+    return recon_handler(user_name='matt', checks=['twitter'])
 
 
 @pytest.fixture
 def tom_email_example(scope="session"):
     """."""
-    return recon_handler(email='tom@gmail.com')
+    return recon_handler(email='tom@gmail.com', checks=['twitter'])

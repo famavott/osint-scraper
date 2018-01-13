@@ -45,12 +45,13 @@ def test_recon_handler_with_non_email(non_email_example):
 
 def test_name_for_twit_in_results(name_example):
     """Check twitter dict returning expected result when supplied with username."""
-    assert name_example['twit']['name'] == 'Wayne Maserati'
+    assert name_example['twitter']['name'] == 'Wayne Maserati'
 
 
 def test_name_for_github_in_results(name_example):
     """Check github dict returning expected location when supplied with username."""
-    assert name_example['ghuser']['location'] == 'Jacksonville FL'
+    assert name_example['github']['location'] == 'Jacksonville FL'
+
 
 def test_name_for_imgur_in_results(name_example):
     """Check imgur dict returning expected results when supplied with username."""
@@ -59,7 +60,7 @@ def test_name_for_imgur_in_results(name_example):
 
 def test_name_for_photobucket_in_results(name_example):
     """Check photobucket dict returning expected results when supplied with username."""
-    assert name_example['p_bucket']['url'] == 'http://s36.photobucket.com/user/wmaserati76/profile/'
+    assert name_example['photobucket']['url'] == 'http://s594.photobucket.com/user/wmaserati76/profile/'
 
 
 def test_name_for_pinterest_in_results(name_example):
@@ -79,7 +80,7 @@ def test_name_for_tripadvisor_in_results(name_example):
 
 def test_name_for_wikipedia_in_results(name_example):
     """Check wikipedia dict returning expected results when supplied with username."""
-    assert name_example['wiki']['url'] == 'https://en.wikipedia.org/wiki/User:wmaserati76'
+    assert name_example['wikipedia']['url'] == 'https://en.wikipedia.org/wiki/User:wmaserati76'
 
 
 def test_email_for_facebook_account(email_example):
