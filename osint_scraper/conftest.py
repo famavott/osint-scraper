@@ -21,15 +21,17 @@ def main(global_config, **settings):
 def name_example(scope="session"):
     """."""
     return recon_handler(user_name='wmaserati76',
-                         checks=['twitter', 'facebook', 'wikipedia',
+                         checks=['twitter', 'wikipedia',
                                  'medium', 'pinterest', 'github',
-                                 'photobucket', 'imgur'])
+                                 'photobucket', 'imgur', 'youtube',
+                                 'flickr', 'trip'])
 
 
 @pytest.fixture
 def email_example(scope="session"):
     """."""
-    return recon_handler(email='wmaserati76@gmail.com', checks=['facebook'])
+    return recon_handler(email='wmaserati76@gmail.com',
+                         checks=['facebook', 'pwned', 'hacked_email'])
 
 
 @pytest.fixture
