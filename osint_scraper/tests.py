@@ -155,14 +155,14 @@ def test_trip_not_in_results(name_example):
     assert name_example['trip'] is None
 
 
-def test_trip_returns_dict():
-    """Test trip recon returns dict."""
-    assert isinstance(trip_recon('wmaserati76'), dict)
+# def test_trip_returns_dict():
+#     """Test trip recon returns dict."""
+#     assert isinstance(trip_recon('wmaserati76'), dict)
 
 
-def test_reddit_returns_dict():
-    """Test reddit recon returns dict."""
-    assert isinstance(reddit_recon('wmaserati76'), dict)
+# def test_reddit_returns_dict():
+#     """Test reddit recon returns dict."""
+#     assert isinstance(reddit_recon('wmaserati76'), dict)
 
 
 def test_pwned_not_in_results(email_example):
