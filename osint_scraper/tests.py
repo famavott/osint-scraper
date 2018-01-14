@@ -197,6 +197,18 @@ def test_steam_recon_returns_item():
     assert sr['site'] == 'Steam'
 
 
+def test_trip_recon_returns_item():
+    """Test trip recon return object."""
+    tar = trip_recon('paul')
+    assert tar['site'] == 'Tripadvisor'
+
+
+def test_liveleak_recon_returns_item():
+    """Test liveleak recon return object."""
+    llr = liveleak_recon('paul')
+    assert llr['site'] == 'LiveLeak'
+
+
 def test_trip_not_in_results(name_example):
     """Check trip returning None when supplied with username."""
     assert name_example['trip'] is None
