@@ -1,12 +1,109 @@
 """OSInt tests."""
+from osint_scraper.scripts.recon import (facebook_recon,
+                                         flickr_recon,
+                                         github_recon,
+                                         hacked_email_recon,
+                                         imgur_recon,
+                                         liveleak_recon,
+                                         medium_recon,
+                                         photobucket_recon,
+                                         pinterest_recon,
+                                         pwned_recon,
+                                         reddit_recon,
+                                         steam_recon,
+                                         trip_recon,
+                                         twitter_recon,
+                                         wikipedia_recon,
+                                         youtube_recon,)
+from osint_scraper.views.default import home_view, results_view
 
 from pyramid import testing
 
-from pyramid.response import Response
 
-from osint_scraper.views.default import results_view
+def test_facebook_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert facebook_recon(None) is None
 
-from osint_scraper.views.default import home_view
+
+def test_flickr_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert flickr_recon(None) is None
+
+
+def test_github_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert github_recon(None) is None
+
+
+def test_github_recon_no_bio():
+    """Test recon function return None for empty bio."""
+    ghr = github_recon('Matt')
+    assert ghr['bio'] is None
+
+
+def test_hacked_email_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert hacked_email_recon(None) is None
+
+
+def test_imgur_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert imgur_recon(None) is None
+
+
+def test_liveleak_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert liveleak_recon(None) is None
+
+
+def test_medium_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert medium_recon(None) is None
+
+
+def test_photobucket_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert photobucket_recon(None) is None
+
+
+def test_pinterest_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert pinterest_recon(None) is None
+
+
+def test_pwned_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert pwned_recon(None) is None
+
+
+def test_reddit_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert reddit_recon(None) is None
+
+
+def test_steam_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert steam_recon(None) is None
+
+
+def test_trip_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert trip_recon(None) is None
+
+
+def test_twitter_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert twitter_recon(None) is None
+
+
+def test_wikipedia_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert wikipedia_recon(None) is None
+
+
+def test_youtube_recon_return_none_with_none_input():
+    """Test recon function return None with None input."""
+    assert youtube_recon(None) is None
 
 
 def test_home_view_returns_response():
@@ -46,6 +143,41 @@ def test_recon_handler_with_non_email(non_email_example):
 def test_name_for_twit_in_results(name_example):
     """Check twitter dict returning expected result when supplied with username."""
     assert name_example['twitter']['name'] == 'Wayne Maserati'
+
+
+def test_youtube_not_in_results(name_example):
+    """Check youtube returning None when supplied with username."""
+    assert name_example['youtube'] is None
+
+
+def test_trip_not_in_results(name_example):
+    """Check youtube returning None when supplied with username."""
+    assert name_example['trip'] is None
+
+
+def test_trip_returns_dict():
+    """Test trip recon returns dict."""
+    assert isinstance(trip_recon('wmaserati76'), dict)
+
+
+def test_reddit_returns_dict():
+    """Test reddit recon returns dict."""
+    assert isinstance(reddit_recon('wmaserati76'), dict)
+
+
+def test_pwned_not_in_results(email_example):
+    """Check youtube returning None when supplied with email."""
+    assert email_example['pwned'] is None
+
+
+def test_hacked_email_not_in_results(email_example):
+    """Check youtube returning None when supplied with email."""
+    assert email_example['hacked_email'] is None
+
+
+def test_flickr_in_results(name_example):
+    """Check youtube returning None when supplied with username."""
+    assert name_example['flickr']['user_name'] == 'wmaserati76'
 
 
 def test_name_for_github_in_results(name_example):
