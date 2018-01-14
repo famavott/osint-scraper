@@ -30,9 +30,19 @@ def test_flickr_recon_return_none_with_none_input():
     assert flickr_recon(None) is None
 
 
+def test_flickr_recon_return_none_with_bad_input():
+    """Test recon function return None with bad input."""
+    assert flickr_recon('Xm -ll2@   .!') is None
+
+
 def test_github_recon_return_none_with_none_input():
     """Test recon function return None with None input."""
     assert github_recon(None) is None
+
+
+def test_github_recon_return_none_with_bad_input():
+    """Test recon function return None with bad input."""
+    assert github_recon('Xm -ll2@   .!') is None
 
 
 def test_github_recon_no_bio():
@@ -51,6 +61,11 @@ def test_imgur_recon_return_none_with_none_input():
     assert imgur_recon(None) is None
 
 
+def test_imgur_recon_return_none_with_bad_input():
+    """Test recon function return None with bad input."""
+    assert imgur_recon('Xm -ll2@   .!') is None
+
+
 def test_liveleak_recon_return_none_with_none_input():
     """Test recon function return None with None input."""
     assert liveleak_recon(None) is None
@@ -61,14 +76,29 @@ def test_medium_recon_return_none_with_none_input():
     assert medium_recon(None) is None
 
 
+def test_medium_recon_return_none_with_bad_input():
+    """Test recon function return None with bad input."""
+    assert medium_recon('Xm -ll2@   .!') is None
+
+
 def test_photobucket_recon_return_none_with_none_input():
     """Test recon function return None with None input."""
     assert photobucket_recon(None) is None
 
 
+def test_photobucket_recon_return_none_with_bad_input():
+    """Test recon function return None with bad input."""
+    assert photobucket_recon('Xm -ll2@   .!') is None
+
+
 def test_pinterest_recon_return_none_with_none_input():
     """Test recon function return None with None input."""
     assert pinterest_recon(None) is None
+
+
+def test_pinterest_recon_return_none_with_bad_input():
+    """Test recon function return None with bad input."""
+    assert pinterest_recon('Xm -ll2@   .!') is None
 
 
 def test_pwned_recon_return_none_with_none_input():
@@ -79,6 +109,11 @@ def test_pwned_recon_return_none_with_none_input():
 def test_reddit_recon_return_none_with_none_input():
     """Test recon function return None with None input."""
     assert reddit_recon(None) is None
+
+
+def test_reddit_recon_return_none_with_bad_input():
+    """Test recon function return None with bad input."""
+    assert reddit_recon('Xm -ll2@   .!') is None
 
 
 def test_steam_recon_return_none_with_none_input():
@@ -150,33 +185,35 @@ def test_youtube_not_in_results(name_example):
     assert name_example['youtube'] is None
 
 
+def test_youtube_recon_returns_item():
+    """Test youtube recon return object."""
+    ytr = youtube_recon('paul')
+    assert ytr['site'] == 'YouTube'
+
+
+def test_steam_recon_returns_item():
+    """Test steam recon return object."""
+    sr = steam_recon('paul')
+    assert sr['site'] == 'Steam'
+
+
 def test_trip_not_in_results(name_example):
-    """Check youtube returning None when supplied with username."""
+    """Check trip returning None when supplied with username."""
     assert name_example['trip'] is None
 
 
-# def test_trip_returns_dict():
-#     """Test trip recon returns dict."""
-#     assert isinstance(trip_recon('wmaserati76'), dict)
-
-
-# def test_reddit_returns_dict():
-#     """Test reddit recon returns dict."""
-#     assert isinstance(reddit_recon('wmaserati76'), dict)
-
-
 def test_pwned_not_in_results(email_example):
-    """Check youtube returning None when supplied with email."""
+    """Check ypwned returning None when supplied with email."""
     assert email_example['pwned'] is None
 
 
 def test_hacked_email_not_in_results(email_example):
-    """Check youtube returning None when supplied with email."""
+    """Check hacked email returning None when supplied with email."""
     assert email_example['hacked_email'] is None
 
 
 def test_flickr_in_results(name_example):
-    """Check youtube returning None when supplied with username."""
+    """Check flickr returning None when supplied with username."""
     assert name_example['flickr']['user_name'] == 'wmaserati76'
 
 
