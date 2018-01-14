@@ -54,7 +54,7 @@ def pwned_recon(email):
     url = 'https://haveibeenpwned.com/'
     if '404' in results:
         return None
-    if 'A server error' in results:
+    if 'A server error' in results:  # pragma: no cover
         return None
     return {'site': 'Have I been pwned.',
             'url': url,
