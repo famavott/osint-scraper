@@ -17,8 +17,8 @@ This application locates and compiles information about online personalities, gi
 
 ### Dependencies
 
-Python 3.5
-See `requirements.txt` and `setup.py`
+- Python 3.5
+- See `requirements.txt` and `setup.py`
 
 ## Authors
 
