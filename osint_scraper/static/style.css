@@ -10,7 +10,6 @@
 
 #main-box {
     width: 70%;
-    height: 32em;
     margin: 3em auto;
     text-align: center;
 }
@@ -22,10 +21,11 @@
 #instructions {
     margin-top: 1em;
     margin-bottom: 1em;
+    text-align: left;
 }
 
 #search {
-    margin: 1em auto;
+    margin: 0.5em auto;
     width: 100%;
 }
 
@@ -46,6 +46,37 @@ tbody {
     line-height: 0.9;
 }
 
+#left-box {
+
+}
+
+#bullets {
+    text-align: left;
+    list-style: none;
+
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .2rem;
+}
+
+#inputEmail {
+    margin-bottom: 0.5em !important;
+}
+
+#all-span {
+    text-align: left;
+}
+
+#all-sub {
+    font-size: 0.7rem;
+}
+
+#all-box {
+    margin-top: 0.5rem;
+}
+
 /* Results styling */
 #home_link {
     font-size: 1.5em;
@@ -53,10 +84,6 @@ tbody {
 
 #results_header {
     text-align: center;
-}
-
-#all-box {
-    font-size: 1.4em;
 }
 
 .photo-div {
