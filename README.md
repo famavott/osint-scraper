@@ -30,6 +30,8 @@ This application locates and compiles information about online personalities, gi
 
 [**Matt Favoino**](https://github.com/famavott)
 
+[**Bernard Bass**](https://github.com/ZerooCool) - For french translation.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
@@ -41,3 +43,37 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 - [Pypwned](https://github.com/kernelmachine/haveibeenpwned)
 - [Inteltechniques.com](https://inteltechniques.com/menu.html)
 
+
+# French translation
+
+## Social Recon
+
+### Sous Debian Stretch et Kali Linux 2018
+git clone https://github.com/famavott/osint-scraper.git<br/>
+cd osint-scraper
+
+# Pour Debian Stretch
+apt-get install python-pip<br/>
+apt-get install python3<br/>
+apt-get install python3-pip
+
+# Pour Kali Linux
+apt-get install python3-venv
+
+Créer un environnement virtuel en python3 et activer le avant d'installer les éléments nécessaires.<br/>
+Passer en root<br/>
+python3 -m venv ENV<br/>
+source ENV/bin/activate<br/>
+pip install -r requirements.txt<br/>
+pip install -e .<br/>
+pserve development.ini<br/>
+
+Starting server in PID 2408.<br/>
+Serving on http://localhost:6543<br/>
+Serving on http://localhost:6543<br/>
+
+Une fois la machine redémarrée, relancer le service de la façon suivante :<br/>
+Se placer dans le dossier de osint-scraper<br/>
+python3 -m venv ENV<br/>
+source ENV/bin/activate<br/>
+pserve development.ini
