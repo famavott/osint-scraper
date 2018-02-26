@@ -68,12 +68,17 @@ pip install -r requirements.txt<br/>
 pip install -e .<br/>
 pserve development.ini<br/>
 
+Vous pouvez voir les informations suivante dans votre terminal :<br/>
 Starting server in PID 2408.<br/>
 Serving on http://localhost:6543<br/>
 Serving on http://localhost:6543<br/>
+
+Lancer l'outil depuis votre navigateur avec l'adresse http://localhost:6543<br/>
 
 Une fois la machine redémarrée, relancer le service de la façon suivante :<br/>
 Se placer dans le dossier de osint-scraper<br/>
 python3 -m venv ENV<br/>
 source ENV/bin/activate<br/>
 pserve development.ini
+
+[[https://www.visionduweb.eu/forum/attachment/466|Social Recon]]
