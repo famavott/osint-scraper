@@ -81,4 +81,4 @@ python3 -m venv ENV<br/>
 source ENV/bin/activate<br/>
 pserve development.ini
 
-[[https://github.com/ZerooCool/osint-scraper/blob/patch-2/pictures/social-recon.png?raw=true|Social-Recon]]
+[[https://github.com/ZerooCool/osint-scraper/blob/patch-2/pictures/social-recon.png]]
