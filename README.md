@@ -82,4 +82,4 @@ source ENV/bin/activate<br/>
 pserve development.ini
 
 L'outil depuis votre navigateur :
-https://github.com/ZerooCool/osint-scraper/blob/patch-2/pictures/social-recon.png
+https://github.com/famavott/osint-scraper/blob/patch-2/pictures/social-recon.png
