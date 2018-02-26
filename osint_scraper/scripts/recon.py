@@ -70,10 +70,10 @@ def github_recon(user_name):
     try:
         soup = social_soup(url)
         avatar = soup.find('img', class_="avatar width-full rounded-2").get('src')
-        name = soup.find('span', class_="p-name vcard-fullname d-block").contents[0]
-        location = soup.find('span', class_="p-label").contents[0]
+        name = soup.find('span', class_="p-name vcard-fullname d-block overflow-hidden").text
+        location = soup.find('span', class_="p-label").text
         try:
-            bio = soup.find('div', class_='p-note user-profile-bio').find('div').contents[0]
+            bio = soup.find('div', class_='p-note user-profile-bio').text
         except:
             bio = None
         return {'site': 'GitHub',
