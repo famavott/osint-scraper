@@ -254,17 +254,16 @@ def liveleak_recon(user_name):
         return None
     url = 'https://www.liveleak.com/c/{}'.format(user_name)
     r = requests.get(url)
-    if 'Channel cannot be found!' in r.text:
+    if 'channel not found' in r.text:
         return None
     else:
         soup = BeautifulSoup(r.content, 'lxml')
-        loc = soup.find('h1').next_sibling.next_sibling.next_sibling
         try:
-            location = loc.next_sibling.find('span').contents[0]
+            location = soup.find('div', class_='liveleakers_community_text').contents[3].text
+            memb = soup.find_all('div', class_='subscribe_right')[1].text
         except:
             location = None
-        memb = soup.find('h1').next_sibling.next_sibling.next_sibling.\
-            next_sibling.next_sibling.next_sibling.find('span').contents[0]
+            memb = None
         return {'site': 'LiveLeak',
                 'location': location,
                 'memb_since': memb,
