@@ -249,9 +249,9 @@ def test_name_for_pinterest_in_results(name_example):
     assert name_example['pinterest']['url'] == 'https://www.pinterest.com/wmaserati76/'
 
 
-def test_name_for_medium_in_results(name_example):
-    """Check medium dict returning expected results when supplied with username."""
-    assert name_example['medium']['url'] == 'https://www.medium.com/@wmaserati76/'
+# def test_name_for_medium_in_results(name_example):
+#     """Check medium dict returning expected results when supplied with username."""
+#     assert name_example['medium']['url'] == 'https://www.medium.com/@wmaserati76/'
 
 
 def test_name_for_tripadvisor_in_results(name_example):
