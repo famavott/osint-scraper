@@ -11,8 +11,10 @@ This application locates and compiles information about online personalities, gi
 - Clone or fork the repo to your machine.
 - Once downloaded, `cd` into the `osint-scraper` directory.
 - Begin a new virtual environment with Python 3 and activate it.
+    - `python3 -m venv ENV `
+    - `source ENV/bin/activate`
 - `cd` into the next `osint-scraper` directory. It should be at the same level of the `setup.py` file.
-- `pip install -e .` on the command line to install all dependencies.
+- `pip install -e .` or `pip install -r requirements.txt` on the command line to install all dependencies.
 - `$ pserve development.ini --reload` to serve the application on `http://localhost:6543`
 
 ### Dependencies
