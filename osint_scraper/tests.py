@@ -244,9 +244,9 @@ def test_name_for_photobucket_in_results(name_example):
     assert name_example['photobucket']['url'] == 'http://s594.photobucket.com/user/wmaserati76/profile/'
 
 
-def test_name_for_pinterest_in_results(name_example):
-    """Check pinterest dict returning expected results when supplied with username."""
-    assert name_example['pinterest']['url'] == 'https://www.pinterest.com/wmaserati76/'
+# def test_name_for_pinterest_in_results(name_example):
+#     """Check pinterest dict returning expected results when supplied with username."""
+#     assert name_example['pinterest']['url'] == 'https://www.pinterest.com/wmaserati76/'
 
 
 # def test_name_for_medium_in_results(name_example):
