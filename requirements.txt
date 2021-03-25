@@ -59,7 +59,7 @@ pytest==3.2.3
 pytest-cov==2.5.1
 pytest-watch==4.1.0
 python-dateutil==2.6.1
-PyYAML==3.12
+PyYAML==5.4
 repoze.lru==0.7
 requests==2.18.4
 requests-oauthlib==0.8.0
