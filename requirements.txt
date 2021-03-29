@@ -45,7 +45,7 @@ ptyprocess==0.5.2
 py==1.4.34
 pyasn1==0.3.7
 pycparser==2.18
-Pygments==2.2.0
+Pygments==2.7.4
 pyOpenSSL==17.3.0
 pypwned==0.1.6
 pyramid==1.9.1
